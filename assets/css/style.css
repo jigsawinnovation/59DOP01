@@ -1,0 +1,211 @@
+@font-face {
+  font-family: 'ThaiSansNeuev';
+  /*src: url("../font/ThaiSansNeuev1.0/ThaiSansNeue-Regular.ttf");*/
+  src: url("../fonts/ThaiSansNeuev1.0/ThaiSansNeue-Regular.eot") format("embedded-opentype"), 
+	  url("../fonts/ThaiSansNeuev1.0/ThaiSansNeue-Regular.woff") format("woff"), 
+	  url("../fonts/ThaiSansNeuev1.0/ThaiSansNeue-Regular.woff2") format("woff2"), 
+	  url("../fonts/ThaiSansNeuev1.0/ThaiSansNeue-Regular.ttf") format("truetype"), 
+	  url("../fonts/ThaiSansNeuev1.0/ThaiSansNeue-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	font-family: 'ThaiSansNeuev';
+	padding-top: 65px;
+	
+}
+
+.font36 {
+	font-size: 36px;
+}
+
+.font32 {
+	font-size: 32px;
+}
+
+.font26 {
+	font-size: 26px;
+}
+
+.font22 {
+	font-size: 22px;
+}
+
+.font20 {
+	font-size: 20px;
+}
+
+.font18 {
+	font-size: 18px;
+}
+
+.fontb {
+	font-weight: 500;
+}
+
+.fontbold {
+	font-weight: 600;
+}
+
+.font-href {
+	color: #000;
+}
+
+.font-href:hover {
+	color: #909090;
+}
+
+.carousel-control.right {
+	background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	background-image: -o-linear-gradient(left,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0)),to(rgba(0,0,0,.0000)));
+	background-image: linear-gradient(to right,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+
+}
+.carousel-control.left {
+	background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	background-image: -o-linear-gradient(left,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0)),to(rgba(0,0,0,.0000)));
+	background-image: linear-gradient(to right,rgba(0,0,0,.0) 0,rgba(0,0,0,.0000) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+
+}
+
+#slider {
+	margin-bottom: 15px;
+}
+
+#executive {
+	background-image: url("../images/a1.png");
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 50%;
+	margin-bottom: 30px;
+}
+
+.btn-statistics {
+	padding-top: 20px; 
+	padding-bottom: 20px; 
+	background-color: rgba(255,255,255, .8);
+	border-radius: 15px;
+}
+
+#news {
+	margin-top: 100px;
+	background-color: #000;
+}
+
+.title-news {
+	color: #909090;
+}
+
+div.ui-datepicker{
+	font-family: 'ThaiSansNeuev';
+    font-size:22px;
+}
+
+div.ui-datepicker {
+	width: 100%; /*what ever width you want*/
+}
+
+.title-event {
+	margin-bottom: 5px;
+}
+
+ul.title-event{
+	list-style: none;
+	padding: 0;
+}
+
+.day1 {
+	padding: 10px;
+	border-left: 5px #ff9300 solid;
+	background-color: #e1e1e1;
+}
+
+.day3 {
+	padding: 10px;
+	border-left: 5px #009193 solid;
+	background-color: #e1e1e1;
+}
+
+.day6 {
+	padding: 10px;
+	border-left: 5px #942193 solid;
+	background-color: #e1e1e1;
+}
+
+#knowledge {
+	margin-top: 50px;
+}
+
+#slider2 .owl-item.active:nth-child(2) {
+	background-color: #909090;
+}
+
+
+#develop {
+	background-color: #e0e0e0;
+}
+
+#develop .container-fluid {
+	padding: 50px 0 20px 0;
+	background-image: url("../images/6.png");
+	background-repeat: no-repeat;
+	background-size: 50%;
+	background-position:left bottom;
+}
+
+#job {
+	margin-top: 50px;
+}
+
+.t1 {
+	background-color: #EDEDED;
+	border-top: #FFF 2px solid;
+}
+
+.t2 {
+	background-color: #D0D0D0;
+	border-top: #FFF 2px solid;
+}
+
+#side {
+	margin-top: 50px;
+}
+
+.job {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+
+#footer {
+	margin-top: 30px;
+	padding-bottom: 250px;
+	background-image: url("../images/linux_mint_grass_by_jernau.png");
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 100%;
+}
+
+#footer ul.none {
+	list-style: none;
+	padding: 0;
+}
+
+#footer ul.none2 {
+	list-style: none;
+	padding: 0 0 0 10px;
+}
+
+#footer ul li a {
+	color: #000;
+}
+
+#footer ul li a:hover {
+	color: #909090;
+}
+
