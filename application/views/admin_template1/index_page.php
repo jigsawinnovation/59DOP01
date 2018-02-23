@@ -281,11 +281,7 @@ body {
                 </li> -->
                 <!-- End Message Box -->
                 <li style='padding-left: 5px;border-left: 1px <?php echo $nav_bg;?> solid'>
-<<<<<<< HEAD
                     <a title="คู่มือช่วยเหลือ"  href="../assets/file/59DOP01-Manual.pdf" target="_blank" style="display: inline; color:#fff">
-=======
-                    <a title="คู่มือช่วยเหลือ" href="" style="display: inline; color:#fff">
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                         <i style="font-size: 14px; color: #fff !important" class="fa fa-life-ring" aria-hidden="true"></i>คู่มือช่วยเหลือ
                     </a>
                 </li>

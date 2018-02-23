@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 var table;
-=======
-
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 $(document).ready(function(){
 /*	$('#Province').change(function (argument) {
 		$('#lane').select2({
@@ -41,7 +37,6 @@ $(document).ready(function(){
 	});*/
 
 	$('select.elder_addr_pre').select2();
-<<<<<<< HEAD
 
 	  table = $('#dtable').DataTable({
       // "searching": false,
@@ -96,13 +91,6 @@ $(document).ready(function(){
 
 
 
-
-=======
-});
-
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
-	
-
 /* Modal Script Setting */
 $('#savbtnYes').click(function() {$("input[name='bt_submit']").click();}); //button save form
 
@@ -126,7 +114,7 @@ var opnCnfrom = function() { //dialog check before submit form
 	    if($(this).val()==''){
 	    	$(this).attr("title","กรุณาใส่ข้อมูล");
 	    	$(this).attr("data-original-title","กรุณาใส่ข้อมูล");
-	    	$(this).tooltip("show"); 
+	    	$(this).tooltip("show");
 	    	i=1;
 	  	}else {
 	  		$(this).attr("title","");

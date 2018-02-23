@@ -65,13 +65,7 @@
             <th style="width:7% !important;">อายุ (ปี)</th>
             <th style="width:10% !important;">วันที่ยื่นคำขอ</th>
             <th style="width:10% !important;">วันที่ได้รับ <br>การสงเคราะห์</th>
-<<<<<<< HEAD
             <th style="width:1% !important;">&nbsp;</th>
-=======
-            <th style="width:10% !important;">จำนวน (บาท)</th>
-            <th style="width:1% !important;">&nbsp;</th>
-            <th>หน่วยงาน</th>
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         </tr>
       </thead>
       <tbody>

@@ -103,20 +103,12 @@ class Intelprop extends MX_Controller
         // // dieArray($rows);
 
                  $rs = array();
-<<<<<<< HEAD
                  if(count($rows)>0){
-=======
-                 if(count($rows)>0){         
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                   $rs['history'] = $rows;
                   }else {
                   $rs['history'] = 'ไม่พบ';
                 }
-<<<<<<< HEAD
-
-=======
-     
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
              echo json_encode($rs);
 
@@ -133,11 +125,7 @@ class Intelprop extends MX_Controller
     /*--END Inizial Data for Check User Permission--*/
 
      $pers_id = get_inpost('pers_id');
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     $this->webinfo_model->LogSave($app_id,$process_action,'Sign In','Success'); //Save Sign In Log
     $usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id); //Check User Permission
 
@@ -195,7 +183,6 @@ class Intelprop extends MX_Controller
              $list = $this->intelprop_transfer->get_datatables();
               // dieArray($list);
             // echo count($list);
-<<<<<<< HEAD
 
             $data = array();
             $no = $_POST['start'];
@@ -214,20 +201,7 @@ class Intelprop extends MX_Controller
 
                 $row[] = "<center>".$no."</center>";
                 $row[] = $intelprop_transfer->pid;
-=======
-            
-            $data = array();
-            $no = $_POST['start'];
 
-            foreach ($list as $i=>$intelprop_transfer) {
-
-                $no++;
-                $row = array();
-
-                $row[] = "<center>".$no."</center>";
-                $row[] = $intelprop_transfer->pid;
-                
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 $row[] = $intelprop_transfer->prename_th.$intelprop_transfer->name;
 
                 $age = '';
@@ -239,11 +213,6 @@ class Intelprop extends MX_Controller
                 }
                  $row[] = "<center>".$age."</center>";
 
-<<<<<<< HEAD
-
-=======
-     
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 // $addr = $this->wisd_model->get_Address_tableajax($intelprop_transfer->reg_addr_id);
                 $province_district = "";
                 //ถ้ามีข้อมูลอำเภอและจังหวัด ให้แสดงทั้งสอง
@@ -260,11 +229,6 @@ class Intelprop extends MX_Controller
                                 } else {
                                     $province_district = "-";
                                 }
-<<<<<<< HEAD
-
-=======
-              
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
                 $row[] = "<center>".$province_district."</center>";
 
@@ -357,13 +321,8 @@ class Intelprop extends MX_Controller
                     $btn = $btn.'  </a>
                              </div>';
 
-<<<<<<< HEAD
-
                     $btn = $btn.'
-=======
-           
-                    $btn = $btn.'                          
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                            </div>
                            <br/>
 
@@ -377,7 +336,6 @@ class Intelprop extends MX_Controller
 
                 $row[] = "<center>".$btn."<center>";
 
-<<<<<<< HEAD
                 // colunm aria-hidden
                 $row[] ="เพศ";
                 $row[] ="อำเภอ";
@@ -388,9 +346,7 @@ class Intelprop extends MX_Controller
 
                 $data[] = $row;
               }
-=======
-                $data[] = $row;
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
             }
 
 
@@ -450,11 +406,7 @@ class Intelprop extends MX_Controller
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
             /*-- End Toastr style --*/
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             /*-- datepicker custom --*/
             set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
             set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
@@ -471,11 +423,6 @@ class Intelprop extends MX_Controller
 
             set_js_asset_footer('intelprop_list_ajax.js', 'intelprop'); //Set JS Index.js
 
-<<<<<<< HEAD
-=======
-            set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
-
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
             $data['process_action'] = $process_action;
             $data['content_view']   = 'intelprop_list_ajax';
@@ -511,25 +458,16 @@ class Intelprop extends MX_Controller
 
             //$data['diff_info'] = $this->difficult_model->getAll_diffInfo();
 
-<<<<<<< HEAD
             $this->load->model('intelprop_list1_model','intelprop_transfer');
              $list = $this->intelprop_transfer->get_datatables();
               // dieArray($list);
              // echo count($list);
 
-=======
-            $this->load->model('intelprop_list_model','intelprop_transfer');
-             $list = $this->intelprop_transfer->get_datatables();
-             // dieArray($list);
-             // echo count($list);
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             $data = array();
             $no = $_POST['start'];
 
             foreach ($list as $i=>$intelprop_transfer) {
 
-<<<<<<< HEAD
                  // $addr = $this->personal_model->getOnce_PersonalAddress($intelprop_transfer->reg_addr_id);
                     $name_expert = $this->wisd_model->get_expert($intelprop_transfer->proj_id);
                 $no++;
@@ -552,19 +490,6 @@ class Intelprop extends MX_Controller
                 $row[] = "<center>".number_format($intelprop_transfer->sum_grp_male)."</center>";
                 $row[] = "<center>".number_format($intelprop_transfer->sum_grp_female)."</center>";
                 $row[] = $intelprop_transfer->operation_area;
-=======
-                 $addr = $this->personal_model->getOnce_PersonalAddress($intelprop_transfer->reg_addr_id);
-
-                $no++;
-                $row = array();
-
-                $row[] = "<center>".$no."</center>";                     
-                $row[] = "โครงการ/กิจกรรม";
-                $row[] = $intelprop_transfer->prename_th.$intelprop_transfer->name;       
-                $row[] = "<center>".$no."</center>";
-                $row[] = "<center>".$no."</center>";
-                $row[] = "พื้นที่ดำเนินการ";
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
 
                 // $date_of_req = '';
@@ -574,23 +499,11 @@ class Intelprop extends MX_Controller
                 //     $date_of_req = '<font class="text-sucsess" color="#B9B9B9">ยังไม่ได้ขึ้นทะเบียน</font>';
                 // }
 
-<<<<<<< HEAD
                 $date_of_req = '<font class="text-sucsess" color="green">'.dateChange($intelprop_transfer->date_of_operate,5).'</font>';
 
                 $row[] = "<center>".$date_of_req."</center>";
 
-
-
                 $row[] = "<div class=\"text-right\">".number_format($intelprop_transfer->proj_budget,2)."</div>";
-=======
-                $date_of_req = '<font class="text-sucsess" color="green">'.dateChange(date("Y-m-d"),5).'</font>';
-
-                $row[] = "<center>".$date_of_req."</center>";
-
-                
-
-                $row[] = "<div class=\"text-right\">".number_format(2000,2)."</div>";
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
                 $tmp = $this->admin_model->getOnce_Application(3);
                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(3,$user_id); //Check User Permission
@@ -601,22 +514,13 @@ class Intelprop extends MX_Controller
 
                   <ul class="dropdown-menu" style="position: absolute;left: -190px;">';
 
-<<<<<<< HEAD
                   $btn = $btn.'';
-=======
-                  $btn = $btn.' <li><a style="font-size:16px;" data-toggle="modal" data-target="#prt'.$manage_transfer->pid.'" title="พิมพ์แบบฟอร์ม" >
-                       <i class="fa fa-file-pdf-o" aria-hidden="true" style="color: #000"></i> พิมพ์แบบฟอร์ม (.PDF)
-                   </a></li>';
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
 
                   $btn =$btn.'<li><a  style="font-size:16px;"';
 
-<<<<<<< HEAD
                   if(!isset($tmp1['perm_status'])){ $btn =$btn.'class="disabled"';}else{ $btn =$btn.'href="'.site_url("intelprop/intelprop_info/Edit/".$intelprop_transfer->proj_id); }
-=======
-                  if(!isset($tmp1['perm_status'])){ $btn =$btn.'class="disabled"';}else{ $btn =$btn.'href="'.site_url("intelprop/olderp_info/Edit/".$intelprop_transfer->knwl_id); }
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                   $btn =$btn.'"><i class="fa fa-pencil" aria-hidden="true" style="color: #000"></i> แก้ไขรายการ</a></li>';
 
 
@@ -625,11 +529,8 @@ class Intelprop extends MX_Controller
                     $tmp = $this->admin_model->chkOnce_usrmPermiss(3,$user_id); //Check User Permission
                     if(isset($tmp['perm_status'])) {
                         if($tmp['perm_status']=='Yes') {
-<<<<<<< HEAD
                          $btn = $btn.'<li><a style="font-size:16px;" data-id='.$intelprop_transfer->proj_id.' onclick="opn(this)" title="ลบ" >
-=======
-                         $btn = $btn.'<li><a style="font-size:16px;" data-id='.$intelprop_transfer->knwl_id.' onclick="opn(this)" title="ลบ" >
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                              <i class="fa fa-trash" style="color: #000"></i> ลบรายการ
                           </a></li>';
                       }
@@ -639,11 +540,8 @@ class Intelprop extends MX_Controller
                               </div>';
 
                 $btn =$btn.'<!-- Print Modal -->
-<<<<<<< HEAD
                    <div class="modal fade" id="prt'.$manage_transfer->proj_id.'" role="dialog">
-=======
-                   <div class="modal fade" id="prt'.$manage_transfer->pid.'" role="dialog">
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                      <div class="modal-dialog">
 
                         <!-- Modal content-->
@@ -672,13 +570,8 @@ class Intelprop extends MX_Controller
                     $btn = $btn.'  </a>
                              </div>';
 
-<<<<<<< HEAD
-
                     $btn = $btn.'
-=======
-           
-                    $btn = $btn.'                          
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                            </div>
                            <br/>
 
@@ -691,19 +584,12 @@ class Intelprop extends MX_Controller
 
 
                 $row[] = "<center>".$btn."<center>";
-<<<<<<< HEAD
                 $row[] = "อำเภอ";
                 $row[] = "จังหวัด";
 
                 $data[] = $row;
             }
 
-=======
-
-                $data[] = $row;
-            }
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             // dieArray($row);
 
             $output = array(
@@ -721,11 +607,7 @@ class Intelprop extends MX_Controller
 
       public function intelprop_list1($process_action = 'View')
     {
-<<<<<<< HEAD
         ini_set('max_execution_time', 300);
-=======
-        // ini_set('max_execution_time', 300);
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         // ตารางข้อมูล
         $data = array(); //Set Initial Variable to Views
         /*-- Initial Data for Check User Permission --*/
@@ -766,25 +648,19 @@ class Intelprop extends MX_Controller
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
             /*-- End Toastr style --*/
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             /*-- datepicker custom --*/
             set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
             set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
             set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
             /*-- End datepicker custom--*/
 
-<<<<<<< HEAD
               /*-- select2 style --*/
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/select2/select2.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/select2/select2.full.min.js');
             /*-- End select2 style --*/
 
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
             set_js_asset_footer('intelprop_list_ajax1.js', 'intelprop'); //Set JS Index.js
 
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
@@ -836,7 +712,6 @@ class Intelprop extends MX_Controller
          );
     }
 
-<<<<<<< HEAD
        public function add_update_intelprop_info($type="insert",$id_update='',$app_id='',$process_action=''){
              // dieArray($_POST);
             $this->load->library('form_validation');
@@ -881,8 +756,6 @@ class Intelprop extends MX_Controller
          dieArray($_POST);
        }
 
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
        public function intelprop_info($process_action = 'Add',$proj_id=0)
     {
         // ini_set('max_execution_time', 300);
@@ -926,18 +799,13 @@ class Intelprop extends MX_Controller
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
             /*-- End Toastr style --*/
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             /*-- datepicker custom --*/
             set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
             set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
             set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
             /*-- End datepicker custom--*/
 
-<<<<<<< HEAD
             /*-- select2 style --*/
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/select2/select2.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/select2/select2.full.min.js');
@@ -945,10 +813,7 @@ class Intelprop extends MX_Controller
 
 
             set_js_asset_footer('webservice.js','personals'); //Set JS sufferer_form1.js
-=======
-          
 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
 
 
@@ -962,7 +827,6 @@ class Intelprop extends MX_Controller
             $data['prename'] = $this->common_model->custom_query("SELECT * FROM std_prename");
 
             if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-<<<<<<< HEAD
 
                 $data['wisd_proj_info'] = $this->clr_proj();
                 $this->template->load('index_page', $data, 'intelprop');
@@ -986,22 +850,7 @@ class Intelprop extends MX_Controller
                     $this->template->load('index_page',$data,'intelprop');
                     $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
                }
-=======
-                $data['wisd_proj_info'] = $this->clr_proj();
-                $this->template->load('index_page', $data, 'intelprop');
-                $this->webinfo_model->LogSave($app_id, $process_action, 'Sign Out', 'Success'); //Save Sign Out Log
-            }else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){
-                  $insert_wis = array();
-                  $insert_wis = get_inpost_arr('wisd_proj_info');
 
-                  $proj_id = $this->common_model->insert('wisd_proj_info', $insert_wis);
-                  // dieArray($insert_wis);
-                  redirect('intelprop/intelprop_info/Edit/'.$proj_id);
-            }else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes'){
-                 
-                 $data['wisd_proj_info'] = rowArray($this->common_model->custom_query("SELECT * FROM wisd_proj_info WHERE proj_id={$proj_id}"));
-                 $this->template->load('index_page', $data, 'intelprop');
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             }
         }
 
@@ -1061,11 +910,7 @@ class Intelprop extends MX_Controller
     }
 
     public function add_update_olderp_info($type="insert",$id_update=''){
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       $data_array1                    = get_inpost_arr('wisd_info');
       $data_array2                    = get_inpost_arr('pers_info');
       $data_array3                    = get_inpost_arr('pers_addr');
@@ -1073,11 +918,7 @@ class Intelprop extends MX_Controller
        $data_array1['date_of_reg']    = dateChange($data_array1['date_of_reg']);
         unset($data_array1['pid']);
         // dieArray($_POST);
-<<<<<<< HEAD
 
-=======
-                    
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
        if($type=="insert"){
             $data_array1['insert_user_id']  = getUser();
             $data_array1['insert_org_id']   = get_session('org_id');
@@ -1095,19 +936,12 @@ class Intelprop extends MX_Controller
 
             $this->common_model->update('wisd_info', $data_array1,array('knwl_id'=>$id_update));
        }
-<<<<<<< HEAD
 
        //dieArray($data_array1);
        // dieArray($_FILES);
 
        /////upload img profile to table pers_info ///////////////
-=======
-    
-       //dieArray($data_array1);
-       // dieArray($_FILES);
-       
-       /////upload img profile to table pers_info /////////////// 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
        if($_FILES['img_profile']['name']!=''){
            $NameImg = $this->files_model->getOnceImg('img_profile','assets/modules/personals/uploads');
            if($NameImg!=''){
@@ -1119,13 +953,9 @@ class Intelprop extends MX_Controller
        }
        ////// End upload img profile to table pers_info/////////////////
 
-<<<<<<< HEAD
 
         /////////////////update pers_info///////////////////////////
-=======
-      
-        /////////////////update pers_info///////////////////////////                    
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
        if(get_inpost('elder_addr_chk')!='on') {
 
                 if($type=='update'){
@@ -1137,22 +967,15 @@ class Intelprop extends MX_Controller
                       $update['update_user_id']  = getUser();
                       $update['update_org_id']   = get_session('org_id');
                       $update['update_datetime'] = getDatetime();
-<<<<<<< HEAD
                       $this->common_model->update('pers_addr',$update,array('addr_id'=>get_inpost('pre_addr_id')));
-=======
-                      $this->common_model->update('pers_addr',$update,array('addr_id'=>get_inpost('pre_addr_id')));  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                       $new_addr_id          = $this->common_model->insert('pers_addr',$data_array3);
                     }
 
                 }else{
 
                   $new_addr_id              = $this->common_model->insert('pers_addr',$data_array3);
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 }
 
                 $data_array2['pre_addr_id'] = $new_addr_id;
@@ -1169,35 +992,13 @@ class Intelprop extends MX_Controller
 
             $this->common_model->update('pers_info',$data_array2,array('pers_id'=>$data_array1['pers_id']));
         /////////////////End update pers_info///////////////////////////
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         if($id!=''){
             $id_update = $id;
         }
         return  $id_update;
     }
 
-<<<<<<< HEAD
-
-=======
-    function convert_date($date=''){
-        $date_str = explode("-",$date);
-        $month    = array('01'=>'มกราคม','02'=>'กุมภาพันธ์','03'=>'มีนาคม','04'=>'เมษายน','05'=>'พฤษภาคม','06'=>'มิถุนายน','07'=>'กรกฎาคม','08'=>'สิงหาคม','09'=>'กันยายน','10'=>'ตุลาคม','11'=>'พฤศจิกายน','12'=>'ธันวาคม');
-        foreach ($month as $key => $value) {
-             if($key==$date_str[1]){
-                $month_th = $value;
-             }
-        }
-
-        $year_th = $date_str[0]+543;
-        $age     = date("Y")-$date_str[0];
-
-        return $date_str[2]." ".$month_th." ".$year_th." อายุ ".$age." ปี";
-     }
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     public function olderp_info($process_action = 'Add', $adm_id = 0)
     {
@@ -1228,11 +1029,6 @@ class Intelprop extends MX_Controller
                     'setting'    => array('data_output' => ''))
             ); // Set Template
 
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
               /*-- datepicker custom --*/
               set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
@@ -1316,15 +1112,9 @@ class Intelprop extends MX_Controller
                      //Valid Data
                     //dieArray($_FILES);
                     //dieArray($_POST);
-<<<<<<< HEAD
 
                     $id = $this->add_update_olderp_info();
 
-=======
-                   
-                    $id = $this->add_update_olderp_info();
-                         
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                     $this->session->set_flashdata('msg', setMsg('011')); //Set Message code 011
 
                     $this->webinfo_model->LogSave($app_id, $process_action, 'Sign Out', 'Success'); //Save Sign Out Log
@@ -1346,11 +1136,7 @@ class Intelprop extends MX_Controller
             } else if ($process_action == 'Edit' && get_inpost('bt_submit') == '' && $usrpm['perm_status'] == 'Yes') {
                     $row = $this->wisd_model->getOnce_admInfo($adm_id);
                      // dieArray($row);
-<<<<<<< HEAD
 
-=======
-               
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 if (isset($row['knwl_id'])) {
                     $tmp_req_pers            = $this->personal_model->getPersonalInfo($row['pers_id']);
                     //dieArray($tmp_req_pers);
@@ -1363,13 +1149,8 @@ class Intelprop extends MX_Controller
                     $data['wisd_info']['reg_add_info'] = @"{$tmp2['addr_home_no']} หมู่ {$tmp2['addr_moo']} ต. {$tmp2['addr_sub_district']} อ. {$tmp2['addr_district']} จ. {$tmp2['addr_province']} {$tmp2['addr_zipcode']}";
                     // dieArray($tmp_req_pers);
 
-<<<<<<< HEAD
                     if ($row['date_of_birth'] != '') {
                         $data['wisd_info']['date_of_birth'] = $this->wisd_model->convert_date($row['date_of_reg']);
-=======
-                    if ($row['date_of_birth'] != '') {          
-                        $data['wisd_info']['date_of_birth'] = $this->convert_date($row['date_of_reg']);
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                     } else {
                         $data['wisd_info']['date_of_birth'] = "ไม่พบวันเดือนปีเกิด";
                     }
@@ -1451,7 +1232,6 @@ class Intelprop extends MX_Controller
         }
     }
 
-<<<<<<< HEAD
     public function edit_wisd(){
         $knwl_id = get_inpost('knwl_id');
         $row = array();
@@ -1507,9 +1287,6 @@ class Intelprop extends MX_Controller
 
         echo json_encode("Success");
     }
-=======
-
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     public function olderp_info2($process_action = 'Add', $adm_id = 0)
     {
@@ -1551,14 +1328,11 @@ class Intelprop extends MX_Controller
               set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
               /*-- End datepicker custom--*/
 
-<<<<<<< HEAD
               /*-- Load Datatables for Theme --*/
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/dataTables/datatables.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/dataTables/datatables.min.js');
             /*-- End Load Datatables for Theme --*/
 
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             /*-- Toastr style --*/
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
@@ -1593,32 +1367,19 @@ class Intelprop extends MX_Controller
                 'hash' => $this->security->get_csrf_hash(),
             );
             if ($process_action == 'Add' && get_inpost('bt_submit') == '' && $usrpm['perm_status'] == 'Yes') {
-<<<<<<< HEAD
                  $this->template->load('index_page', $data, 'intelprop');
             }else if($process_action == 'Edit' && $usrpm['perm_status'] == 'Yes'){
 
-=======
-                 $this->template->load('index_page', $data, 'intelprop');           
-            }else if($process_action == 'Edit' && $usrpm['perm_status'] == 'Yes'){
-                 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                  $row = $this->wisd_model->getOnce_admInfo($adm_id);
 
                 //เรียกข้อมูลสาขาปัญาตามเลขไดดี
                 $wisd_branch = $this->wisd_model->get_wisd_branch_by_knwlid($row['knwl_id']);
-<<<<<<< HEAD
 
                 $data['wisd_branch'] = $wisd_branch;
                 $this->template->load('index_page', $data, 'intelprop');
             }else if($process_action == 'Edited'  && $usrpm['perm_status'] == 'Yes'){
                 // dieArray($_FILES);
-=======
-                 
-                $data['wisd_branch'] = $wisd_branch;
-                $this->template->load('index_page', $data, 'intelprop');
-            }else if($process_action == 'Edited'  && $usrpm['perm_status'] == 'Yes'){
-                // dieArray($_POST);
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
                 $tmp_wisd       = @get_inpost_arr('wisd_branch'); //รหัสสาขาภูมิปัญญา
 
                 $data_wisd_branch                    = array();
@@ -1630,7 +1391,6 @@ class Intelprop extends MX_Controller
                 $data_wisd_branch['wisd_code']       = $tmp_wisd['wisd_code'];
                 $data_wisd_branch['wisd_sp_title']   = $tmp_wisd['wisd_sp_title'];
                 $data_wisd_branch['wisd_sp_url']     = $tmp_wisd['wisd_sp_url'];
-<<<<<<< HEAD
 
                 if(get_inpost('branch_id')==''){
                    $id_branch = $this->common_model->insert('wisd_branch', $data_wisd_branch);
@@ -1640,11 +1400,6 @@ class Intelprop extends MX_Controller
                 }
                  // dieArray($_FILES);
                  // dieArray($_POST);
-=======
-                
-                 // dieArray($_FILES);
-               
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 // dieArray($tmp_wisd['wisd_code']);
 
                 ////////////////////////////File upload /////////////////////////////////////////////////////////////
@@ -1652,7 +1407,6 @@ class Intelprop extends MX_Controller
                  // dieArray($fileUpload);
                  if(!empty($fileUpload)){
                     foreach ($fileUpload as $key => $value) {
-<<<<<<< HEAD
                         $file_wisd_branch                    = array();
                         $file_wisd_branch['insert_user_id']  = getUser();
                         $file_wisd_branch['insert_org_id']   = get_session('org_id');
@@ -1676,26 +1430,6 @@ class Intelprop extends MX_Controller
                                    $data_photo_head['branch_id']          = $id_branch;
                                    $data_photo_head['wisdom_photo_file']  = $name_photo_head;
                                    $data_photo_head['wisdom_photo_label'] = $_FILES['wisd_photo_head']['name'];
-=======
-                        $data_wisd_branch['wisd_sp_file']  = $value['file'];
-                        $data_wisd_branch['wisd_sp_label'] = $value['name'];
-                        $data_wisd_branch['wisd_sp_size']  = $_FILES['wisd_file']['size'][$key];
-                        $id_branch = $this->common_model->insert('wisd_branch', $data_wisd_branch);
-                    }
-                 }else{
-                        $id_branch = $this->common_model->insert('wisd_branch', $data_wisd_branch);
-                 }
-                 ///////////////////////End File upload ////////////////////////////////////////////////
-                
-
-                 ////////////////////////////File upload photoHead /////////////////////////////////////////////////////////////
-                 $data_photo_head = array();
-                 $name_photo_head = $this->files_model->getOnceImg("wisd_photo_head", 'assets/modules/intelprop/images');
-                                if ($name_photo_head != "") {
-                                   $data_photo_head['branch_id']          = $adm_id;
-                                   $data_photo_head['wisdom_photo_file']  = "Head".$name_photo_head;
-                                   $data_photo_head['wisdom_photo_label'] = $name_photo_head;
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                    $data_photo_head['wisdom_photo_size']  = $_FILES['wisd_photo_head']['size'];
                                    $this->common_model->insert('wisd_photo', $data_photo_head);
                                 } // close loop if($id_photo!="")
@@ -1708,27 +1442,17 @@ class Intelprop extends MX_Controller
                  $name_photo = $this->files_model->getMultiImg("wisd_wisd_photo", 'assets/modules/intelprop/images');
                  if($name_photo!=''){
                         foreach ($name_photo as $key => $value) {
-<<<<<<< HEAD
                                 $data_photo['branch_id']          = $id_branch;
                                 $data_photo['wisdom_photo_file']  = $value['file'];
                                 $data_photo['wisdom_photo_label'] = $value['name'];
                                 $data_photo['wisdom_photo_size']  = $_FILES['wisd_wisd_photo']['size'][$key];
                                 $this->common_model->insert('wisd_photo', $data_photo);
                         }
-=======
-                                $data_photo['branch_id']          = $adm_id;
-                                $data_photo['wisdom_photo_file']  = $value['file'];
-                                $data_photo['wisdom_photo_label'] = $value['name'];
-                                $data_photo['wisdom_photo_size']  = $_FILES['wisd_wisd_photo']['size'][$key];
-                                $this->common_model->insert('wisd_photo', $data_photo); 
-                        }         
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                  }
                 ////////////////////////////End File upload photo/////////////////////////////////////////////////////////////
 
                 $this->webinfo_model->LogSave($app_id, $process_action, 'Sign Out', 'Success'); //Save Sign Out Log
                 redirect('intelprop/olderp_info2/Edit/'.$adm_id,'refresh');
-<<<<<<< HEAD
             }else if ($process_action == 'Delete' && $usrpm['perm_status'] == 'Yes') {
                 //Delete process
                 $proj_id   = $adm_id;
@@ -1742,20 +1466,12 @@ class Intelprop extends MX_Controller
                 page500();
                 $this->template->load('index_page', $data, 'intelprop');
                 $this->webinfo_model->LogSave($app_id, $process_action, 'Sign Out', 'Fail'); //Save Sign Out Log
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             }
         }
     }
 
-<<<<<<< HEAD
-
-
     public function del_wisd_photo(){
-=======
-    public function del_wisd_photo()
-    {
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
         $id_photo = get_inpost('id_photo');
         $str      = "DELETE FROM wisd_photo WHERE wisdom_photo_id = {$id_photo}";
         $row      = $this->common_model->custom_query($str);
@@ -1764,12 +1480,7 @@ class Intelprop extends MX_Controller
 
     }
 
-<<<<<<< HEAD
     public function del_wisd_branch(){
-=======
-    public function del_wisd_branch()
-    {
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         $branch_id = get_inpost('branch_id');
         $data      = array('delete_user_id' => getUser(),
             'delete_org_id'                     => get_session('org_id'),
@@ -1780,7 +1491,6 @@ class Intelprop extends MX_Controller
 
     }
 
-<<<<<<< HEAD
     public function check_pid_persinfo(){
        ini_set('max_execution_time', 300);
        $proj_id          = get_inpost('proj_id');
@@ -1877,6 +1587,4 @@ class Intelprop extends MX_Controller
 
     }
 
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 }

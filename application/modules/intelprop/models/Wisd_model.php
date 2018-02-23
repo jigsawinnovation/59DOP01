@@ -6,41 +6,36 @@ class Wisd_model extends CI_Model {
 
 	public function getAll_admInfo() {
 		return $this->common_model->custom_query("
-			SELECT * FROM wisd_info 
-			WHERE (delete_user_id IS NULL && delete_datetime IS NULL) 
+			SELECT * FROM wisd_info
+			WHERE (delete_user_id IS NULL && delete_datetime IS NULL)
 			ORDER BY insert_datetime DESC,update_datetime DESC
 		");
 	}
 
-<<<<<<< HEAD
 	public function getOnce_admInfo($adm_id = ''){
-               /*return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name 
-=======
-	public function getOnce_admInfo($adm_id = '')	{
-/*		return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
-                from wisd_info as A 
-                                    left join pers_info as B       on A.pers_id=B.pers_id 
-                                    left join std_prename as C     on B.pren_code=C.pren_code 
-                                    left join std_gender as D      on B.gender_code=D.gender_code 
-                                    left join std_nationality as E on B.nation_code=E.nation_code 
-                                    left join std_religion as F    on B.relg_code=F.relg_code 
-                                    left join std_edu_level as G    on B.edu_code=G.edu_code 
-                                     
+               /*return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+                from wisd_info as A
+                                    left join pers_info as B       on A.pers_id=B.pers_id
+                                    left join std_prename as C     on B.pren_code=C.pren_code
+                                    left join std_gender as D      on B.gender_code=D.gender_code
+                                    left join std_nationality as E on B.nation_code=E.nation_code
+                                    left join std_religion as F    on B.relg_code=F.relg_code
+                                    left join std_edu_level as G    on B.edu_code=G.edu_code
+
                 where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
-                      (B.delete_user_id IS NULL && B.delete_datetime IS NULL) 
+                      (B.delete_user_id IS NULL && B.delete_datetime IS NULL)
                       and knwl_id={$adm_id}
                 "));*/
-		return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,G.*,H.addr_code,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name 
-                from wisd_info as A 
-                                    left join pers_info as B       on A.pers_id=B.pers_id 
-                                    left join std_prename as C     on B.pren_code=C.pren_code 
-                                    left join std_gender as D      on B.gender_code=D.gender_code 
-                                    left join std_nationality as E on B.nation_code=E.nation_code 
-                                    left join std_edu_level as G    on B.edu_code=G.edu_code 
-                                    LEFT JOIN pers_addr as H       on B.reg_addr_id = H.addr_id 
+		return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,G.*,H.addr_code,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+                from wisd_info as A
+                                    left join pers_info as B       on A.pers_id=B.pers_id
+                                    left join std_prename as C     on B.pren_code=C.pren_code
+                                    left join std_gender as D      on B.gender_code=D.gender_code
+                                    left join std_nationality as E on B.nation_code=E.nation_code
+                                    left join std_edu_level as G    on B.edu_code=G.edu_code
+                                    LEFT JOIN pers_addr as H       on B.reg_addr_id = H.addr_id
                 where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
-                      (B.delete_user_id IS NULL && B.delete_datetime IS NULL) 
+                      (B.delete_user_id IS NULL && B.delete_datetime IS NULL)
                       and knwl_id={$adm_id}
                 "));
 		}
@@ -68,7 +63,7 @@ class Wisd_model extends CI_Model {
 		return $this->common_model->custom_query("
 			SELECT A.*,B.* FROM adm_irp AS A
 			LEFT JOIN usrm_org AS B ON A.irp_org_id = B.org_id
-			WHERE pers_id = {$pers_id} 
+			WHERE pers_id = {$pers_id}
 			ORDER BY date_of_irp DESC
 		");
 	}
@@ -81,33 +76,33 @@ class Wisd_model extends CI_Model {
 			SELECT A.*,B.* FROM adm_irp AS A
 			LEFT JOIN usrm_org AS B ON A.irp_org_id = B.org_id
 			WHERE A.pers_id = {$pers_id}
-			AND A.irp_id = {$irp_id} 
+			AND A.irp_id = {$irp_id}
 		"));
 	}
 
-	public function getAll_irpDimension(){ 
+	public function getAll_irpDimension(){
 		return $this->common_model->get_where_custom_order('std_irp', 'qstn_type', 'Dimension','qstn_id','ASC');
 	}
-	
-	public function getAll_irpQuestion($parent=''){ 
+
+	public function getAll_irpQuestion($parent=''){
 		if($parent == ''){
 			return array();
 		}
 		return $this->common_model->custom_query("
-			SELECT * FROM std_irp 
-			WHERE qstn_type = 'Question' 
+			SELECT * FROM std_irp
+			WHERE qstn_type = 'Question'
 			AND qstn_pid = {$parent}
 			ORDER BY qstn_id ASC
 		");
 	}
 
-	public function getAll_irpAnswer($parent=''){ 
+	public function getAll_irpAnswer($parent=''){
 		if($parent == ''){
 			return array();
 		}
 		return $this->common_model->custom_query("
-			SELECT * FROM std_irp 
-			WHERE qstn_type = 'Answer' 
+			SELECT * FROM std_irp
+			WHERE qstn_type = 'Answer'
 			AND qstn_pid = {$parent}
 			ORDER BY qstn_id ASC
 		");
@@ -137,8 +132,8 @@ class Wisd_model extends CI_Model {
 			return array();
 		}
 		return $this->common_model->custom_query("
-			SELECT * FROM std_programs 
-			WHERE qstn_id = {$dimension} 
+			SELECT * FROM std_programs
+			WHERE qstn_id = {$dimension}
 			OR qstn_id = '999'
 			ORDER BY qstn_id ASC ,prgm_title DESC
 		");
@@ -166,27 +161,20 @@ class Wisd_model extends CI_Model {
 		");
 		return sort_array_with($tmp,'prgm_id');
 	}
-    
+
     //แสดงสาขาภูมิปัญญาตามเลข id
 	public function get_wisd_branch_by_knwlid($knwl_id = 0){
 		return $this->common_model->custom_query("
 			SELECT
-<<<<<<< HEAD
 				A.*,B.*
-=======
-				B.wis_name
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 			FROM
 					wisd_branch AS A
 			    LEFT JOIN std_wisdom AS B ON A.wisd_code = B.wis_code
 			WHERE A.knwl_id = {$knwl_id}
-			AND A.delete_user_id IS NULL 
-<<<<<<< HEAD
+			AND A.delete_user_id IS NULL
 			AND (A.delete_org_id IS NULL || A.delete_datetime IS NULL)
 			GROUP BY A.branch_id LIMIT 1
-=======
-			AND (A.delete_datetime IS NULL || A.delete_datetime IS NULL)
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
 		");
 
 	}
@@ -195,7 +183,6 @@ class Wisd_model extends CI_Model {
 		return $this->common_model->custom_query("SELECT * FROM wisd_photo WHERE branch_id={$branch_id}");
 	}
 
-<<<<<<< HEAD
 	public function get_photo_head($branch_id = 0){
 		return $this->common_model->custom_query("SELECT *,wisdom_photo_file LIKE '%Head%' AS result FROM wisd_photo WHERE branch_id={$branch_id} GROUP BY result DESC");
 	}
@@ -275,7 +262,7 @@ class Wisd_model extends CI_Model {
 	public function del_expert($tb_name,$column,$column_id){
 		foreach ($column as $key => $value) {
 			$this->db->where($value, $column_id[$key]);
-		}		
+		}
 		$this->db->delete($tb_name);
   }
 
@@ -310,14 +297,14 @@ class Wisd_model extends CI_Model {
     $str = "(";
   	foreach ($arr_value as $key => $value) {
   		if($key!=0){
-  			 
+
   			if($key==1){
               $str = $str."wisd_code = ".$value;
   			}else{
-  			  $str = $str." OR wisd_code = ".$value;	
+  			  $str = $str." OR wisd_code = ".$value;
   			}
   		}
-  		
+
   	}
 
     $str = $str.")";
@@ -332,8 +319,6 @@ class Wisd_model extends CI_Model {
   		return "false";
   	}
   }
-	
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
+
 }
 ?>

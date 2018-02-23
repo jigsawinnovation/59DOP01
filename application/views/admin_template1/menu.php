@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-<<<<<<< HEAD
         <?php
             $site = $this->webinfo_model->getSiteInfo();
-=======
-        <?php 
-            $site = $this->webinfo_model->getSiteInfo(); 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             $title = $site['site_title'].'(Menu)';
         ?>
 
@@ -32,11 +27,6 @@
           echo css_asset('../admin/css/fontsset.css');
         ?>
 
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         <?php //Set Background Path?>
         <style tyle="text/css">
             body {
@@ -44,11 +34,7 @@
             }
         </style>
 
-<<<<<<< HEAD
         <?php
-=======
-        <?php  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
           echo css_asset('../admin/css/menu.css');
         ?>
 
@@ -73,20 +59,12 @@
                     $user = get_session('user_firstname');
                     ?>
                     <li title="<?php echo $user;?>">
-<<<<<<< HEAD
                         <a style="font-size: 18px;" href="<?php echo base_url('member/edit_profile/edit/'.getUser()); ?>"> <span style="color: #fff !important" class="m-r-sm text-muted welcome-message"><?php echo $user;?></span> <img src="<?php echo base_url(get_session('user_photo_file'));?>" class="profile img-circle border-1" style="border: 4px #eee solid;" alt="<?php echo $user;?>" width="42" height="42">
-=======
-                        <a style="font-size: 18px;" href="<?php echo base_url('member/edit_profile/edit/'.getUser()); ?>"> <span style="color: #fff !important" class="m-r-sm text-muted welcome-message"><?php echo $user;?></span> <img src="<?php echo base_url(get_session('user_photo_file'));?>" class="profile img-circle border-1" style="border: 4px #eee solid;" alt="<?php echo $user;?>" width="42" height="42"> 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                         </a>
                     </li>
 
                     <li>
-<<<<<<< HEAD
                         <a href="../assets/file/59DOP01-Manual.pdf" target="_blank" title="ช่วยเหลือ" style="display: inline;">
-=======
-                        <a title="ช่วยเหลือ" href="#help" style="display: inline;">
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                             <i style="font-size: 18px; color: #fff !important" class="fa fa-question-circle" aria-hidden="true"></i>
                         </a>
                         <a title="ออกจากระบบ" href="<?php echo site_url('manage/logout');?>" style="display: inline;">
@@ -108,21 +86,12 @@
                         <div class="permiss_head-txt text-center">ด้านสวัสดิการสังคมผู้สูงอายุ</div>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(1);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(1,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(1);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(1,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled"  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('difficult/assist_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -133,21 +102,12 @@
                                 </a>
                             </div>
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(11);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(11,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(11);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(11,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('welfare/welfare_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -158,21 +118,12 @@
                                 </a>
                             </div>
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(20);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(20,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(20);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(20,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('funeral/funeral_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -181,7 +132,6 @@
                                     <?php if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>
                                     </div>
                                 </a>
-<<<<<<< HEAD
                             </div>
                             <div class="col-sm-12 item">
                                 <a
@@ -190,16 +140,6 @@
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(28,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                            </div>    
-                            <div class="col-sm-12 item">
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(28);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(28,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('adaptenvir/adaptenvir_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -208,32 +148,19 @@
                                     <?php if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>
                                     </div>
                                 </a>
-<<<<<<< HEAD
                             </div>
-=======
-                            </div>                        
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-4 permiss_head-panel" title="ด้านการพัฒนาศักยภาพผู้สูงอายุ">
                         <div class="permiss_head-txt text-center">ด้านการพัฒนาศักยภาพผู้สูงอายุ</div>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(44);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(44,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(44);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(44,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('intelprop/intelprop_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -244,21 +171,12 @@
                                 </a>
                             </div>
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(50);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(50,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(50);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(50,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('volunteer/volunteer_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -280,21 +198,12 @@
                         <div class="permiss_head-txt text-center">ด้านการเตรียมความพร้อมสู่วัยผู้สูงอายุ</div>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(53);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(53,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(53);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(53,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('prepare/prepare_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -305,21 +214,12 @@
                                 </a>
                             </div>
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(57);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(57,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(57);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(57,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('school/school_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -330,21 +230,12 @@
                                 </a>
                             </div>
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(63);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(63,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(63);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(63,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('jobs/jobs_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -366,21 +257,12 @@
                         <br/>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(70);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(70,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(70);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(70,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('individual/individual_list');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -396,21 +278,12 @@
                         <br/>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(64);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(64,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(64);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(64,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo site_url('usm');?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -426,21 +299,12 @@
                         <br/>
                         <div class="row">
                             <div class="col-sm-12 item">
-<<<<<<< HEAD
                                 <a
                                 <?php
                                 $tmp = $this->admin_model->getOnce_Application(74);
                                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(74,get_session('user_id')); //Check User Permission
                                 if(!isset($tmp1['perm_status'])) { ?>
                                      class="disabled"
-=======
-                                <a 
-                                <?php
-                                $tmp = $this->admin_model->getOnce_Application(74);   
-                                $tmp1 = $this->admin_model->chkOnce_usrmPermiss(74,get_session('user_id')); //Check User Permission
-                                if(!isset($tmp1['perm_status'])) { ?>
-                                     class="disabled" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                                 <?php }else{?>href="<?php echo base_url("webconfig/webconfig_detail");?>"<?php }?>>
                                     <div class="col-sm-2 icon text-left" style="background-color: <?php echo $tmp['app_color'];?>">
                                         <i class="<?php echo $tmp['app_icon'];?>" aria-hidden="true"></i>
@@ -453,11 +317,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
-                
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             </div>
         </div>
 
@@ -469,11 +328,7 @@
                 เวอร์ชั่น 1.0
             </div>
             <div style="font-size: 14px; padding: 15px; color: #858C92 !important;">
-<<<<<<< HEAD
                 © สงวนลิขสิทธ์โดย<strong> กรมกิจการผู้สูงอายุ</strong> พัฒนาโดย บริษัท จิ๊กซอว์ อินโนเวชั่น จำกัด
-=======
-                © สงวนลิขสิทธ์โดย<strong> กรมกิจการผู้สูงอายุ</strong> พัฒนาโดย บริษัท จิ๊กซอว์ อินโนเวชั่น จำกัด 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             </div>
         </div>
         -->

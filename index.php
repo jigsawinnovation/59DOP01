@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 date_default_timezone_set('Asia/Bangkok');
-=======
-date_default_timezone_set('Asia/Bangkok'); 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 /**
  * CodeIgniter
  *

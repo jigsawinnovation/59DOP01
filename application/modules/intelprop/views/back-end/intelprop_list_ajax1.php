@@ -16,17 +16,9 @@
     <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มรายการ
     </a>
 
-<<<<<<< HEAD
     <a id="showChart" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-overview" href="javascript:showChart();"><i style='font-size:14px;' class="fa fa-area-chart" aria-hidden="true"></i> ภาพรวม</a>
 
     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-search" type="button" id="filter" href="javascript:showFilter();" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i style='font-size:14px;' class="fa fa-search" aria-hidden="true"></i> ค้นหา</a>
-
-=======
-    <a id="showChart" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-overview" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 17px 2px 17px;" href="javascript:showChart();"><i class="fa fa-area-chart" aria-hidden="true"></i> ภาพรวม</a>
-
-    <a title="ค้นหา" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-search" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px;" type="button" id="filter" href="javascript:showFilter();"   data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fa fa-search" aria-hidden="true"></i> ค้นหา</a>
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     <?php
       $tmp = $this->admin_model->getOnce_Application(48);
@@ -60,7 +52,6 @@
 
   <?php
     //summary
-<<<<<<< HEAD
     // $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_summary.php');
     //search
     //$this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list1_filter.php');
@@ -70,11 +61,6 @@
     $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_summary.php');
     //search
     $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list1_filter.php');
-=======
-    $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_summary.php');
-    //search
-    $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_filter.php');
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
   ?>
 
 <div class="table-responsive">
@@ -84,7 +70,6 @@
 			<tr>
         <th style="width:2% !important;text-align: center;"    rowspan="2">#</th>
         <th style="width:23.5% !important;text-align: center;" rowspan="2">โครงการ/กิจกรรม</th>
-<<<<<<< HEAD
         <th style="width:6.5% !important;text-align: center;"  rowspan="2">(คำนำหน้า)ชื่อตัว-ชื่อสกุล <br> (ผู้รับผิดชอบโครงการ) </th>
         <th style="width:6.5% !important;text-align: center;"  rowspan="2">(คำนำหน้า)ชื่อตัว-ชื่อสกุล <br> (วิทยากรภูมิปัญญา) </th>
         <th style="width:12.5% !important;text-align: center;" colspan="2">กลุ่มเป้าหมาย (ราย)</th>
@@ -94,14 +79,6 @@
         <th style="width:2% !important;" rowspan="2">&nbsp;</th>
         <th rowspan="2">อำเภอ</th>
         <th rowspan="2">จังหวีด</th>
-=======
-        <th style="width:12.5% !important;text-align: center;" rowspan="2">(คำนำหน้า)ชื่อตัว-ชื่อสกุล <br> (วิทยากรภูมิปัญญา) </th>
-        <th style="width:12.5% !important;text-align: center;" colspan="2">กลุ่มเป้าหมาย (ราย)</th>
-        <th style="width:25% !important;text-align: center;"   rowspan="2">พื้นที่ดำเนินการ</th>
-        <th style="width:10% !important;text-align: center;"   rowspan="2">วันที่<br>ดำเนินการ</th>
-        <th style="width:12.5% !important;text-align: center;" rowspan="2">งบประมาณ<br>(บาท)</th>
-        <th style="width:2% !important;" rowspan="2">&nbsp;</th>
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       </tr>
       <tr>
         <th style="border-top-color: #2f4050;">ชาย</th>
@@ -109,11 +86,6 @@
       </tr>
 		</thead>
 		<tbody>
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		</tbody>
 	</table>
 

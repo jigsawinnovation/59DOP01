@@ -1,7 +1,6 @@
 
    <div id="tmp_menu" hidden='hidden'>
     <?php
-<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(46);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(46,$user_id); //Check User Permission
     ?>
@@ -11,22 +10,10 @@
           <?php }else{?> href="<?php echo site_url('intelprop/olderp_info');?>"
     <?php }?> title="บันทึก <?php //if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>">
     <i class="fa fa-plus" aria-hidden="true"></i>
-=======
-      $tmp = $this->admin_model->getOnce_Application(46); 
-      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(46,$user_id); //Check User Permission
-    ?>
-    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px;" 
-    <?php if(!isset($tmp1['perm_status'])) {?>
-            readonly 
-          <?php }else{?> href="<?php echo site_url('intelprop/olderp_info');?>" 
-    <?php }?> title="บันทึก <?php //if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>">
-    <i class="fa fa-plus" aria-hidden="true"></i> 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     </a>
 
     <a id="showChart" class="navbar-minimalize minimalize-styl-2 btn btn-primary" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 17px 2px 17px;" href="javascript:showChart();"><i class="fa fa-area-chart" aria-hidden="true"></i> </a>
 
-<<<<<<< HEAD
     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-search" type="button" id="filter" href="javascript:showFilter();" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i style='font-size:14px;' class="fa fa-search" aria-hidden="true"></i> ค้นหา</a>
 
     <?php
@@ -37,19 +24,6 @@
     <?php if(!isset($tmp1['perm_status'])) {?>
             readonly
           <?php }else{?> href="<?php echo site_url('report/E0/xls');?>"
-=======
-    <a title="ค้นหา" class="navbar-minimalize minimalize-styl-2 btn btn-primary" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px;" href="" data-toggle="modal" data-target="#mySearch">
-    <i class="fa fa-filter" aria-hidden="true"></i> </a>
-
-    <?php
-      $tmp = $this->admin_model->getOnce_Application(48); 
-      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(48,$user_id); //Check User Permission
-    ?>
-    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px;" 
-    <?php if(!isset($tmp1['perm_status'])) {?>
-            readonly 
-          <?php }else{?> href="<?php echo site_url('report/E0/xls');?>" 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     <?php }?> title="<?php if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>">
     <i class="fa fa-file-excel-o" aria-hidden="true"></i> </a>
 
@@ -83,11 +57,6 @@
           <script src="<?php echo base_url("assets/plugins/amcharts/themes/light.js")?>"></script>
             <div id="chartTab-1" class="tab-pane active">
                 <div class="panel-body row">
-<<<<<<< HEAD
-
-=======
-                  
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
                   <div class="col-xs-12">
                     <h2 style="text-align: center;">ข้อมูล ณ วันที่ <?php echo dateChange(date("Y-m-d"),1); ?></h2>
@@ -100,19 +69,11 @@
 											width		: 100%;
 											height		: 500px;
 											font-size	: 16px;
-<<<<<<< HEAD
 										}
 										</style>
 										<!-- HTML -->
 										<div id="chartdiv"></div>
 
-=======
-										}					
-										</style>
-										<!-- HTML -->
-										<div id="chartdiv"></div>
-		
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 										<!-- Chart code -->
 										<script>
 										var chart = AmCharts.makeChart( "chartdiv", {
@@ -174,11 +135,7 @@
 											width		: 100%;
 											height		: 500px;
 											font-size	: 11px;
-<<<<<<< HEAD
 										}
-=======
-										}					
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 										</style>
 										<!-- Chart code -->
 										<script>
@@ -408,13 +365,8 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 
 							<!-- Info Modal -->
 							<div class="modal fade" id="<?php echo $pers['pid']; ?>" role="dialog">
-<<<<<<< HEAD
 							  <?php
                         $addr = $this->personal_model->getPersonalInfo($value['pers_id']);
-=======
-							  <?php 
-                        $addr = $this->personal_model->getPersonalInfo($value['pers_id']); 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                          // dieArray($addr);
 
                         ?>
@@ -496,11 +448,6 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 														<!-- Search Modal -->
 							<div class="modal fade" id="mySearch" role="dialog">
 							  <div class="modal-dialog">
-<<<<<<< HEAD
-
-=======
-							    
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 							     <!-- Modal content-->
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -510,11 +457,6 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 							      <div class="modal-body">
 							        <label for="col1_filter">เลขประจำตัวประชาชน:</label>
 							        <input data-column="1" type="text" class="form-control column_filter" id="col1_filter">
-<<<<<<< HEAD
-
-=======
-							    
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 							        <label for="col2_filter">ชื่อตัว-ชื่อสกุล:</label>
 							        <input data-column="2" type="text" class="form-control column_filter" id="col2_filter">
 
@@ -527,21 +469,12 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 
 							         <label for="col7_filter">สาขาภูมิปัญญา (สาขา):</label>
 							        <input data-column="7" type="text" class="form-control column_filter" id="col7_filter">
-<<<<<<< HEAD
 
                                         <!-- /* fitter */ -->
 								         <script type="text/javascript">
 								            $('.date_filter').css('display','none');
 								            var date_set = '<?php echo (date("Y")+543)."-".date("m-d"); ?>';
 
-=======
-							       
-                                        <!-- /* fitter */ --> 
-								         <script type="text/javascript">
-								            $('.date_filter').css('display','none');
-								            var date_set = '<?php echo (date("Y")+543)."-".date("m-d"); ?>';
-								                            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 								                 $('.date_filter').next().focus(function(){
 								                    $(this).css('display','none');
 								                    $(this).prev().css('display','block');
@@ -558,11 +491,7 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 								                      }else{
 								                        $(this).next().val('');
 								                        $(this).next().css('display','block');
-<<<<<<< HEAD
 								                        $(this).css('display','none');
-=======
-								                        $(this).css('display','none');                                       
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 								                        $(this).val(date_set);
 								                      }
 								                });
@@ -571,7 +500,6 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 
 							      </div>
 							       <div class="modal-footer">
-<<<<<<< HEAD
 							        <button id="filter" type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-search" aria-hidden="true"></i> ตกลง</button>
 							       </div>
 							    </div>
@@ -579,13 +507,3 @@ $tmp = $this->admin_model->chkOnce_usrmPermiss(3, $user_id); //Check User Permis
 							  </div>
 							 </div>
 							 <!-- End Search Modal -->
-=======
-							        <button id="filter" type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-search" aria-hidden="true"></i> ตกลง</button> 
-							       </div>
-							    </div>
-							      
-							  </div>
-							 </div>
-							 <!-- End Search Modal -->
-
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04

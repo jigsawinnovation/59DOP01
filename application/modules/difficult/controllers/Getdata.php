@@ -368,8 +368,7 @@ class Getdata extends CI_Controller {
 					//}
 					//'.json_encode($res_data).'
 					$res_data = $this->difficult_mobile_model->getReportTrouble();
-<<<<<<< HEAD
-					
+
 					echo json_encode($res_data);
 					//echo $str_chart;
 					//echo '[{label="A",value="9"}]';
@@ -398,32 +397,6 @@ class Getdata extends CI_Controller {
 					//'.json_encode($res_data).'
 					$res_data = $this->difficult_mobile_model->getReport2Trouble();
 
-=======
-					$str_chart = '{
-				                 chart: {
-				                      caption: "",
-				                      bgcolor: "FFFFFF",
-				                      showvalues: "1",
-				                      showpercentvalues: "1",
-				                      showborder: "0",
-				                      showplotborder: "0",
-				                      showlegend: "1",
-				                      legendborder: "0",
-				                      legendposition: "bottom",
-				                      enablesmartlabels: "1",
-				                      use3dlighting: "0",
-				                      showshadow: "0",
-				                      legendbgcolor: "#CCCCCC",
-				                      legendbgalpha: "20",
-				                      legendborderalpha: "0",
-				                      legendshadow: "0",
-				                      legendnumcolumns: "3",
-				                      palettecolors: "#f8bd19,#e44a00,#008ee4,#33bdda,#6baa01,#583e78"
-				                     //theme: "fint"
-				                 },
-				                 data:[{label="A",value="9"}]
-				              };';
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					echo json_encode($res_data);
 					//echo $str_chart;
 					//echo '[{label="A",value="9"}]';

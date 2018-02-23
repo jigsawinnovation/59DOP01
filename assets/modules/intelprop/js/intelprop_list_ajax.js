@@ -16,28 +16,16 @@ $(document).ready(function() {
       //   "orderable": false, //set not orderable
       // }],
       "columnDefs": [
-<<<<<<< HEAD
       // { "name": "",   "targets": 0 },
        { "name": "B.pid",  "targets": 1 },
-        { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },         
+        { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },
         { "name": "B.date_of_birth",    "targets": 3 },
         { "name": "A.date_of_visit",    "targets": 6 },
         { "name": "D.gender_name",  "targets": 9 ,"visible": false},
         { "name": "H.addr_district",  "targets": 10 ,"visible": false},
         { "name": "H.addr_province",  "targets": 11 ,"visible": false},
-        { "name": "wisd_code",  "targets": 12 ,"visible": false}, 
+        { "name": "wisd_code",  "targets": 12 ,"visible": false},
         { "name": "A.insert_org_id",    "targets": 13 ,"visible": false}
-=======
-        // { "name": "",   "targets": 0 },
-         { "name": "B.pid",  "targets": 1 },
-         { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },
-          { "name": "B.date_of_birth",  "targets": 3 },
-         { "name": "A.date_of_reg",    "targets": 6 },
-        // { "name": "A.date_of_visit",    "targets": 5 },
-        // { "name": "A.date_of_pay",    "targets": 6 },
-        // { "name": "B.gender_code",    "targets": 7 },
-        // { "name": "H.addr_province",    "targets": 8 },
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       ],
       "order": [[ 0, "desc" ]],
 

@@ -33,10 +33,7 @@ class Prepare extends MX_Controller {
 		$user_id = get_session('user_id');
 		$app_id = 54;
 		$process_path = 'prepare/prepare_list';
-<<<<<<< HEAD
 		//echo $cdkm_title = get_inpost('dkm_title');
-=======
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		/*--END Inizial Data for Check User Permission--*/
 
 		$this->webinfo_model->LogSave($app_id,$process_action,'Sign In','Success'); //Save Sign In Log
@@ -49,7 +46,6 @@ class Prepare extends MX_Controller {
 			$app_name = $usrpm['app_name'];
 			$data['usrpm'] = $usrpm;
 			$data['user_id'] = $user_id;
-<<<<<<< HEAD
 			$cdkm_title = $_GET['dkm_title'];
 			if($cdkm_title != ''){
 					$where_prep_dkm_info = "AND dkm_title LIKE('%".$cdkm_title."%')";
@@ -60,12 +56,6 @@ class Prepare extends MX_Controller {
 				SELECT * FROM prep_dkm_info
 				WHERE delete_user_id IS NULL
 							".$where_prep_dkm_info."
-=======
-
-			$data['prep_dkm_info'] = $this->common_model->custom_query("
-				SELECT * FROM prep_dkm_info
-				WHERE delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
                 ORDER BY update_datetime DESC,insert_datetime DESC
 			");
@@ -107,11 +97,7 @@ class Prepare extends MX_Controller {
       $year = iconv_substr($str,6,4,'utf-8');
       //settype("integer",$year);
       $year = $year-543;
-<<<<<<< HEAD
 			if(checkdate(iconv_substr($str,3,2,'utf-8'),iconv_substr($str,0,2,'utf-8'),$year)){
-=======
-			if(checkdate(iconv_substr($str,3,2,'utf-8'),iconv_substr($str,0,2,'utf-8'),$year)){	
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 				return true;
 			}
 			else{
@@ -168,11 +154,7 @@ class Prepare extends MX_Controller {
 		$tmp = rowArray($this->common_model->custom_query("SELECT * FROM std_dkm_cate WHERE dkm_cate_code = '{$code}' "));
 		if(!empty($tmp)){
 			$opRows = $this->common_model->custom_query("
-<<<<<<< HEAD
 				SELECT dkm_cate_code,dkm_cate_name FROM std_dkm_cate
-=======
-				SELECT dkm_cate_code,dkm_cate_name FROM std_dkm_cate 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 				WHERE dkm_cate_parent_id = {$tmp['dkm_cate_id']}
 				AND dkm_cate_code LIKE '{$subCode}%'
 				ORDER BY dkm_cate_code ASC
@@ -193,11 +175,7 @@ class Prepare extends MX_Controller {
 		return end($tmp);
 	}
 
-<<<<<<< HEAD
 	public function prepare_info($process_action='Add',$dkm_id=0) {
-=======
-	public function prepare_info($process_action='Add',$dkm_id=0) { 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		$data = array(); //Set Initial Variable to Views
 		/*-- Initial Data for Check User Permission --*/
 		$user_id = get_session('user_id');
@@ -227,11 +205,7 @@ class Prepare extends MX_Controller {
       //set_css_asset_head('../plugins/bootstrap-datepicker1.3.0/css/datepicker.css');
       //set_js_asset_head('../plugins/bootstrap-datepicker1.3.0/js/bootstrap-datepicker.js');
       /*-- End datepicker --*/
-<<<<<<< HEAD
 
-=======
-      
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       /*-- datepicker custom --*/
       set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
       set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
@@ -318,11 +292,6 @@ class Prepare extends MX_Controller {
             $_FILES['tempFile']['tmp_name'] = $_FILES['fileAtt']['tmp_name'][$i];
             $_FILES['tempFile']['error']    = $_FILES['fileAtt']['error'][$i];
             $_FILES['tempFile']['size']     = $_FILES['fileAtt']['size'][$i];
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
             $att_files = $this->files_model->do_upload('tempFile',"assets/modules/prepare/uploads");
 
@@ -358,11 +327,7 @@ class Prepare extends MX_Controller {
 				$row = rowArray($this->common_model->custom_query("
 					SELECT * FROM prep_dkm_info
 					WHERE dkm_id = {$dkm_id}
-<<<<<<< HEAD
 					AND delete_user_id IS NULL
-=======
-					AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 					ORDER BY update_datetime DESC,insert_datetime DESC
 				"));
@@ -395,11 +360,7 @@ class Prepare extends MX_Controller {
 				$tmp = rowArray($this->common_model->custom_query("
 					SELECT * FROM prep_dkm_info
 					WHERE dkm_id = {$dkm_id}
-<<<<<<< HEAD
 					AND delete_user_id IS NULL
-=======
-					AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 					ORDER BY update_datetime DESC,insert_datetime DESC
 				"));
@@ -434,11 +395,6 @@ class Prepare extends MX_Controller {
             $_FILES['tempFile']['tmp_name'] = $_FILES['fileAtt']['tmp_name'][$i];
             $_FILES['tempFile']['error']    = $_FILES['fileAtt']['error'][$i];
             $_FILES['tempFile']['size']     = $_FILES['fileAtt']['size'][$i];
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
             $att_files = $this->files_model->do_upload('tempFile',"assets/modules/prepare/uploads");
 
@@ -543,11 +499,6 @@ class Prepare extends MX_Controller {
 
 				$this->template->load('index_page',$data,'prepare');
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
-<<<<<<< HEAD
-
-=======
-				
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
 				//dieArray($_POST);
 				$this->load->library('form_validation');
@@ -591,11 +542,6 @@ class Prepare extends MX_Controller {
 							$ans = @get_inpost_arr("a[{$qkey}]");
 							if(!empty($ans)){
 								foreach ($ans as $akey => $aRow) {
-<<<<<<< HEAD
-
-=======
-									
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 									$data_answer = array(
 										'qstn_pid' => $q_id,
 										'dkm_id'=> get_session('org_id'),
@@ -610,11 +556,6 @@ class Prepare extends MX_Controller {
 							}
 						}
 					}
-<<<<<<< HEAD
-
-=======
-					
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					$this->session->set_flashdata('msg',setMsg('021')); //Set Message code 021
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 					redirect('prepare/quiz_list/','refresh');
@@ -634,11 +575,7 @@ class Prepare extends MX_Controller {
 				$row = rowArray($this->common_model->custom_query("
 					SELECT * FROM prep_dkm_info
 					WHERE dkm_id = {$dkm_id[0]}
-<<<<<<< HEAD
 					AND delete_user_id IS NULL
-=======
-					AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 					ORDER BY update_datetime DESC,insert_datetime DESC
 				"));
@@ -663,11 +600,7 @@ class Prepare extends MX_Controller {
 				$data['prep_dkm_info'] = rowArray($this->common_model->custom_query("
 					SELECT * FROM prep_dkm_info
 					WHERE dkm_id = {$dkm_id[0]}
-<<<<<<< HEAD
 					AND delete_user_id IS NULL
-=======
-					AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 					ORDER BY update_datetime DESC,insert_datetime DESC
 				"));
@@ -719,11 +652,6 @@ class Prepare extends MX_Controller {
 							$ans = @get_inpost_arr("a[{$qkey}]");
 							if(!empty($ans)){
 								foreach ($ans as $akey => $aRow) {
-<<<<<<< HEAD
-
-=======
-									
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 									$data_answer = array(
 										'qstn_pid' => $q_id,
 										'dkm_id'=> get_session('org_id'),
@@ -738,11 +666,6 @@ class Prepare extends MX_Controller {
 							}
 						}
 					}
-<<<<<<< HEAD
-
-=======
-									
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					$this->session->set_flashdata('msg',setMsg('021')); //Set Message code 021
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 					redirect('prepare/quiz_info/Edit/'.$dkm_id[0].'-'.$dkm_id[1],'refresh');
@@ -777,11 +700,6 @@ class Prepare extends MX_Controller {
 		/*-- Initial Data for Check User Permission --*/
 		$user_id = get_session('user_id');
 		$org_id = get_session('org_id');
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		$app_id = 55;
 		$process_path = 'prepare/quiz_list';
 		/*--END Inizial Data for Check User Permission--*/
@@ -798,23 +716,13 @@ class Prepare extends MX_Controller {
 			$data['user_id'] = $user_id;
 
 			$data['prep_dkm_exr'] = $this->common_model->custom_query("
-<<<<<<< HEAD
 				SELECT * FROM prep_dkm_exr
 				WHERE qstn_pid IS NOT NULL
-=======
-				SELECT * FROM prep_dkm_exr 
-				WHERE qstn_pid IS NOT NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 				AND (qstn_title IS NOT NULL)
 				AND dkm_id = {$org_id}
 				AND qstn_pid = 0
 				GROUP BY qstn_seq
 				ORDER BY qstn_id DESC
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 			");
 
 			// dieArray($data);
@@ -868,13 +776,8 @@ class Prepare extends MX_Controller {
 			$data['user_id'] = $user_id;
 
 			$data['prep_trn_info'] = $this->common_model->custom_query("
-<<<<<<< HEAD
 				SELECT * FROM prep_trn_info
 				WHERE delete_user_id IS NULL
-=======
-				SELECT * FROM prep_trn_info 
-				WHERE delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 				AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 				ORDER BY update_datetime DESC,insert_datetime DESC
 			");
@@ -910,11 +813,7 @@ class Prepare extends MX_Controller {
 		}
 	}
 
-<<<<<<< HEAD
 	public function training_info($process_action='Add',$trn_id=0) {
-=======
-	public function training_info($process_action='Add',$trn_id=0) { 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		$data = array(); //Set Initial Variable to Views
 		/*-- Initial Data for Check User Permission --*/
 		$user_id = get_session('user_id');
@@ -942,11 +841,6 @@ class Prepare extends MX_Controller {
       //set_css_asset_head('../plugins/bootstrap-datepicker1.3.0/css/datepicker.css');
       //set_js_asset_head('../plugins/bootstrap-datepicker1.3.0/js/bootstrap-datepicker.js');
       /*-- End datepicker --*/
-<<<<<<< HEAD
-
-=======
-      
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       /*-- datepicker custom --*/
       set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
       set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
@@ -1054,15 +948,9 @@ class Prepare extends MX_Controller {
 
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = rowArray($this->common_model->custom_query("
-<<<<<<< HEAD
 					SELECT * FROM prep_trn_info
 					WHERE trn_id = {$trn_id}
 					AND delete_user_id IS NULL
-=======
-					SELECT * FROM prep_trn_info 
-					WHERE trn_id = {$trn_id}
-					AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 					ORDER BY update_datetime DESC,insert_datetime DESC
 				"));
@@ -1104,15 +992,9 @@ class Prepare extends MX_Controller {
 				if($frm->run($this)){//Valid Data
 
 					$row = rowArray($this->common_model->custom_query("
-<<<<<<< HEAD
 						SELECT * FROM prep_trn_info
 						WHERE trn_id = {$trn_id}
 						AND delete_user_id IS NULL
-=======
-						SELECT * FROM prep_trn_info 
-						WHERE trn_id = {$trn_id}
-						AND delete_user_id IS NULL 
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 						AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 						ORDER BY update_datetime DESC,insert_datetime DESC
 					"));
@@ -1130,11 +1012,6 @@ class Prepare extends MX_Controller {
 					if($fileUL != ''){
 
 						@unlink("./assets/modules/prepare/uploads/{$row['att_trn_file']}");
-<<<<<<< HEAD
-
-=======
-						
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 						$data_update['att_trn_file'] = $fileUL;
 						$data_update['att_trn_label'] = $_FILES['att_trn_file']['name'];
 						$data_update['att_trn_size'] = $_FILES['att_trn_file']['size'];
@@ -1149,11 +1026,6 @@ class Prepare extends MX_Controller {
 					redirect('prepare/training_info/Edit/'.$trn_id,'refresh');
 				}else {
 					$data['prep_trn_info'] = get_inpost_arr('prep_trn_info');
-<<<<<<< HEAD
-
-=======
-					
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					$this->session->set_flashdata('msg',setMsg('022')); //Set Message code 022
 					$this->template->load('index_page',$data,'prepare');
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
@@ -1263,11 +1135,6 @@ class Prepare extends MX_Controller {
       //set_css_asset_head('../plugins/bootstrap-datepicker1.3.0/css/datepicker.css');
       //set_js_asset_head('../plugins/bootstrap-datepicker1.3.0/js/bootstrap-datepicker.js');
       /*-- End datepicker --*/
-<<<<<<< HEAD
-
-=======
-      
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       /*-- datepicker custom --*/
       set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
       set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
@@ -1456,11 +1323,6 @@ class Prepare extends MX_Controller {
 
 					$this->common_model->update('pers_info',$pers_update,array('pers_id'=>$aa));
 
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					//$data_update['date_of_req'] = dateChange($_POST['prep_dkm_info']['date_of_req']);
 				//	$data_update['update_user_id'] = getUser();
 					//$data_update['update_datetime'] = getDatetime();
