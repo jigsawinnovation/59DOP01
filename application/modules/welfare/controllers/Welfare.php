@@ -262,7 +262,11 @@ class Welfare extends MX_Controller {
                               </div>';
 
                   $btn = $btn.'<!-- Print Modal -->
+<<<<<<< HEAD
                         <div class="modal fade" id="prt'.$welfare->adm_id.'" role="dialog">
+=======
+                        <div class="modal fade" id="prt'.$welfare->adm.'" role="dialog">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                           <div class="modal-dialog">
 
                              <!-- Modal content-->

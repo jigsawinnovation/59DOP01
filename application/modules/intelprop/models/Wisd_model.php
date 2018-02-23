@@ -12,8 +12,13 @@ class Wisd_model extends CI_Model {
 		");
 	}
 
+<<<<<<< HEAD
 	public function getOnce_admInfo($adm_id = ''){
                /*return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name 
+=======
+	public function getOnce_admInfo($adm_id = '')	{
+/*		return rowArray($this->common_model->custom_query("select A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 from wisd_info as A 
                                     left join pers_info as B       on A.pers_id=B.pers_id 
                                     left join std_prename as C     on B.pren_code=C.pren_code 
@@ -166,14 +171,22 @@ class Wisd_model extends CI_Model {
 	public function get_wisd_branch_by_knwlid($knwl_id = 0){
 		return $this->common_model->custom_query("
 			SELECT
+<<<<<<< HEAD
 				A.*,B.*
+=======
+				B.wis_name
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 			FROM
 					wisd_branch AS A
 			    LEFT JOIN std_wisdom AS B ON A.wisd_code = B.wis_code
 			WHERE A.knwl_id = {$knwl_id}
 			AND A.delete_user_id IS NULL 
+<<<<<<< HEAD
 			AND (A.delete_org_id IS NULL || A.delete_datetime IS NULL)
 			GROUP BY A.branch_id LIMIT 1
+=======
+			AND (A.delete_datetime IS NULL || A.delete_datetime IS NULL)
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		");
 
 	}
@@ -182,6 +195,7 @@ class Wisd_model extends CI_Model {
 		return $this->common_model->custom_query("SELECT * FROM wisd_photo WHERE branch_id={$branch_id}");
 	}
 
+<<<<<<< HEAD
 	public function get_photo_head($branch_id = 0){
 		return $this->common_model->custom_query("SELECT *,wisdom_photo_file LIKE '%Head%' AS result FROM wisd_photo WHERE branch_id={$branch_id} GROUP BY result DESC");
 	}
@@ -319,5 +333,7 @@ class Wisd_model extends CI_Model {
   	}
   }
 	
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 }
 ?>

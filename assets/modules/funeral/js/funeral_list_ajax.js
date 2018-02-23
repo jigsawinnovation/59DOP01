@@ -18,7 +18,11 @@ $(document).ready(function() {
         { "name": "B.date_of_birth",    "targets": 4 },
         { "name": "A.date_of_req",    "targets": 5 },
         { "name": "A.date_of_pay",    "targets": 6 },
+<<<<<<< HEAD
         //{ "name": "A.pay_amount",    "targets": 7,"visible": false },
+=======
+        { "name": "A.pay_amount",    "targets": 7 },
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         //{ "name": "start_age",    "targets": 8 },
         //{ "name": "end_age",    "targets": 9 },
         //{ "name": "A.insert_org_id", "targets": 10}

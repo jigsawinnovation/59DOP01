@@ -475,7 +475,10 @@
         public function getOnce_reqChanel($chn_code='') {
             return rowArray($this->common_model->get_where_custom('std_edu_level', 'chn_code', $chn_code));
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 				public function getReportTrouble() {
 							$std_trouble = $this->common_model->custom_query("select trb_code, trb_title from std_trouble");
 							foreach ($std_trouble as $row_trouble) {
@@ -488,11 +491,16 @@
 																														ON diff_info.diff_id = diff_trouble.diff_id
 																														WHERE diff_trouble.trb_code='".$trb_code."' "));
 												if($res_diff_trouble['num']>0){
+<<<<<<< HEAD
 													$arrData[] = array('label'=>$trb_title.' ('.$res_diff_trouble['num'].')', 'value'=>$res_diff_trouble['num']);
+=======
+													$arrData[] = array('label'=>$trb_title, 'value'=>$res_diff_trouble['num']);
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 												}
 							}
 							return $arrData;
 				}
+<<<<<<< HEAD
 
 				public function getReport1Trouble() {
 							$std_trouble = $this->common_model->custom_query("SELECT std_area.area_type, std_area.area_code, std_area.area_name_th
@@ -548,5 +556,7 @@
 							}
 							return $arrData;
 				}
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }
 ?>

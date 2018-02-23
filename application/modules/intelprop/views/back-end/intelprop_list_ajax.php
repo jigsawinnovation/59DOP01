@@ -16,9 +16,16 @@
     <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มรายการ
     </a>
 
+<<<<<<< HEAD
     <a id="showChart" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-overview" href="javascript:showChart();"><i style='font-size:14px;' class="fa fa-area-chart" aria-hidden="true"></i> ภาพรวม</a>
 
     <a class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-search" type="button" id="filter" href="javascript:showFilter();" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i style='font-size:14px;' class="fa fa-search" aria-hidden="true"></i> ค้นหา</a>
+=======
+    <a id="showChart" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-overview" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 17px 2px 17px;" href="javascript:showChart();"><i class="fa fa-area-chart" aria-hidden="true"></i> ภาพรวม</a>
+
+    <a title="ค้นหา" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-search" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px;" type="button"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-search" aria-hidden="true"></i> ค้นหา</a>
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     <?php
       $tmp = $this->admin_model->getOnce_Application(48);
@@ -40,6 +47,7 @@
       $("#menu_topright").html($("#tmp_menu").html());
     },300);
     function showChart(){
+<<<<<<< HEAD
       $('#collapseExample').removeClass("in");
       $("#chart_display").slideToggle();
       //$(".collapse").hide();
@@ -47,17 +55,23 @@
     }
     function showFilter(){
       $("#chart_display").hide();
+=======
+      $("#chart_display").slideToggle();
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }
   </script>
 
   <?php
     //summary
+<<<<<<< HEAD
     // $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_summary.php');
     //search
   //$this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_filter.php');
   ?>
   <?php
     //summary
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_summary.php');
     //search
     $this->load->file(APPPATH.'modules/'.uri_seg(1).'/views/back-end/intelprop_list_filter.php');
@@ -76,12 +90,17 @@
         <th style="width:10% !important;text-align: center;">เบอร์โทรศัพท์ <br>(ที่ติดต่อได้)</th>
         <th style="width:10% !important;text-align: center;">วันที่ขึ้นทะเบียน</th>
         <th style="text-align: center;">สาขาภูมิปัญญา (สาขา)</th>
+<<<<<<< HEAD
         <th style="width:1% !important;">&nbsp;</th>
         <th>เพศ</th>
         <th>อำเภอ</th>
         <th>จังหวัด</th>
         <th>สาขาภูมิปัญญา</th>
         <th>หน่วยงานที่สังกัด</th>
+=======
+
+        <th style="width:1% !important;">&nbsp;</th>
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       </tr>
     </thead>
     <tbody>

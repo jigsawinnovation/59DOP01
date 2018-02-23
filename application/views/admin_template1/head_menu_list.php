@@ -1,6 +1,7 @@
 <ul class="dropdown-menu head_menu">
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(1);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(1,get_session('user_id')); //Check User Permission
       //dieArray($tmp1);
@@ -10,6 +11,17 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(1);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(1,get_session('user_id')); //Check User Permission
+      //dieArray($tmp1);
+      ?>      
+      <li
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==1 || $usrpm['app_id']==1 ) {
     ?>
           class="active"
@@ -22,6 +34,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(11);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(11,get_session('user_id')); //Check User Permission
       ?>
@@ -33,6 +46,19 @@
     }else if($usrpm['app_parent_id']==11 || $usrpm['app_id']==11) {
     ?>
          active
+=======
+      $tmp = $this->admin_model->getOnce_Application(11);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(11,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled 
+    <?php 
+    }else if($usrpm['app_parent_id']==11 || $usrpm['app_id']==11) {
+    ?>
+         active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -43,6 +69,7 @@
         <ul class="dropdown-menu">
 
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(157);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(157,get_session('user_id')); //Check User Permission
           ?>
@@ -51,6 +78,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(157);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(157,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==157) {
         ?>
               class="active"
@@ -62,6 +99,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(158);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(158,get_session('user_id')); //Check User Permission
           ?>
@@ -74,6 +112,20 @@
         ?>
               class="active"
           <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(158);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(158,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+        }else if($usrpm['app_id']==158) {
+        ?>
+              class="active"
+          <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             }
           ?>
            >
@@ -85,6 +137,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(20);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(20,get_session('user_id')); //Check User Permission
       ?>
@@ -93,6 +146,16 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(20);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(20,get_session('user_id')); //Check User Permission
+      ?>      
+      <li 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==20) {
     ?>
           class="active"
@@ -105,6 +168,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(28);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(28,get_session('user_id')); //Check User Permission
       ?>
@@ -116,6 +180,19 @@
     }else if($usrpm['app_parent_id']==28) {
     ?>
         active
+=======
+      $tmp = $this->admin_model->getOnce_Application(28);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(28,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+        disabled 
+    <?php 
+    }else if($usrpm['app_parent_id']==28) {
+    ?>
+        active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -126,6 +203,7 @@
         <ul class="dropdown-menu">
 
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(159);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(159,get_session('user_id')); //Check User Permission
           ?>
@@ -134,6 +212,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(159);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(159,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==159) {
         ?>
               class="active"
@@ -145,6 +233,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(160);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(160,get_session('user_id')); //Check User Permission
           ?>
@@ -153,6 +242,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(160);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(160,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==160) {
         ?>
               class="active"
@@ -170,6 +269,7 @@
       <li style="border: 1px #eee solid;"></li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(44);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(44,get_session('user_id')); //Check User Permission
       ?>
@@ -181,6 +281,19 @@
     }else if($usrpm['app_parent_id']==44) {
     ?>
        active
+=======
+      $tmp = $this->admin_model->getOnce_Application(44);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(44,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled 
+    <?php 
+    }else if($usrpm['app_parent_id']==44) {
+    ?>
+       active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -191,6 +304,7 @@
         <ul class="dropdown-menu">
 
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(161);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(161,get_session('user_id')); //Check User Permission
           ?>
@@ -199,6 +313,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(161);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(161,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==161) {
         ?>
               class="active"
@@ -210,6 +334,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(162);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(162,get_session('user_id')); //Check User Permission
           ?>
@@ -218,6 +343,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(162);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(162,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==162) {
         ?>
               class="active"
@@ -233,6 +368,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(50);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(50,get_session('user_id')); //Check User Permission
       ?>
@@ -241,6 +377,16 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(50);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(50,get_session('user_id')); //Check User Permission
+      ?>      
+      <li 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==50 || $usrpm['app_id']==50) {
     ?>
           class="active"
@@ -254,6 +400,7 @@
  <li style="border: 1px #eee solid;"></li>
 
    <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(53);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(53,get_session('user_id')); //Check User Permission
       ?>
@@ -262,6 +409,16 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(53);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(53,get_session('user_id')); //Check User Permission
+      ?>      
+  <!--       <li 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==53 || $usrpm['app_id']==53) {
     ?>
           class="active"
@@ -274,6 +431,7 @@
       </li> -->
 
    <!-- เตียมความพร้อม สูงอายุ -->
+<<<<<<< HEAD
       <li class="dropdown-submenu
       <?php
       if(!isset($tmp1['perm_status'])) { ?>
@@ -282,6 +440,16 @@
     }else if($usrpm['app_parent_id']==53 || $usrpm['app_id']==53) {
     ?>
        active
+=======
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled  
+    <?php 
+    }else if($usrpm['app_parent_id']==53 || $usrpm['app_id']==53) {
+    ?>
+       active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -291,6 +459,7 @@
         </a>
         <ul class="dropdown-menu">
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(54);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(54,get_session('user_id')); //Check User Permission
           ?>
@@ -299,6 +468,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(54);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(54,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==54) {
         ?>
               class="active"
@@ -310,6 +489,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(55);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(55,get_session('user_id')); //Check User Permission
           ?>
@@ -318,6 +498,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(55);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(55,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==55) {
         ?>
               class="active"
@@ -330,6 +520,7 @@
           </li>
 
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(56);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(56,get_session('user_id')); //Check User Permission
           ?>
@@ -338,6 +529,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(56);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(56,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==56) {
         ?>
               class="active"
@@ -355,6 +556,7 @@
       <!--จบ เตียมความพร้อม สูงอายุ -->
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(57);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(57,get_session('user_id')); //Check User Permission
       ?>
@@ -366,6 +568,19 @@
     }else if($usrpm['app_parent_id']==57 || $usrpm['app_id']==57) {
     ?>
        active
+=======
+      $tmp = $this->admin_model->getOnce_Application(57);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(57,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled 
+    <?php 
+    }else if($usrpm['app_parent_id']==57 || $usrpm['app_id']==57) {
+    ?>
+       active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -374,6 +589,7 @@
           <span class="fa fa-caret-right"></span>
         </a>
         <ul class="dropdown-menu">
+<<<<<<< HEAD
           <?php
           $tmp = $this->admin_model->getOnce_Application(164);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(164,get_session('user_id')); //Check User Permission
@@ -383,6 +599,37 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+
+          <?php
+          $tmp = $this->admin_model->getOnce_Application(163);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(163,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+        }else if($usrpm['app_id']==163) {
+        ?>
+              class="active"
+          <?php
+            }
+          ?>
+           >
+            <a tabindex="-1" href="<?php if(isset($tmp1['perm_status'])) {echo site_url('school/center_list');}else{echo '#';}?>" ><i class="fa <?php if(!isset($tmp1['perm_status'])) { ?>fa-lock<?php }?>" aria-hidden="true"></i> <?php if(isset($tmp['app_id'])) {echo '&nbsp;'.$tmp['app_name']; }?>
+            </a>
+          </li>
+          <?php
+          $tmp = $this->admin_model->getOnce_Application(164);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(164,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==164) {
         ?>
               class="active"
@@ -398,6 +645,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(63);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(63,get_session('user_id')); //Check User Permission
       ?>
@@ -409,6 +657,19 @@
     }else if($usrpm['app_parent_id']==63 || $usrpm['app_id']==63) {
     ?>
        active
+=======
+      $tmp = $this->admin_model->getOnce_Application(63);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(63,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled  
+    <?php 
+    }else if($usrpm['app_parent_id']==63 || $usrpm['app_id']==63) {
+    ?>
+       active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -418,6 +679,7 @@
         </a>
         <ul class="dropdown-menu">
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(151);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(151,get_session('user_id')); //Check User Permission
           ?>
@@ -426,6 +688,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(151);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(151,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==151) {
         ?>
               class="active"
@@ -437,6 +709,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(152);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(152,get_session('user_id')); //Check User Permission
           ?>
@@ -445,6 +718,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(152);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(152,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==152) {
         ?>
               class="active"
@@ -460,6 +743,7 @@
       <li style="border: 1px #eee solid;"></li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(70);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(70,get_session('user_id')); //Check User Permission
       ?>
@@ -468,6 +752,16 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(70);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(70,get_session('user_id')); //Check User Permission
+      ?>      
+      <li 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==70 || $usrpm['app_id']==70) {
     ?>
           class="active"
@@ -480,6 +774,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(64);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(64,get_session('user_id')); //Check User Permission
       ?>
@@ -488,6 +783,16 @@
       if(!isset($tmp1['perm_status'])) { ?>
       class="disabled"
     <?php
+=======
+      $tmp = $this->admin_model->getOnce_Application(64);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(64,get_session('user_id')); //Check User Permission
+      ?>      
+      <li 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+      class="disabled" 
+    <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     }else if($usrpm['app_parent_id']==64 || $usrpm['app_id']==64) {
     ?>
           class="active"
@@ -500,6 +805,7 @@
       </li>
 
       <?php
+<<<<<<< HEAD
       $tmp = $this->admin_model->getOnce_Application(74);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(74,get_session('user_id')); //Check User Permission
       ?>
@@ -511,6 +817,19 @@
     }else if($usrpm['app_parent_id']==74 || $usrpm['app_id']==74) {
     ?>
        active
+=======
+      $tmp = $this->admin_model->getOnce_Application(74);   
+      $tmp1 = $this->admin_model->chkOnce_usrmPermiss(74,get_session('user_id')); //Check User Permission
+      ?>      
+      <li class="dropdown-submenu 
+      <?php
+      if(!isset($tmp1['perm_status'])) { ?>
+       disabled 
+    <?php 
+    }else if($usrpm['app_parent_id']==74 || $usrpm['app_id']==74) {
+    ?>
+       active 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       <?php
         }
       ?>
@@ -520,6 +839,7 @@
         </a>
         <ul class="dropdown-menu">
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(165);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(165,get_session('user_id')); //Check User Permission
           ?>
@@ -528,6 +848,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(165);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(165,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==165) {
         ?>
               class="active"
@@ -539,6 +869,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(166);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(166,get_session('user_id')); //Check User Permission
           ?>
@@ -547,6 +878,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(166);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(166,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==166) {
         ?>
               class="active"
@@ -558,6 +899,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(167);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(167,get_session('user_id')); //Check User Permission
           ?>
@@ -566,6 +908,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(167);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(167,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==167) {
         ?>
               class="active"
@@ -577,6 +929,7 @@
             </a>
           </li>
           <?php
+<<<<<<< HEAD
           $tmp = $this->admin_model->getOnce_Application(168);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(168,get_session('user_id')); //Check User Permission
           ?>
@@ -585,6 +938,16 @@
           if(!isset($tmp1['perm_status'])) { ?>
           class="disabled"
         <?php
+=======
+          $tmp = $this->admin_model->getOnce_Application(168);   
+          $tmp1 = $this->admin_model->chkOnce_usrmPermiss(168,get_session('user_id')); //Check User Permission
+          ?>      
+          <li 
+          <?php
+          if(!isset($tmp1['perm_status'])) { ?>
+          class="disabled" 
+        <?php 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         }else if($usrpm['app_id']==168) {
         ?>
               class="active"
@@ -598,9 +961,15 @@
         </ul>
       </li>
       <li style="border: 1px #eee solid;"></li>
+<<<<<<< HEAD
 
       <li>
         <a tabindex="-1" href="<?php echo site_url('control/main_module');?>" ><i class="fa" aria-hidden="true"></i>
+=======
+    
+      <li>
+        <a tabindex="-1" href="<?php echo site_url('control/main_module');?>" ><i class="fa" aria-hidden="true"></i> 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
           &nbsp;เมนูหลัก
         </a>
       </li>
@@ -611,7 +980,11 @@
     var tmp = $(this).next('ul').css('display');
     //console.log(tmp);
     $(this).next('ul').toggle();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     $('.dropdown-submenu ul').css('display','none');
 
     if(tmp=='table'){
@@ -624,3 +997,10 @@
     e.preventDefault();
   });
   </script>
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04

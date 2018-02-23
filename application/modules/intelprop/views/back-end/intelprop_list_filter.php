@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+ <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.css")?>" type="text/css"  />
+ <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.css")?>" type="text/css"  />
+ <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css")?>" type="text/css"  />
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
 
 <!-- search-->
@@ -48,9 +54,15 @@
                    <?php 
                         $gender = $this->common_model->custom_query('SELECT * FROM std_gender');
                         foreach ($gender as $key_gen => $value_gen) {
+<<<<<<< HEAD
                         $name_gen = explode(" ",$value_gen['gender_name']);                                           
                    ?>
                         <option value="<?php echo $value_gen['gender_code']; ?>"><?php echo $name_gen[0]; ?></option>
+=======
+                        //$name_gen = explode(" ",$value_gen['gender_name']);                                           
+                   ?>
+                        <option value="<?php echo $value_gen['gender_code']; ?>" ><?php echo $value_gen['gender_name']; ?></option>
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                   <?php } ?>
                 </select>
           </div>
@@ -58,14 +70,22 @@
                  <h3><label>อายุ:</label></h3>
           </div>
           <div class="col-xs-12 col-sm-1">
+<<<<<<< HEAD
             <input type="text" id="age_str" name="" class="form-control">
+=======
+            <input type="text" name="" class="form-control">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
              <!-- <input type="text" id="range" value="" name="range" /> -->
           </div>
            <div class="col-xs-12 col-sm-1" style="width: 6%;">
                  <h3><label>ถึง</label></h3>
           </div>
            <div class="col-xs-12 col-sm-1">
+<<<<<<< HEAD
               <input type="text" id="age_end" name="" class="form-control">
+=======
+              <input type="text" name="" class="form-control">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
              <!-- <input type="text" id="range" value="" name="range" /> -->
           </div>
           <div class="col-xs-12 col-sm-1" >
@@ -97,12 +117,19 @@
             </div>
 
             <input type="hidden" data-column="3" class="column_filter" id="col3_filter"> 
+<<<<<<< HEAD
             <input type="hidden" data-column="6" class="column_filter" id="col6_filter">
             <input type="hidden" data-column="9" class="column_filter" id="col9_filter">
             <input type="hidden" data-column="10" class="column_filter" id="col10_filter">
             <input type="hidden" data-column="11" class="column_filter" id="col11_filter">
             <input type="hidden" data-column="12" class="column_filter" id="col12_filter">
             <input type="hidden" data-column="13" class="column_filter" id="col13_filter">
+=======
+            <input type="hidden" data-column="4" class="column_filter" id="col4_filter">
+            <input type="hidden" data-column="5" class="column_filter" id="col5_filter">
+            <input type="hidden" data-column="6" class="column_filter" id="col6_filter">
+            <input type="hidden" data-column="7" class="column_filter" id="col7_filter">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
             <script type="text/javascript">
 
@@ -123,7 +150,11 @@
         <div class="form-group row">
           <div class="col-xs-12 col-sm-3"><h3><label>ที่อยู่:</label></h3></div>
           <div class="col-xs-12 col-sm-3 dropdown">
+<<<<<<< HEAD
                 <select title="จังหวัด" placeholder="เลือกจังหวัด" class="elder_addr_pre" style="width: 100%" id="Province" name="pers_addr[addr_province]" onchange="optionGen(this,'Amphur');">
+=======
+                <select title="จังหวัด" placeholder="เลือกจังหวัด" class="elder_addr_pre" style="width: 100%" id="Province" name="pers_addr[addr_province]" onchange="optionGen(this,'Amphur',<?php echo @$addr_info['district_code']; ?>);">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                     <option value="">เลือกจังหวัด</option> 
                     <?php $temp = $this->personal_model->getAll_Province();
                     foreach ($temp as $key => $row) { ?>
@@ -132,7 +163,11 @@
                 </select>
           </div>
           <div class="col-xs-12 col-sm-3">
+<<<<<<< HEAD
                <select title="อำเภอ" placeholder="เลือกอำเภอ" class="elder_addr_pre" style="width: 100%" id="Amphur" name="pers_addr[addr_district]" onchange="optionGen(this,'Tambon');" disabled>
+=======
+               <select title="อำเภอ" placeholder="เลือกอำเภอ" class="elder_addr_pre" style="width: 100%" id="Amphur" name="pers_addr[addr_district]" onchange="optionGen(this,'Tambon',<?php echo @$addr_info['sub_district_code']; ?>);" disabled>
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 <option value="">เลือกอำเภอ</option>
               </select>
           </div>
@@ -148,7 +183,11 @@
                $std_wisd = $this->common_model->custom_query("SELECT * FROM std_wisdom "); 
                foreach ($std_wisd as $key => $value) {                   
           ?>
+<<<<<<< HEAD
           <div class="col-xs-12 col-sm-3"><input type="checkbox" class="wisdom" value="<?php echo $value['wis_code']; ?>">&nbsp;&nbsp;<font style="font-size: 15px;"><?php echo $value['wis_name']; ?></font></div>
+=======
+          <div class="col-xs-12 col-sm-3"><input type="checkbox" value="<?php echo $value['wis_code']; ?>">&nbsp;&nbsp;<font style="font-size: 15px;"><?php echo $value['wis_name']; ?></font></div>
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
           <?php } ?>
         </div>
 
@@ -158,7 +197,11 @@
           </div>
           <div class="col-xs-12 col-sm-6">
             <?php $usrm = $this->common_model->custom_query("SELECT * FROM usrm_org"); ?>
+<<<<<<< HEAD
             <select class="form-control" id="usrm_org">
+=======
+            <select class="form-control">
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
               <?php foreach($usrm as $key=>$value) {?>
                <option><?php echo $value['org_title']; ?></option>
                <?php } ?>
@@ -186,7 +229,26 @@
 
     $('select.elder_addr_pre').select2();
 
+<<<<<<< HEAD
    
+=======
+    $("#range").ionRangeSlider({
+          type: "double",
+          min: 1,
+          max: 100,
+          from: 60,
+          to: 80,
+          prefix: "",
+          postfix: " ปี",
+          decorate_both: false,
+          values_separator: " to ",
+          grid: true,
+
+          onChange:function(data){
+            $('#col4_filter').val($('#range').val());
+          }
+        });
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     
     //เช็คกรณีไม่ระบุเลขบัตรประจำตัวประชาชน
     $('#disablepid').on('change',function(){
@@ -219,8 +281,11 @@
        $('input[name=start]').val('');
        $('input[name=end]').val('');
 
+<<<<<<< HEAD
        location.reload();
 
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     });
     
@@ -228,6 +293,7 @@
     $('#gender').change(function(){
          // gender = $(this).val();       
          // console.log(gender);
+<<<<<<< HEAD
           $('#col9_filter').val($(this).val());
     });
     
@@ -239,10 +305,17 @@
     });
     
     //เลือกถึงวันที่ สถานะดำเนินการ
+=======
+          $(this).prev().val($(this).val());
+    });
+    
+    //เลือกถึงวันที่
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     $('#datepicker').change(function(){
         var statusoper  = $('#statusoper').val();
         var composedate = $('input[name=start]').val()+'_'+$('input[name=end]').val();
          if(statusoper == 'date_of_reg'){
+<<<<<<< HEAD
            $('#col6_filter').val(composedate);
          }
     });
@@ -272,6 +345,17 @@
      $('#usrm_org').change(function(){
         $('#col13_filter').val($(this).val());
     });
+=======
+           $('#col5_filter').val(composedate);
+         }else if(statusoper == 'date_of_visit'){
+           $('#col6_filter').val(composedate);
+         }else if(statusoper == 'date_of_pay'){
+           $('#col7_filter').val(composedate);
+         } 
+    });
+
+    
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
     });
 

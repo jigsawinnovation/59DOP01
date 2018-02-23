@@ -17,6 +17,7 @@ $(document).ready(function() {
       // }],
       "columnDefs": [
         // { "name": "",   "targets": 0 },
+<<<<<<< HEAD
         { "name": "A.proj_title",  "targets": 1 },
         { "name": "CONCAT(A.resp_firstname_th,' ', A.resp_lastname_th)", "targets": 2 },
         // { "name": "B.date_of_birth",    "targets": 3 },
@@ -26,6 +27,16 @@ $(document).ready(function() {
         { "name": "A.addr_province",  "targets": 11 ,"visible": false},
         // { "name": "wisd_code",  "targets": 12 ,"visible": false},
         // { "name": "A.insert_org_id",    "targets": 13 ,"visible": false}
+=======
+         // { "name": "B.pid",  "targets": 1 },
+         // { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },
+         // { "name": "B.date_of_birth",  "targets": 3 },
+         // { "name": "A.date_of_reg",    "targets": 6 },
+        // { "name": "A.date_of_visit",    "targets": 5 },
+        // { "name": "A.date_of_pay",    "targets": 6 },
+        // { "name": "B.gender_code",    "targets": 7 },
+        // { "name": "H.addr_province",    "targets": 8 },
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
       ],
       "order": [[ 0, "desc" ]],
 
@@ -158,7 +169,11 @@ $('#dltModel').on('show', function() {var id = $(this).data('id'),removeBtn = $(
 //$('.confirm-delete').on('click', function(e) {e.preventDefault();var id = $(this).data('id');$('#myModal').data('id', id).modal('show');});
 
 $('#btnYes').click(function() {
+<<<<<<< HEAD
     window.location.replace(base_url+'intelprop/olderp_info2'+'/Delete/'+$('#dltModel').data('id'));
+=======
+    window.location.replace(base_url+'intelprop/olderp_info'+'/Delete/'+$('#dltModel').data('id'));
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 });
 
 var opn = function(node) {

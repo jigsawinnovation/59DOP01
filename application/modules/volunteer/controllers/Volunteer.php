@@ -79,6 +79,7 @@ class Volunteer extends MX_Controller {
                 $row[] = "<center>".$age."</center>";
 
                 $date_of_req = '';
+<<<<<<< HEAD
                 if($manage_transfer->date_of_reg!='' && $manage_transfer->date_of_reg!='0000-00-00') {
                     $date_of_req = dateChange($manage_transfer->date_of_reg,5);
                 }else {
@@ -86,6 +87,16 @@ class Volunteer extends MX_Controller {
                 }
 								$row[] = "<center>".$date_of_req."</center>";
                 $row[] = "<center></center>";
+=======
+                if($manage_transfer->date_of_req!='' && $manage_transfer->date_of_req!='0000-00-00') {
+                    $date_of_req = dateChange($manage_transfer->date_of_req,5);
+                }else {
+                	$date_of_req = '-';
+                }
+                $row[] = "<center></center>";
+
+                $row[] = "<center>".$date_of_req."</center>";
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 $row[] = "";
 				//$row[] = "<center>".$manage_transfer->gender_code."</center>";
 

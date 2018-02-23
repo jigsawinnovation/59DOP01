@@ -2107,7 +2107,11 @@ class Report_mock extends CI_Model
 
         $result->status = $person->marital_status;
         $result->status_other = "";
+<<<<<<< HEAD
         $items = $this->report_model->getEducation($person->edu_code,$wisdInfo->pers_id);
+=======
+        $items = $this->report_model->getEducation($person->edu_code);
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
         $result->edu = array();
         foreach ($items as $item) {
@@ -2119,7 +2123,10 @@ class Report_mock extends CI_Model
         $result->job_desc = "";
         $result->job_old = "";
         $result->job_old_desc = "";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         $items = $this->report_model->getWisdBranch($wisdInfo->knwl_id);
         $result->experts = array();
         foreach ($items as $item) {
@@ -2270,7 +2277,11 @@ class Report_mock extends CI_Model
         $result->name = @$person->sch_cnt_name;
 
         $result->date=digiTh(dateTH($date,' ','long'));
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
         $result->sing = "อดุลย์   แสงสิงแก้ว";
         $result->singpre = "พลตำรวจเอก";
         $result->pos = "รัฐมนตรีว่าการกระทรวงการพัฒนาสังคมและความมั่นคงของมนุษย์";
@@ -2539,4 +2550,8 @@ class Report_mock extends CI_Model
             return $letter;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04

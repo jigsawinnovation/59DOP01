@@ -369,11 +369,18 @@ if($id){
             return $result->result();
         return null;
     }
+<<<<<<< HEAD
     function getEducation($edu_code='', $pers_id=''){
         $result =$this->db->select('std_edu_level.edu_code as code,edu_title as title,pers_info.pers_id as id')
             ->from('std_edu_level')
             ->join('pers_info',"pers_info.edu_code=std_edu_level.edu_code and pers_info.edu_code='{$edu_code}'",'left')
             ->where('pers_info.pers_id',$pers_id)
+=======
+    function getEducation($id){
+        $result =$this->db->select('std_edu_level.edu_code as code,edu_title as title,pers_info.pers_id as id')
+            ->from('std_edu_level')
+            ->join('pers_info',"pers_info.edu_code=std_edu_level.edu_code and pers_info.edu_code='{$id}'",'left')
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
             ->order_by('std_edu_level.edu_code')
             ->get();
         if($result)
@@ -698,4 +705,8 @@ if($id){
             'group'=>$group,
         );
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04

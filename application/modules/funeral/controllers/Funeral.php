@@ -86,7 +86,11 @@ class Funeral extends MX_Controller {
 			        $date_of_pay = '<font class="text-sucsess" color="#18bd15">'.dateChange($funeral->date_of_pay,5).'</font>';
 			    }
 			    $row[] = "<center>".$date_of_pay."</center>";
+<<<<<<< HEAD
 			    //$row[] ="<div style='width:100%;text-align:right;'>".number_format($funeral->pay_amount,2)."</div>";
+=======
+			    $row[] ="<div style='width:100%;text-align:right;'>".number_format($funeral->pay_amount,2)."</div>";
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 
 
 			    $tmp = $this->admin_model->getOnce_Application(3);
@@ -200,7 +204,11 @@ class Funeral extends MX_Controller {
 
 
                 $row[] = "<center>".$btn."</center>";
+<<<<<<< HEAD
 								//$row[] = "";
+=======
+								$row[] = "";
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
                 $data[] = $row;
             }
 

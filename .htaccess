@@ -1,9 +1,15 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+<<<<<<< HEAD
 
     RewriteCond %{SERVER_PORT} 80
     #RewriteRule ^(.*)$ phase2.dop.go.th/$1 [R,L]
+=======
+	
+    RewriteCond %{SERVER_PORT} 80
+    #RewriteRule ^(.*)$ http://www.dop.go.th/$1 [R,L]
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
     RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R,L]
 
 #	AddHandler application/x-httpd-php539 .php .php5 .php4 .php3
@@ -42,4 +48,8 @@ RewriteRule ^(.*)$ index.php/$1 [L]
     # Submitted by: ElliotHaughin
 
     ErrorDocument 404 /index.php
+<<<<<<< HEAD
 </IfModule>
+=======
+</IfModule> 
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04

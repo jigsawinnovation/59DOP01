@@ -5,7 +5,11 @@ class Intelprop_list_model extends CI_Model {
 
 	var $table = 'wisd_info';
 	var $column_order = array('B.pid','C.prename_th','name','B.date_of_birth','A.date_of_reg'); //set column field database for datatable orderable
+<<<<<<< HEAD
 	// var $column_search = array('B.pid','C.prename_th',"CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th)",'B.date_of_birth','A.date_of_reg'); //set column field database for datatable searchable
+=======
+	var $column_search = array('B.pid','C.prename_th',"CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th)",'B.date_of_birth','A.date_of_reg'); //set column field database for datatable searchable
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 	var $order = array('A.insert_datetime' => 'DESC','A.update_datetime','DESC'); // default order
 
 	public function __construct()
@@ -37,7 +41,11 @@ class Intelprop_list_model extends CI_Model {
 		// $this->db->join('std_edu_level as G', 'B.edu_code=G.edu_code', 'left');
 		
 
+<<<<<<< HEAD
         $user_id = get_session('user_id');
+=======
+       $user_id = get_session('user_id');
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 		$app_id = 44;
 		$usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
 		
@@ -91,6 +99,7 @@ class Intelprop_list_model extends CI_Model {
 		// 	6 => 'A.date_of_pay',
 		// );
 		// $chk = 0;
+<<<<<<< HEAD
          // dieArray($_POST['columns']);
 				foreach ($_POST['columns'] as $colId => $col) {
 			if($col['search']['value']!='') // if datatable send POST for search
@@ -122,6 +131,20 @@ class Intelprop_list_model extends CI_Model {
 					}else{	
 						$this->db->like($col['name'], $col['search']['value']);
 
+=======
+		foreach ($_POST['columns'] as $colId => $col) {
+			if($col['search']['value']) // if datatable send POST for search
+			{
+				$arr = @explode('/', $col['search']['value']);
+				// if(count($arr)==3) {
+				// dieArray($arr);
+					if(count($arr) > 2){
+						$this->db->like($col['name'], dateChange($col['search']['value'],0));
+						// $this->db->like($col['name'], $col['search']['value']);
+						// dieFont(dateChange($col['search']['value'],1));
+					}else{
+						$this->db->like($col['name'], $col['search']['value']);
+>>>>>>> 71d9a9911d6abf2844df74fb093d55aee2315f04
 					}
 				// }
 			}
