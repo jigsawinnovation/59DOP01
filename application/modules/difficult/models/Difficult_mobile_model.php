@@ -476,6 +476,7 @@
             return rowArray($this->common_model->get_where_custom('std_edu_level', 'chn_code', $chn_code));
         }
 				public function getReportTrouble() {
+							
 							$std_trouble = $this->common_model->custom_query("select trb_code, trb_title from std_trouble");
 							foreach ($std_trouble as $row_trouble) {
 												$trb_code = $row_trouble['trb_code'];

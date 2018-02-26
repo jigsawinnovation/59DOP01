@@ -178,7 +178,19 @@
 
                                     <div class="panel-group" style="margin-bottom: 0px;">
                                           <div class="panel panel-default" style="border: 0;">
-                                              <!-- <div class="panel-heading"><h4>ข้อมูลผู้สูงอายุ (ผู้ขอรับการสงเคราะห์) (<label><input type="checkbox" name=""> บุคคลเดียวกับผู้ยื่นคำขอ</label>) <button class="btn btn-default" style="float: right;">ข้อมูลบูรณาการ</button></h4></div> -->
+                                              <div class="panel-heading">
+                                                <h4><font >ข้อมูลผู้สูงอายุ</font></h4>
+                                              </div>
+                                              <div class="panel-body" style="border: 0;padding: 20px; padding-bottom: 5px;">
+                                                <div class="form-group row">
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เลขประจำตัวประชาชน: </span><?php echo $diff_info['pid'];?></div>
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">ชื่อตัว/ชื่อสกุล: </span><?php echo $diff_info['name'];?></div>
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เพศ: </span> <span id="gender_name"> <?php echo $diff_info['gender_name'];?></span> </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel-heading">
+                                                <h4><font >ข้อมูลตรวจเยี่ยม</font></h4>
+                                              </div>
                                               <div class="panel-body" style="border: 0;padding: 20px; padding-bottom: 5px;">
                                                   <div class="form-group row" >
                                                     <div class="col-xs-12 col-sm-3">

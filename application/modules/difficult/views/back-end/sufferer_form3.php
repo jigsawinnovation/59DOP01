@@ -167,7 +167,19 @@
 
                                     <div class="panel-group" style="margin-bottom: 0px;">
                                           <div class="panel panel-default" style="border: 0;">
-                                              <!-- <div class="panel-heading"><h4>ข้อมูลผู้สูงอายุ (ผู้ขอรับการสงเคราะห์) (<label><input type="checkbox" name=""> บุคคลเดียวกับผู้ยื่นคำขอ</label>) <button class="btn btn-default" style="float: right;">ข้อมูลบูรณาการ</button></h4></div> -->
+                                              <div class="panel-heading">
+                                                <h4><font >ข้อมูลผู้สูงอายุ</font></h4>
+                                              </div>
+                                              <div class="panel-body" style="border: 0;padding: 20px; padding-bottom: 5px;">
+                                                <div class="form-group row">
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เลขประจำตัวประชาชน: </span><?php echo $diff_info['pid'];?></div>
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">ชื่อตัว/ชื่อสกุล: </span><?php echo $diff_info['name'];?></div>
+                                                  <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เพศ: </span> <span id="gender_name"> <?php echo $diff_info['gender_name'];?></span> </div>
+                                                </div>
+                                              </div>
+                                              <div class="panel-heading">
+                                                <h4><font >ข้อมูลสงเคราะห์</font></h4>
+                                              </div>
                                               <div class="panel-body" style="border: 0;padding: 20px; padding-bottom: 0px;">
                                                   <div class="form-group row">
                                                    <div class="col-xs-12 col-sm-12">
@@ -188,9 +200,9 @@
 
                     <div class="ibox float-e-margins" style="margin-bottom: 0px !important;">
                     <div class="ibox-title">
-                        <h5>ประวัติการได้รับการสงเคราะห์ 
-                          
-                          <?php 
+                        <h5>ประวัติการได้รับการสงเคราะห์
+
+                          <?php
                           if(count($rows)>0) {
                           ?>
                           <span style='color:#D25200'>มีประวัติ</span>
@@ -202,8 +214,8 @@
                           }
                           ?>
 
-                          ภายในรอบปีนี้ 
-                          <?php 
+                          ภายในรอบปีนี้
+                          <?php
                             $rows1 = $this->common_model->custom_query("select * from diff_info as A inner join pers_info as B on A.pers_id=B.pers_id where B.pid in (select B.pid from diff_info as A inner join pers_info as B on A.pers_id=B.pers_id where A.diff_id = {$diff_info['diff_id']}) AND YEAR(A.date_of_pay)=YEAR(CURRENT_TIMESTAMP) order by A.date_of_pay desc");
                           if(count($rows1)>0) {
                           ?>
@@ -216,7 +228,7 @@
                           }
                           ?>
                           (ครั้ง)
-                          
+
                           </h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
@@ -229,7 +241,7 @@
                     </div>
                         <div class="ibox-content" style="padding: 0px !important;">
                             <div class="table-responsive">
-                                
+
                                 <table class="table table-bordered" style="">
                                     <thead>
                                     <tr>
@@ -256,7 +268,7 @@
                                     ?>
                                     </tbody>
                                 </table>
-                                
+
                             </div>
                         </div>
                     </div>

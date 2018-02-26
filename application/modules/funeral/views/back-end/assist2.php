@@ -142,7 +142,20 @@
                                     <input type="submit" value="submit" name="bt_submit" hidden="hidden">
 
                                     <?php echo validation_errors('<div class="error" style="font-size: 18px; padding-left: 20px">', '</div>'); ?>
-
+                                    <div class="panel-group" style="margin-bottom: 0px;">
+                                          <div class="panel panel-default" style="border: 0;">
+                                            <div class="panel-heading">
+                                              <h4><font >ข้อมูลผู้สูงอายุ</font></h4>
+                                            </div>
+                                            <div class="panel-body" style="border: 0;padding: 20px; padding-bottom: 5px;">
+                                              <div class="form-group row">
+                                                <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เลขประจำตัวประชาชน: </span><?php echo $fnrl_info['pid'];?></div>
+                                                <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">ชื่อตัว/ชื่อสกุล: </span><?php echo $fnrl_info['name'];?></div>
+                                                <div class="col-xs-12 col-sm-3" style="padding: 7px 15px;"><span style="font-weight: bold;">เพศ: </span> <span id="gender_name"> <?php echo $fnrl_info['gender_name'];?></span> </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </div>
                                     <div class="panel-group" style="margin-bottom: 0px;">
                                           <div class="panel panel-default" style="border: 0;">
                                               <div class="panel-heading"><h4>ข้อมูลการสงเคราะห์ </div>

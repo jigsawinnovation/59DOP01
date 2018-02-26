@@ -1194,9 +1194,11 @@ class Difficult extends MX_Controller {
 			if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = $this->difficult_model->getOnce_diffInfo($diff_id);
 				// dieArray($row);
+
 				if(isset($row['diff_id'])) {
 
 					$data['diff_info'] 				= $row;
+					$data['diff_info']['pin'] = $row['diff_id'];
 					$data['diff_trouble'] 		= $this->difficult_model->get_diffTrouble($diff_id);
 					$data['diff_help'] 				= $this->difficult_model->get_diffHelp($diff_id);
 					$data['diff_help_guide'] 	= $this->difficult_model->get_diffHelpGuide($diff_id);

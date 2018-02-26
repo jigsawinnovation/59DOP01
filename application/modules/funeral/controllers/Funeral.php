@@ -907,11 +907,16 @@ class Funeral extends MX_Controller {
 			// dieArray($usrpm);
 			if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = rowArray($this->common_model->custom_query("
-					SELECT * FROM fnrl_info
-					WHERE delete_user_id IS NULL
-					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
-					AND fnrl_id = {$fnrl_id}
-	        ORDER BY update_datetime DESC,insert_datetime DESC
+					select A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+					from fnrl_info as A
+					left join pers_info as B       on A.pers_id=B.pers_id
+					left join std_prename as C     on B.pren_code=C.pren_code
+					left join std_gender as D      on B.gender_code=D.gender_code
+					left join std_nationality as E on B.nation_code=E.nation_code
+					left join std_edu_level as G    on B.edu_code=G.edu_code
+					where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
+					(B.delete_user_id IS NULL && B.delete_datetime IS NULL)
+					and fnrl_id='{$fnrl_id}'
 				"));
 				// dieArray($row);
 				if(isset($row['fnrl_id'])) {

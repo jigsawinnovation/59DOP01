@@ -1620,11 +1620,24 @@ class Adaptenvir extends MX_Controller {
 			if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = rowArray($this->common_model->custom_query("
 					SELECT * FROM impv_home_info
-					WHERE imp_home_id = {$imp_home_id}
+					WHERE imp_home_id = '{$imp_home_id}'
 					AND delete_user_id IS NULL
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 				"));
-				// dieArray($row);
+				$row_personal = rowArray($this->common_model->custom_query("
+					select A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+			    from impv_home_info as A
+			    left join pers_info as B on A.pers_id=B.pers_id
+			    left join std_prename as C on B.pren_code=C.pren_code
+			    left join std_gender as D  on B.gender_code=D.gender_code
+			    left join std_nationality as E on B.nation_code=E.nation_code
+			    left join std_edu_level as G    on B.edu_code=G.edu_code
+			    where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
+			    (B.delete_user_id IS NULL && B.delete_datetime IS NULL)
+			    and imp_home_id='{$imp_home_id}'
+				"));
+				// dieArray($row
+				$data['impv_personal_info'] = $row_personal;
 				if(isset($row['imp_home_id'])) {
 					$data['impv_home_info'] = $row;
 					// dieArray($row);
@@ -1814,6 +1827,20 @@ class Adaptenvir extends MX_Controller {
 			if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = $this->adaptenvir_model->getOnce_impvPlace($impv_place_id);
 				// dieArray($row);
+				$row_personal = rowArray($this->common_model->custom_query("
+					select A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+					from impv_place_info as A
+					left join pers_info as B on A.pers_id=B.pers_id
+					left join std_prename as C on B.pren_code=C.pren_code
+					left join std_gender as D  on B.gender_code=D.gender_code
+					left join std_nationality as E on B.nation_code=E.nation_code
+					left join std_edu_level as G    on B.edu_code=G.edu_code
+					where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
+					(B.delete_user_id IS NULL && B.delete_datetime IS NULL)
+					and impv_place_id='{$impv_place_id}'
+				"));
+				// dieArray($row
+				$data['impv_personal_info'] = $row_personal;
 				if(isset($row['impv_place_id'])) {
 					$data['impv_place_info'] = $row;
 
@@ -2001,6 +2028,20 @@ class Adaptenvir extends MX_Controller {
 					AND delete_user_id IS NULL
 					AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')
 				"));
+				$row_personal = rowArray($this->common_model->custom_query("
+					select A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+					from impv_home_info as A
+					left join pers_info as B on A.pers_id=B.pers_id
+					left join std_prename as C on B.pren_code=C.pren_code
+					left join std_gender as D  on B.gender_code=D.gender_code
+					left join std_nationality as E on B.nation_code=E.nation_code
+					left join std_edu_level as G    on B.edu_code=G.edu_code
+					where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
+					(B.delete_user_id IS NULL && B.delete_datetime IS NULL)
+					and imp_home_id='{$imp_home_id}'
+				"));
+				// dieArray($row
+				$data['impv_personal_info'] = $row_personal;
 				if(isset($row['imp_home_id'])) {
 					$data['impv_home_info'] = $row;
 
@@ -2167,6 +2208,20 @@ class Adaptenvir extends MX_Controller {
 
 			if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
 				$row = $this->adaptenvir_model->getOnce_impvPlace($impv_place_id);
+				$row_personal = rowArray($this->common_model->custom_query("
+					select A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name
+					from impv_place_info as A
+					left join pers_info as B on A.pers_id=B.pers_id
+					left join std_prename as C on B.pren_code=C.pren_code
+					left join std_gender as D  on B.gender_code=D.gender_code
+					left join std_nationality as E on B.nation_code=E.nation_code
+					left join std_edu_level as G    on B.edu_code=G.edu_code
+					where (A.delete_user_id IS NULL && A.delete_datetime IS NULL) and
+					(B.delete_user_id IS NULL && B.delete_datetime IS NULL)
+					and impv_place_id='{$impv_place_id}'
+				"));
+				// dieArray($row
+				$data['impv_personal_info'] = $row_personal;
 				if(isset($row['impv_place_id'])) {
 					$data['impv_place_info'] = $row;
 

@@ -20,6 +20,8 @@ class Assist_list_model extends CI_Model {
 		$user_id = get_session('user_id');
 		$app_id = 2;
 		$usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
+
+
 		//if($count_field == ''){
 				$this->db->select("A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', IF(B.pers_lastname_th IS NOT NULL,B.pers_lastname_th,'')) as name");
 		//}else{
