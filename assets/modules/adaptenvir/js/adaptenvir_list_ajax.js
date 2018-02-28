@@ -15,10 +15,13 @@ $(document).ready(function() {
         { "name": "B.pid",  "targets": 1 },
         { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },
         // { "name": "CONCAT(C.pers_firstname_th,' ', C.pers_lastname_th)",    "targets": 4 },
+        { "name": "D.gender_name",  "targets": 3 ,"visible": false},
         { "name": "A.date_of_svy","targets": 4 },
         { "name": "A.date_of_consi","targets":5 },
         { "name": "A.date_of_finish","targets": 6 },
         { "name": "A.case_budget","targets": 7 },
+        { "name": "start_age",    "targets": 8,"visible": false },
+        { "name": "end_age",    "targets": 9,"visible": false },
       ],
       "order": [[ 0, "desc" ]],
 
@@ -35,7 +38,7 @@ $(document).ready(function() {
         "sInfo":         "รายการทั้งหมด จำนวน _TOTAL_ รายการ (แบ่งออกเป็น _PAGES_ หน้า หน้าละ 50 รายการ)",
         // "sInfoEmpty":    "แสดง 0 ถึง 0 จาก 0 แถว",
         "sInfoEmpty":    "รายการทั้งหมด จำนวน 0 รายการ (แบ่งออกเป็น _PAGES_ หน้า หน้าละ 50 รายการ)",
-        "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+        "sInfoFiltered": "",
         "sInfoPostFix":  "",
         "sSearch":       "ค้นหา: ",
         "sUrl":          "",
@@ -74,7 +77,7 @@ $(document).ready(function() {
     //       var form = $('#form').val();
     //       var to = $('#to').val();
     //       var date = data[4]; // use data for the date column
-   
+
     //       if ( ( isNaN( form ) && isNaN( to ) ) ||
     //            ( isNaN( form ) && date <= to ) ||
     //            ( form <= date   && isNaN( to ) ) ||
@@ -94,13 +97,13 @@ $(document).ready(function() {
     //     var iFfin = $('#to').val();
     //     var iStartDateCol = 4;
     //     var iEndDateCol = 4;
- 
+
     //     iFini=iFini.substring(6,10) + iFini.substring(3,5)+ iFini.substring(0,2);
     //     iFfin=iFfin.substring(6,10) + iFfin.substring(3,5)+ iFfin.substring(0,2);
- 
+
     //     var datofini=aData[iStartDateCol].substring(6,10) + aData[iStartDateCol].substring(3,5)+ aData[iStartDateCol].substring(0,2);
     //     var datoffin=aData[iEndDateCol].substring(6,10) + aData[iEndDateCol].substring(3,5)+ aData[iEndDateCol].substring(0,2);
- 
+
     //     if ( iFini === "" && iFfin === "" )
     //     {
     //         return true;
@@ -120,26 +123,28 @@ $(document).ready(function() {
     //     return false;
     //   }
     // );
-    
+
     function filterColumn (i) {
         $('#dtable').DataTable().column(i).search(
             $('#col'+i+'_filter').val()
         ).draw();
-        // console.log($('#col'+i+'_filter').val());
+        console.log($('#col'+i+'_filter').val());
     }
-    
-    $("#filter").on('click', function () {
-      $('input.column_filter').each(function(  ) {
+
+    $("#filtersearch").on('click', function () {
+      $('.column_filter').each(function() {
+        console.log("filter: "+$(this).val());
         if($(this).val() != ''){
           filterColumn($(this).data('column'));
         }
+
       });
       // table.draw();
     });
 
     $("#dtable_filter").hide();
 
-    
+
 
 });
 
@@ -157,7 +162,7 @@ var opn = function(node) {
 }
 
 /*$('#dtable').on('click', 'td button.lnk', function () {
-    
+
   console.log($(this).data('info'));
         var data_info = $(this).data('info');
         $.each(data_info, function(key,val) {

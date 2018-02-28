@@ -61,16 +61,16 @@
 
   <div class="table-responsive">
 
-    <table id="dtable" class="table table-striped table-bordered table-hover dataTables-example" style="margin-top: 0px !important;">
+    <table id="dtable" class="table table-striped table-bordered table-hover dataTables-example" style="margin-top: 0px !important;width:100% !important;">
       <thead style="font-size: 15px;">
         <tr>
             <th style="width:2% !important;" class="text-center">ลำดับ</th>
             <th style="width:12% !important;" class="text-center">เลขประจำตัว ปชช.</th>
-            <th style="width:38% !important;" class="text-center">ชื่อตัว-ชื่อสกุล</th>
+            <th style="width:25% !important;" class="text-center">ชื่อตัว-ชื่อสกุล</th>
             <th style="width:7% !important;" class="text-center">อายุ (ปี)</th>
             <th style="width:10% !important;" class="text-center">วันที่ขึ้นทะเบียน</th>
             <th style="width:10% !important;" class="text-center">เบอร์โทรศัพท์<br>(ที่ติดต่อได้)</th>
-            <th class="text-center">พื้นที่ดำเนินการ</th>
+            <th style="width:10% !important;" class="text-center">พื้นที่ดำเนินการ</th>
             <th style="width:1% !important;">&nbsp;</th>
         </tr>
 			</thead>

@@ -11,7 +11,7 @@
           <div class="col-xs-12 col-sm-12"><h3><label>ค้นหา</label></h3></div>
         </div>
 
-        <div class="form-group row ">
+        <!-- <div class="form-group row ">
             <div class="col-xs-12 col-sm-3">
                 <h3><label for="col1_filter">เลขประจำตัวประชาชน (ผู้สูงอายุ):</label></h3>
             </div>
@@ -66,19 +66,37 @@
           <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
                  <h3><label>ปี</label></h3>
           </div>
+        </div> -->
+
+        <div class="form-group row ">
+            <div class="col-xs-12 col-sm-3">
+                <h3><label for="col1_filter">ชื่อตำแหน่งงาน :</label></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <input data-column="2" type="text" class="form-control  column_filter" id="col2_filter" placeholder="ชื่อตำแหน่งงาน " >
+            </div>
+
+        </div>
+
+        <div class="form-group row ">
+            <div class="col-xs-12 col-sm-3">
+                <h3><label for="col1_filter">ชื่อองค์กร :</label></h3>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <input data-column="5" type="text" class="form-control  column_filter" id="col5_filter" placeholder="ชื่อองค์กร" >
+            </div>
+
         </div>
 
         <div class="form-group row">
           <div class="col-xs-12 col-sm-3">
-            <h3><label for="col5_filter">สถานะดำเนินการ:</label></h3>
+            <h3><label for="col6_filter">สถานะดำเนินการ:</label></h3>
           </div>
           <div class="col-xs-12 col-sm-3">
             <select class="form-control" id="statusoper">
-               <option value="All">ทั้งหมด</option>
-               <option value="date_of_reg">แจ้งเรื่อง</option>
-               <option value="date_of_visit">ตรวจเยี่ยม</option>
-               <option value="date_of_pay">ช่วยเหลือ</option>
-               <option value="notvalue">ไม่ระบุสถานะ</option>
+               <!-- <option value="All">ทั้งหมด</option> -->
+               <option value="เปิดรับสมัคร">เปิดรับสมัคร</option>
+               <option value="ปิดรับสมัคร">ปิดรับสมัคร</option>
             </select>
           </div>
           <div class="col-xs-12 col-sm-4">
@@ -90,12 +108,13 @@
                 <input type="text" class="input-sm form-control" name="end" value="" placeholder="เลือกถึงวันที่" style="height: 34px;"/>
               </div>
             </div>
-
+            
+            <input type="hidden" data-column="1" class="column_filter" id="col1_filter">
             <input type="hidden" data-column="3" class="column_filter" id="col3_filter"> 
             <input type="hidden" data-column="4" class="column_filter" id="col4_filter">
-            <input type="hidden" data-column="5" class="column_filter" id="col5_filter">
+            <!-- <input type="hidden" data-column="5" class="column_filter" id="col5_filter"> -->
             <input type="hidden" data-column="6" class="column_filter" id="col6_filter">
-            <input type="hidden" data-column="7" class="column_filter" id="col7_filter">
+           
 
             <script type="text/javascript">
 
@@ -104,6 +123,7 @@
               forceParse: false,
               autoclose: true,
               language: 'th',
+              orientation: "bottom", // add this
               thaiyear: true,
               format: 'dd/mm/yyyy',
               todayBtn: true
@@ -145,31 +165,31 @@
 
     $(function () {
 
-    $("#range").ionRangeSlider({
-          type: "double",
-          min: 1,
-          max: 100,
-          from: 60,
-          to: 80,
-          prefix: "",
-          postfix: " ปี",
-          decorate_both: false,
-          values_separator: " to ",
-          grid: true,
+    // $("#range").ionRangeSlider({
+    //       type: "double",
+    //       min: 1,
+    //       max: 100,
+    //       from: 60,
+    //       to: 80,
+    //       prefix: "",
+    //       postfix: " ปี",
+    //       decorate_both: false,
+    //       values_separator: " to ",
+    //       grid: true,
 
-          onChange:function(data){
-            $('#col4_filter').val($('#range').val());
-          }
-        });
+    //       onChange:function(data){
+    //         $('#col4_filter').val($('#range').val());
+    //       }
+    //     });
     
-    //เช็คกรณีไม่ระบุเลขบัตรประจำตัวประชาชน
-    $('#disablepid').on('change',function(){
-        if($(this).prop('checked')){
-          $('#col1_filter').prop('disabled','disabled');
-        }else{
-          $('#col1_filter').prop('disabled','');
-        }
-    });
+    // //เช็คกรณีไม่ระบุเลขบัตรประจำตัวประชาชน
+    // $('#disablepid').on('change',function(){
+    //     if($(this).prop('checked')){
+    //       $('#col1_filter').prop('disabled','disabled');
+    //     }else{
+    //       $('#col1_filter').prop('disabled','');
+    //     }
+    // });
     
     //กดล้างค่า
     $('#btnclear').click(function(){
@@ -178,17 +198,13 @@
            $(this).val('');
        });
 
-       $('#gender').each(function(){
-          if($(this).val()==0){
-            $(this).prop('selected','selected');
-          }
-       });
+      //  $('#gender').each(function(){
+      //     if($(this).val()==0){
+      //       $(this).prop('selected','selected');
+      //     }
+      //  });
+      $('#statusoper').prop('selectedIndex', 0);
 
-       $('#statusoper').each(function(){
-          if($(this).val()=='All'){
-            $(this).prop('selected','selected');
-          }
-       });
 
        $('input[name=start]').val('');
        $('input[name=end]').val('');
@@ -196,24 +212,38 @@
 
     });
     
-    //เลือกเพศ
-    $('#gender').change(function(){
-         // gender = $(this).val();       
-         // console.log(gender);
-          $(this).prev().val($(this).val());
-    });
+    // //เลือกเพศ
+    // $('#gender').change(function(){
+    //      // gender = $(this).val();       
+    //      // console.log(gender);
+    //       $(this).prev().val($(this).val());
+    // });
     
+
+    
+    // // สถานะดำเนินการ
+    // $('#statusoper').change(function(){
+    //      // gender = $(this).val();       
+    //      // console.log(gender);
+    //      var statusoper  = $('#statusoper').val();
+     
+    //      $('#col6_filter').val(statusoper);
+    // });
+
     //เลือกถึงวันที่
     $('#datepicker').change(function(){
         var statusoper  = $('#statusoper').val();
-        var composedate = $('input[name=start]').val()+'_'+$('input[name=end]').val();
-         if(statusoper == 'date_of_reg'){
-           $('#col5_filter').val(composedate);
-         }else if(statusoper == 'date_of_visit'){
-           $('#col6_filter').val(composedate);
-         }else if(statusoper == 'date_of_pay'){
-           $('#col7_filter').val(composedate);
-         } 
+
+        $('#col6_filter').val(statusoper);
+
+        var composedate = $('input[name=start]').val()+'|'+$('input[name=end]').val();
+        //  if(statusoper == 'date_of_reg'){
+        //    $('#col5_filter').val(composedate);
+        //  }else if(statusoper == 'date_of_visit'){
+        //    $('#col6_filter').val(composedate);
+        //  }else if(statusoper == 'date_of_pay'){
+         $('#col1_filter').val(composedate);
+        //  } 
     });
 
    

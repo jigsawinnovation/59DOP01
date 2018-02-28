@@ -95,139 +95,7 @@ class Adaptenvir extends MX_Controller {
 		    $row[] = "<center>".$date_of_finish."<center>";
 		    $row[] ="<div style='width:100%;text-align:right;'>".number_format($adaptenvir->case_budget,2)."</div>";
 
-		  //   $btn = '<a class="btn btn-default lnk" data-toggle="modal" data-target="#info'.$i.'"><i class="fa fa-info-circle" aria-hidden="true" style="color: #000"></i></a>';
 
-				// $btn = $btn.'<!-- Info Modal -->
-			 //                <div class="modal fade" id="info'.$i.'" role="dialog">';
-
-			 //                        $addr = $this->personal_model->getPersonalInfo($adaptenvir->pers_id);
-			 //                         // dieArray($addr);
-
-			 //    $btn = $btn.'
-			 //                        <div class="modal-dialog modal-lg" style="text-align: left; ">
-			 //                          <div class="modal-content">
-			 //                           <div class="modal-header" style="background-color: rgb(56, 145, 209); color:white; ">
-			 //                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-			 //                              <h3 class="modal-title text-left">'.$pers_info['prename_th'].$pers_info['name'].'</h3>
-			 //                            </div>
-			 //                            <div class="modal-body">
-			 //                              <div class="row">
-			 //                                <div class="col-xs-12 col-sm-3">
-			 //                                  <img src="'.path('noProfilePic.jpg','member').'" class="img-responsive">
-			 //                                </div>
-			 //                                <div class="col-xs-12 col-sm-9">
-			 //                                  <div class="row">
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>เลขประจำตัวประชาชน</h4></div><div class="col-xs-12 col-sm-3">'.$pers_info['pid'].'</div>
-			 //                                  </div>
-			 //                                  <div class="row">
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>วันเดือนปีเกิด</h4></div><div class="col-xs-12 col-sm-6">'.@$addr['date_of_birth'].'</div>
-			 //                                  </div>
-			 //                                  <div class="row">
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>เพศ</h4> '.@$adaptenvir->gender_name.'</div>
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>สัญชาติ</h4> '.@$adaptenvir->nation_name_th.'</div>
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>ศาสนา</h4> '.@$adaptenvir->relg_title.'</div>
-			 //                                  </div>
-			 //                                  <div class="row">
-			 //                                  &nbsp;
-			 //                                  </div>
-			 //                                  <div class="row">
-			 //                                    <div class="col-xs-12 col-sm-3"><h4>ที่อยู่ตามทะเบียนบ้าน</h4></div><div class="col-xs-12 col-sm-5">'.@$addr['reg_add_info'].'</div>
-			 //                                  </div><br>
-
-			 //                                </div>
-			 //                              </div>
-			 //                            </div>
-			 //                          </div>
-			 //                        </div>
-			 //                      </div>
-			 //                      <!-- End Info Modal -->';
-
-			 //    $tmp = $this->admin_model->getOnce_Application(30);
-			 //    $tmp1 = $this->admin_model->chkOnce_usrmPermiss(30,$user_id); //Check User Permission
-			 //    $btn = $btn.' <a ';
-			 //                  if(!isset($tmp1['perm_status'])) {
-			 //    				$btn = $btn.' readonly ';
-			 //                  }else{
-			 //                  	$btn = $btn.' href="'.site_url('adaptenvir/inquire1/Edit/'.@$adaptenvir->imp_home_id).'"';
-			 //                  }
-			 //                  if(isset($tmp['app_name'])){
-			 //                  	$btn = $btn.' title="'.$tmp['app_name'].'" ';
-			 //                  }
-			 //                  $btn = $btn.'
-			 //                   class="btn btn-default">
-			 //                      <i class="fa fa-pencil-square" aria-hidden="true" style="color: #000"></i>
-			 //                  </a>
-
-			 //                  <a data-toggle="modal" data-target="#prt'.$i.'" title="พิมพ์แบบฟอร์ม" class="btn btn-default">
-			 //                      <i class="fa fa-file-text" aria-hidden="true" style="color: #000"></i>
-			 //                  </a>
-			 //                  <!-- Print Modal -->
-			 //                  <div class="modal fade" id="prt'.$i.'" role="dialog">
-			 //                    <div class="modal-dialog">
-
-			 //                       <!-- Modal content-->
-			 //                      <div class="modal-content">
-			 //                        <div class="modal-header text-left">
-			 //                          <button type="button" class="close" data-dismiss="modal">&times;</button>
-			 //                           <h4 class="modal-title" style="color: #333; font-size: 16px;">พิมพ์แบบฟอร์ม</h4>
-			 //                         </div>
-			 //                        <div class="modal-body">
-			 //                          <div class="row">';
-
-			 //                            $tmp = $this->admin_model->getOnce_Application(34);
-			 //                            $tmp1 = $this->admin_model->chkOnce_usrmPermiss(34,get_session('user_id')); //Check User Permission
-			 //                        	$btn = $btn.'
-			 //                            <div class="col-xs-12 col-sm-12 text-left" style="margin-bottom: 10px;"
-			 //                            ';
-			 //                            if(!isset($tmp1['perm_status'])) {
-			 //                                $btn = $btn.' class="disabled "';
-			 //                              }else if($usrpm['app_id']==34) {
-			 //                                $btn = $btn.' class="active" ';
-			 //                              }
-			 //                            $btn = $btn.'>
-			 //                              <a style="color: #333; font-size: 16px;" target="_blank" href="'.site_url('report/D1/pdf?id='.$adaptenvir->imp_home_id).'"><i class="fa fa-print" aria-hidden="true"></i> ';
-			 //                              	  if(isset($tmp1['perm_status'])) {
-			 //                              	  	$btn = $btn.$tmp1['app_name'];
-			 //                              	  }
-			 //                            $btn = $btn.'
-			 //                              </a>
-			 //                            </div>';
-
-			 //                            $tmp = $this->admin_model->getOnce_Application(35);
-			 //                            $tmp1 = $this->admin_model->chkOnce_usrmPermiss(35,get_session('user_id')); //Check User Permission
-			 //                            $btn = $btn.'
-			 //                            <div class="col-xs-12 col-sm-12 text-left" style="margin-bottom: 10px;" ';
-			 //                            if(!isset($tmp1['perm_status'])) {
-			 //                                $btn = $btn.' class="disabled" ';
-			 //                              }else if($usrpm['app_id']==35) {
-			 //                                $btn = $btn.' class="active" ';
-			 //                              }
-			 //                            $btn = $btn.'
-			 //                            >
-			 //                              <a style="color: #333; font-size: 16px; margin-bottom: 50px;" target="_blank" href="'.site_url('report/D2/pdf?id='.$adaptenvir->imp_home_id).'"><i class="fa fa-print" aria-hidden="true"></i> ';
-			 //                              	  if(isset($tmp1['perm_status'])) {
-			 //                              		$btn = $btn.$tmp1['app_name'];
-			 //                              	   }
-			 //                            $btn = $btn.'
-			 //                              </a>
-			 //                            </div>
-			 //                           </div>
-			 //                           <br/>
-			 //                        </div>
-			 //                      </div>
-			 //                    </div>
-			 //                   </div>
-			 //                   <!-- End Print Modal -->';
-
-			 //                    $tmp = $this->admin_model->chkOnce_usrmPermiss(30,$user_id); //Check User Permission
-			 //                    if(isset($tmp['perm_status'])) {
-			 //                        if($tmp['perm_status']=='Yes') {
-			 //                        	$btn = $btn.'
-			 //                        <a data-id='.@$adaptenvir->imp_home_id.' onclick="opn(this)" title="ลบ" type="button" class="btn btn-default">
-			 //                          <span class="glyphicon glyphicon-trash" style="color: #000"></span>
-			 //                        </a>';
-			 //                    	}
-			 //                    }
 
 		    $tmp = $this->admin_model->getOnce_Application(3);
                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(3,$user_id); //Check User Permission
@@ -323,9 +191,9 @@ class Adaptenvir extends MX_Controller {
                    </div>
                    <!-- End Print Modal -->';
 
-
+								$row[] = "";
+	 							$row[] = "";
                 $row[] = "<center>".$btn."</center>";
-
                 $data[] = $row;
       }
 
@@ -382,10 +250,14 @@ class Adaptenvir extends MX_Controller {
 	  		set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
 	  		/*-- End Toastr style --*/
 
-
+			/*-- datepicker custom --*/
+				set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
+				set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
+				set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
+			/*-- End datepicker custom--*/
 			set_js_asset_footer('adaptenvir_list_ajax.js','adaptenvir'); //Set JS Index.js
 
-			set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
+			//set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
 
 			$data['process_action'] = $process_action;
 			$data['content_view'] = 'adaptenvir_list_ajax';
@@ -461,115 +333,6 @@ class Adaptenvir extends MX_Controller {
 
 		    $row[] ="<div style='width:100%;text-align:right;'>".number_format($adaptenvir->case_budget,2)."</div>";
 
-
-
-
-
-			    // $tmp = $this->admin_model->getOnce_Application(30);
-			    // $tmp1 = $this->admin_model->chkOnce_usrmPermiss(30,$user_id); //Check User Permission
-			    // $btn = ' <a ';
-			    //               if(!isset($tmp1['perm_status'])) {
-			    // 				$btn = $btn.' readonly ';
-			    //               }else{
-			    //               	$btn = $btn.' href="'.site_url('adaptenvir/ac_inquire1/Edit/'.@$adaptenvir->impv_place_id).'"';
-			    //               }
-			    //               if(isset($tmp['app_name'])){
-			    //               	$btn = $btn.' title="'.$tmp['app_name'].'" ';
-			    //               }
-			    //               $btn = $btn.'
-			    //                class="btn btn-default">
-			    //                   <i class="fa fa-pencil-square" aria-hidden="true" style="color: #000"></i>
-			    //               </a>
-
-			    //               <a data-toggle="modal" data-target="#prt'.$i.'" title="พิมพ์แบบฟอร์ม" class="btn btn-default">
-			    //                   <i class="fa fa-file-text" aria-hidden="true" style="color: #000"></i>
-			    //               </a>
-			    //               <!-- Print Modal -->
-			    //               <div class="modal fade" id="prt'.$i.'" role="dialog">
-			    //                 <div class="modal-dialog">
-
-			    //                    <!-- Modal content-->
-			    //                   <div class="modal-content">
-			    //                     <div class="modal-header text-left">
-			    //                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-			    //                        <h4 class="modal-title" style="color: #333; font-size: 16px;">พิมพ์แบบฟอร์ม</h4>
-			    //                      </div>
-			    //                     <div class="modal-body">
-			    //                       <div class="row">';
-
-			    //                         $tmp = $this->admin_model->getOnce_Application(41);
-			    //                         $tmp1 = $this->admin_model->chkOnce_usrmPermiss(41,get_session('user_id')); //Check User Permission
-			    //                     	$btn = $btn.'
-			    //                         <div class="col-xs-12 col-sm-12 text-left" style="margin-bottom: 10px;"
-			    //                         ';
-			    //                         if(!isset($tmp1['perm_status'])) {
-			    //                             $btn = $btn.' class="disabled "';
-			    //                           }else if($usrpm['app_id']==41) {
-			    //                             $btn = $btn.' class="active" ';
-			    //                           }
-			    //                         $btn = $btn.'>
-			    //                           <a style="color: #333; font-size: 16px;" target="_blank" href="'.site_url('report/D3/pdf?id='.$adaptenvir->impv_place_id).'"><i class="fa fa-print" aria-hidden="true"></i> ';
-			    //                           	  if(isset($tmp1['perm_status'])) {
-			    //                           	  	$btn = $btn.$tmp1['app_name'];
-			    //                           	  }
-			    //                         $btn = $btn.'
-			    //                           </a>
-			    //                         </div>';
-
-			    //                         $tmp = $this->admin_model->getOnce_Application(42);
-			    //                         $tmp1 = $this->admin_model->chkOnce_usrmPermiss(42,get_session('user_id')); //Check User Permission
-			    //                         $btn = $btn.'
-			    //                         <div class="col-xs-12 col-sm-12 text-left" style="margin-bottom: 10px;" ';
-			    //                         if(!isset($tmp1['perm_status'])) {
-			    //                             $btn = $btn.' class="disabled" ';
-			    //                           }else if($usrpm['app_id']==42) {
-			    //                             $btn = $btn.' class="active" ';
-			    //                           }
-			    //                         $btn = $btn.'
-			    //                         >
-			    //                           <a style="color: #333; font-size: 16px; margin-bottom: 50px;" target="_blank" href="'.site_url('report/D4/pdf?id='.$adaptenvir->impv_place_id).'"><i class="fa fa-print" aria-hidden="true"></i> ';
-			    //                           	  if(isset($tmp1['perm_status'])) {
-			    //                           		$btn = $btn.$tmp1['app_name'];
-			    //                           	   }
-			    //                         $btn = $btn.'
-			    //                           </a>
-			    //                         </div>';
-
-			    //                          $tmp = $this->admin_model->getOnce_Application(43);
-			    //                         $tmp1 = $this->admin_model->chkOnce_usrmPermiss(43,get_session('user_id')); //Check User Permission
-			    //                         $btn = $btn.'
-			    //                         <div class="col-xs-12 col-sm-12 text-left" style="margin-bottom: 10px;" ';
-			    //                         if(!isset($tmp1['perm_status'])) {
-			    //                             $btn = $btn.' class="disabled" ';
-			    //                           }else if($usrpm['app_id']==43) {
-			    //                             $btn = $btn.' class="active" ';
-			    //                           }
-			    //                         $btn = $btn.'
-			    //                         >
-			    //                           <a style="color: #333; font-size: 16px; margin-bottom: 50px;" target="_blank" href="'.site_url('report/D5/pdf?id='.$adaptenvir->impv_place_id).'"><i class="fa fa-print" aria-hidden="true"></i> ';
-			    //                           	  if(isset($tmp1['perm_status'])) {
-			    //                           		$btn = $btn.$tmp1['app_name'];
-			    //                           	   }
-			    //                         $btn = $btn.'
-			    //                           </a>
-			    //                         </div>
-			    //                        </div>
-			    //                        <br/>
-			    //                     </div>
-			    //                   </div>
-			    //                 </div>
-			    //                </div>
-			    //                <!-- End Print Modal -->';
-
-			    //                 $tmp = $this->admin_model->chkOnce_usrmPermiss(37,$user_id); //Check User Permission
-			    //                 if(isset($tmp['perm_status'])) {
-			    //                     if($tmp['perm_status']=='Yes') {
-			    //                     	$btn = $btn.'
-			    //                     <a data-id='.@$adaptenvir->impv_place_id.' onclick="opn(this)" title="ลบ" type="button" class="btn btn-default">
-			    //                       <span class="glyphicon glyphicon-trash" style="color: #000"></span>
-			    //                     </a>';
-			    //                 	}
-			    //                 }
 			     $tmp = $this->admin_model->getOnce_Application(3);
                 $tmp1 = $this->admin_model->chkOnce_usrmPermiss(3,$user_id); //Check User Permission
                 $btn = '';
@@ -680,8 +443,11 @@ class Adaptenvir extends MX_Controller {
                     </div>
                    </div>
                    <!-- End Print Modal -->';
+									$row[] = "<center>".$btn."</center>";
+									$row[] = "";
+									$row[] = "";
+									$row[] = "";
 
-                $row[] = "<center>".$btn."</center>";
 
                 $data[] = $row;
       }
@@ -740,10 +506,15 @@ class Adaptenvir extends MX_Controller {
   		set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
   		set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
   		/*-- End Toastr style --*/
+			/*-- datepicker custom --*/
+				set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
+				set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
+				set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
+			/*-- End datepicker custom--*/
 
 			set_js_asset_footer('activity_list_ajax.js','adaptenvir'); //Set JS Index.js
 
-			set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
+			//set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
 
 
 			$data['process_action'] = $process_action;

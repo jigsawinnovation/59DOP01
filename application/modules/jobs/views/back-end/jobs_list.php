@@ -26,8 +26,12 @@
         $("#menu_topright").html($("#tmp_menu").html());
       },300);
       function showChart(){
-      $("#chart_display").slideToggle();
-    }
+        $('#collapseExample').removeClass("in");
+        $("#chart_display").slideToggle();
+      }
+      function showFilter(){
+        $("#chart_display").hide();
+      }
     </script>
 
     <?php

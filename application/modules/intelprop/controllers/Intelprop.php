@@ -104,11 +104,11 @@ class Intelprop extends MX_Controller
 
                  $rs = array();
                  if(count($rows)>0){
-
                   $rs['history'] = $rows;
                   }else {
                   $rs['history'] = 'ไม่พบ';
                 }
+
 
              echo json_encode($rs);
 
@@ -201,7 +201,6 @@ class Intelprop extends MX_Controller
 
                 $row[] = "<center>".$no."</center>";
                 $row[] = $intelprop_transfer->pid;
-
                 $row[] = $intelprop_transfer->prename_th.$intelprop_transfer->name;
 
                 $age = '';
@@ -212,6 +211,7 @@ class Intelprop extends MX_Controller
                   $age = $interval->y;
                 }
                  $row[] = "<center>".$age."</center>";
+
 
                 // $addr = $this->wisd_model->get_Address_tableajax($intelprop_transfer->reg_addr_id);
                 $province_district = "";
@@ -229,6 +229,7 @@ class Intelprop extends MX_Controller
                                 } else {
                                     $province_district = "-";
                                 }
+
 
                 $row[] = "<center>".$province_district."</center>";
 
@@ -321,8 +322,8 @@ class Intelprop extends MX_Controller
                     $btn = $btn.'  </a>
                              </div>';
 
-                    $btn = $btn.'
 
+                    $btn = $btn.'
                            </div>
                            <br/>
 
@@ -346,7 +347,6 @@ class Intelprop extends MX_Controller
 
                 $data[] = $row;
               }
-
             }
 
 
@@ -503,6 +503,8 @@ class Intelprop extends MX_Controller
 
                 $row[] = "<center>".$date_of_req."</center>";
 
+
+
                 $row[] = "<div class=\"text-right\">".number_format($intelprop_transfer->proj_budget,2)."</div>";
 
                 $tmp = $this->admin_model->getOnce_Application(3);
@@ -520,7 +522,6 @@ class Intelprop extends MX_Controller
                   $btn =$btn.'<li><a  style="font-size:16px;"';
 
                   if(!isset($tmp1['perm_status'])){ $btn =$btn.'class="disabled"';}else{ $btn =$btn.'href="'.site_url("intelprop/intelprop_info/Edit/".$intelprop_transfer->proj_id); }
-
                   $btn =$btn.'"><i class="fa fa-pencil" aria-hidden="true" style="color: #000"></i> แก้ไขรายการ</a></li>';
 
 
@@ -530,7 +531,6 @@ class Intelprop extends MX_Controller
                     if(isset($tmp['perm_status'])) {
                         if($tmp['perm_status']=='Yes') {
                          $btn = $btn.'<li><a style="font-size:16px;" data-id='.$intelprop_transfer->proj_id.' onclick="opn(this)" title="ลบ" >
-
                              <i class="fa fa-trash" style="color: #000"></i> ลบรายการ
                           </a></li>';
                       }
@@ -541,7 +541,6 @@ class Intelprop extends MX_Controller
 
                 $btn =$btn.'<!-- Print Modal -->
                    <div class="modal fade" id="prt'.$manage_transfer->proj_id.'" role="dialog">
-
                      <div class="modal-dialog">
 
                         <!-- Modal content-->
@@ -570,8 +569,8 @@ class Intelprop extends MX_Controller
                     $btn = $btn.'  </a>
                              </div>';
 
-                    $btn = $btn.'
 
+                    $btn = $btn.'
                            </div>
                            <br/>
 
@@ -659,7 +658,6 @@ class Intelprop extends MX_Controller
             set_css_asset_head('../plugins/Static_Full_Version/css/plugins/select2/select2.min.css');
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/select2/select2.full.min.js');
             /*-- End select2 style --*/
-
 
             set_js_asset_footer('intelprop_list_ajax1.js', 'intelprop'); //Set JS Index.js
 
@@ -813,7 +811,6 @@ class Intelprop extends MX_Controller
 
 
             set_js_asset_footer('webservice.js','personals'); //Set JS sufferer_form1.js
-
             set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
 
 
@@ -850,7 +847,6 @@ class Intelprop extends MX_Controller
                     $this->template->load('index_page',$data,'intelprop');
                     $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
                }
-
             }
         }
 
@@ -941,7 +937,6 @@ class Intelprop extends MX_Controller
        // dieArray($_FILES);
 
        /////upload img profile to table pers_info ///////////////
-
        if($_FILES['img_profile']['name']!=''){
            $NameImg = $this->files_model->getOnceImg('img_profile','assets/modules/personals/uploads');
            if($NameImg!=''){
@@ -955,7 +950,6 @@ class Intelprop extends MX_Controller
 
 
         /////////////////update pers_info///////////////////////////
-
        if(get_inpost('elder_addr_chk')!='on') {
 
                 if($type=='update'){
@@ -968,7 +962,6 @@ class Intelprop extends MX_Controller
                       $update['update_org_id']   = get_session('org_id');
                       $update['update_datetime'] = getDatetime();
                       $this->common_model->update('pers_addr',$update,array('addr_id'=>get_inpost('pre_addr_id')));
-
                       $new_addr_id          = $this->common_model->insert('pers_addr',$data_array3);
                     }
 
@@ -1000,6 +993,7 @@ class Intelprop extends MX_Controller
     }
 
 
+
     public function olderp_info($process_action = 'Add', $adm_id = 0)
     {
         //(ข้อมูลทะเบียนประวัติผู้สูงอายุที่มีภูมิปัญญา)
@@ -1028,6 +1022,7 @@ class Intelprop extends MX_Controller
                 array('name' => 'admin_template1',
                     'setting'    => array('data_output' => ''))
             ); // Set Template
+
 
 
               /*-- datepicker custom --*/
@@ -1379,7 +1374,6 @@ class Intelprop extends MX_Controller
                 $this->template->load('index_page', $data, 'intelprop');
             }else if($process_action == 'Edited'  && $usrpm['perm_status'] == 'Yes'){
                 // dieArray($_FILES);
-
                 $tmp_wisd       = @get_inpost_arr('wisd_branch'); //รหัสสาขาภูมิปัญญา
 
                 $data_wisd_branch                    = array();
@@ -1425,7 +1419,9 @@ class Intelprop extends MX_Controller
 
                  ////////////////////////////File upload photoHead /////////////////////////////////////////////////////////////
                  $data_photo_head = array();
+
                  $name_photo_head = $this->files_model->getOnceImg_branch("wisd_photo_head", 'assets/modules/intelprop/images');
+               
                                 if ($name_photo_head != "") {
                                    $data_photo_head['branch_id']          = $id_branch;
                                    $data_photo_head['wisdom_photo_file']  = $name_photo_head;
@@ -1470,8 +1466,9 @@ class Intelprop extends MX_Controller
         }
     }
 
-    public function del_wisd_photo(){
 
+
+    public function del_wisd_photo(){
         $id_photo = get_inpost('id_photo');
         $str      = "DELETE FROM wisd_photo WHERE wisdom_photo_id = {$id_photo}";
         $row      = $this->common_model->custom_query($str);

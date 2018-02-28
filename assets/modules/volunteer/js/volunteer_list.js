@@ -49,20 +49,24 @@ $(document).ready(function() {
        */
     });
 
-   function filterColumn (i) {
+    function filterColumn (i) {
         $('#dtable').DataTable().column(i).search(
             $('#col'+i+'_filter').val()
         ).draw();
+        console.log($('#col'+i+'_filter').val());
+
     }
-    
-    $("#filter").on('click', function () {
-      $('input.column_filter').each(function(  ) {
-        filterColumn($(this).data('column'));
+
+    $("#filtersearch").on('click', function () {
+      $('.column_filter').each(function() {
+        console.log("filter: "+$(this).val());
+        if($(this).val() != ''){
+          filterColumn($(this).data('column'));
+        }
+
       });
       // table.draw();
     });
-
-    $("#dtable_filter").hide();
 
 });
 
@@ -81,7 +85,7 @@ var opn = function(node) {
 
 
 $('#dtable').on('click', 'td.lnk', function () {
-      
+
   // Get Data from record table
   var tmp = table.row($(this).parent()).data();
   console.log(tmp[1]);

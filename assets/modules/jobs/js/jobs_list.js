@@ -25,7 +25,7 @@ $(document).ready(function() {
           "sNext":     '<i class="fa fa-forward" style="font-size: 12px;" aria-hidden="true"></i>',
           "sLast":     '<i class="fa fa-step-forward" style="font-size: 12px;" aria-hidden="true"></i>'
         }
-      }
+      },
        /*
        // Show Export Tools
        dom: '<"html5buttons"B>lTfgitp',
@@ -50,14 +50,29 @@ $(document).ready(function() {
     });
 
     function filterColumn (i) {
+
+      // "^("+"Person #1|Person #2"+")$",true,false,false
+   //   alert($('#col'+i+'_filter').val());
+      if(i == 1){
         $('#dtable').DataTable().column(i).search(
-            $('#col'+i+'_filter').val()
-        ).draw();
+          "^("+$('#col'+i+'_filter').val()+")$",true,false,false
+      ).draw();
+      }else{
+        $('#dtable').DataTable().column(i).search(
+          $('#col'+i+'_filter').val()
+      ).draw();
+      }
+    
     }
     
-    $("#filter").on('click', function () {
-      $('input.column_filter').each(function(  ) {
-        filterColumn($(this).data('column'));
+    $("#filtersearch").on('click', function () {
+      $('#dtable').DataTable().search('');
+      $('.column_filter').each(function() {
+        console.log("filter: "+$(this).data('column'));
+        if($(this).val() != ''){
+          filterColumn($(this).data('column'));
+        }
+
       });
       // table.draw();
     });

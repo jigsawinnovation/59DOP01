@@ -69,6 +69,64 @@
             return '';
         }
 
+        public function getOnceImg_branch($field_name='',$folder_name=''){
+            if($_FILES[$field_name]['name'] != '')
+            {
+                $error=array();
+                $name_array=array();
+
+                $count = count($_FILES[$field_name]['size']);
+                
+                if($count>0){
+                    $this->load->library('upload');
+                    //for($i=0; $i<$count; $i++){
+                      //  echo $_FILES[$field_name]['type'];
+                        $_FILES['userfile']['name']=$_FILES[$field_name]['name'];
+                        $_FILES['userfile']['type'] = $_FILES[$field_name]['type'];
+                        $_FILES['userfile']['tmp_name'] = $_FILES[$field_name]['tmp_name'];
+                        $_FILES['userfile']['error'] = $_FILES[$field_name]['error'];
+                        $_FILES['userfile']['size'] = $_FILES[$field_name]['size'];
+
+                       // print_r($_FILES);
+                        $config=array();
+                        $config['upload_path'] = $folder_name;
+                        $config['allowed_types'] = 'gif|jpeg|jpg|png';
+                        $config['file_name'] = 'Head'.RandomNameFileEncode();
+
+                        $this->upload->initialize($config);
+
+                        if ( ! $this->upload->do_upload('userfile'))
+                        {
+                            $error = array('error' => $this->upload->display_errors());
+                            return '';
+                          //  print_r( $error);
+                        }
+                        else
+                        {
+                            $data_upload = $this->upload->data();
+                        }
+                        // if(!$this->upload->do_upload('userfile')){
+                        //     $error[] = $this->upload->display_errors("<span class='error'>", "</span>");
+                        // }
+                      
+                      //  print_r($data_upload);
+                     //   die();
+                        // $arr=@explode('.',$_FILES['userfile']['name']);
+                       
+                        // $filename="file";
+                        // if(count($arr)>0){
+                        //     unset($arr[count($arr)-1]);
+                        //     $filename=implode($arr);
+                        // }
+                      //  $name_array = array('name'=>$filename,'file'=>$data_upload['file_name']);
+                  //  }
+                    //$field_name=serialize($name_array);
+                    return $data_upload['file_name'];
+                }
+            }
+            return '';
+        }
+
         public function do_upload($field_name='',$folder_name='',$ext='gif|jpeg|jpg|png|tiff|doc|docx|txt|odt|xls|xlsx|pdf|ppt|pptx|pps|ppsx|mp3|m4a|ogg|wav|mp4|m4v|mov|wmv|flv|avi|mpg|ogv|3gp|3g2|zip|csv'){
             if(isset($_FILES[$field_name]['name'])){
                 $this->load->library('upload');

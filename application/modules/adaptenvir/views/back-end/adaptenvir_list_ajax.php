@@ -70,6 +70,8 @@
                       <th style="width:10% !important;" class="text-center">วันที่เสร็จสิ้น</th>
                       <th style="width:10% !important;" class="text-center">งบประมาณที่ใช้ไป (บาท)</th>
                       <th style="width:1% !important;">&nbsp;</th>
+                      <th style="width:1% !important;">&nbsp;</th>
+                      <th style="width:1% !important;">&nbsp;</th>
                   </tr>
             </thead>
             <tbody>

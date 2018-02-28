@@ -54,23 +54,19 @@
                   <?php } ?>
                 </select>
           </div>
-          <div class="col-xs-12 col-sm-1" style="width: 6%;">
-                 <h3><label>อายุ:</label></h3>
+          <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+                 <h3><label>อายุ :</label></h3>
           </div>
-          <div class="col-xs-12 col-sm-1">
-            <input type="text" id="age_str" name="" class="form-control">
-             <!-- <input type="text" id="range" value="" name="range" /> -->
-          </div>
-           <div class="col-xs-12 col-sm-1" style="width: 6%;">
-                 <h3><label>ถึง</label></h3>
-          </div>
-           <div class="col-xs-12 col-sm-1">
-              <input type="text" id="age_end" name="" class="form-control">
-             <!-- <input type="text" id="range" value="" name="range" /> -->
-          </div>
-          <div class="col-xs-12 col-sm-1" >
-                 <h3><label>ปี</label></h3>
-          </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+              <input type="text" data-column="8" class="form-control column_filter" style="width: 80px;" id="col8_filter" name="start_age" value="0" />
+            </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;"><h3><label>ถึง</label></h3></div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+              <input type="text" data-column="9" class="form-control column_filter" style="width: 80px;" id="col9_filter" name="end_age" value="100" />
+            </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+                   <h3><label>ปี</label></h3>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -98,6 +94,7 @@
 
             <input type="hidden" data-column="3" class="column_filter" id="col3_filter">
             <input type="hidden" data-column="6" class="column_filter" id="col6_filter">
+            <input type="hidden" data-column="8" class="column_filter" id="col8_filter">
             <input type="hidden" data-column="9" class="column_filter" id="col9_filter">
             <input type="hidden" data-column="10" class="column_filter" id="col10_filter">
             <input type="hidden" data-column="11" class="column_filter" id="col11_filter">

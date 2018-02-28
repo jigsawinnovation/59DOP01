@@ -163,6 +163,8 @@ class Volunteer extends MX_Controller {
 
 
                 $row[] = "<center>".$btn."<center>";
+								$row[] = "";
+								$row[] = "";
 
                 $data[] = $row;
             }
@@ -246,7 +248,7 @@ class Volunteer extends MX_Controller {
 
 			set_js_asset_footer('volunteer_list_ajax.js','volunteer'); //Set JS volunteer_list_ajax.js
 
-     		set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
+     	//set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
 
 			$data['process_action'] = $process_action;
 			$data['content_view'] 	= 'volunteer_list_ajax';

@@ -63,12 +63,12 @@
                                   <tr>
                                       <th style="width:2% !important;" class="text-center">ลำดับ</th>
                                       <th style="width:38% !important;" class="text-center">ชื่อสถานที่จัดกิจกรรมของผู้สูงอายุ</th>
-                                      <!-- <th class="text-center">ที่อยู่</th> -->
                                       <th style="width:10% !important;" class="text-center">วันที่ได้รับการสำรวจ</th>
                                       <th class="text-center">ผลการพิจารณา</th>
                                       <th style="width:10% !important;" class="text-center">วันที่เสร็จสิ้น</th>
                                       <th style="width:10% !important;" class="text-center">งบประมาณที่ใช้ไป (บาท)</th>
                                       <th style="width:1% !important;">&nbsp;</th>
+                                      <th style="width:1% !important;display:none;">&nbsp;</th>
                                   </tr>
                             </thead>
                             <tbody>

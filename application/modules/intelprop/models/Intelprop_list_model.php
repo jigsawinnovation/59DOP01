@@ -53,43 +53,6 @@ class Intelprop_list_model extends CI_Model {
          		(B.delete_user_id IS NULL AND B.delete_datetime IS NULL) AND A.insert_user_id=".get_session('user_id'));
          }
 
-
-		//$this->column_search = array_diff($this->column_search, array('D_DateTimeAdd', 'D_DateTimeUpdate'));
-
-		// $i = 0;
-		// // dieArray($_POST);
-		// foreach ($this->column_search as $item) // loop column
-		// {
-
-		// 	if($_POST['search']['value']) // if datatable send POST for search
-		// 	{
-
-		// 		if($i===0) // first loop
-		// 		{
-		// 			$this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-		// 			$this->db->like($item, $_POST['search']['value']);
-		// 		}
-		// 		else
-		// 		{
-		// 			$this->db->or_like($item, $_POST['search']['value']);
-		// 		}
-
-		// 		if(count($this->column_search) - 1 == $i) //last loop
-		// 			$this->db->group_end(); //close bracket
-
-		// 	}
-		// 	$i++;
-		// }
-
-
-		// dieArray($_POST);
-		// $customSearch = array(
-		// 	1 => 'B.pid',
-		// 	2 => "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)",
-		// 	4 => 'A.date_of_req',
-		// 	5 => 'A.date_of_visit',
-		// 	6 => 'A.date_of_pay',
-		// );
 		// $chk = 0;
          // dieArray($_POST['columns']);
 				foreach ($_POST['columns'] as $colId => $col) {
@@ -97,21 +60,13 @@ class Intelprop_list_model extends CI_Model {
 			{
 
 				$arr = @explode('_', $col['search']['value']);
-				// if(count($arr)==3) {
-				 // dieArray($arr);
-				 // dieFont(count($arr));
 					if(count($arr) >= 2){
-
 					    $this->db->where("(".$col['name']." BETWEEN '".dateChange($arr[0],0)."' AND '".dateChange($arr[1],0)."')");
-						// $this->db->like($col['name'], dateChange($col['search']['value'],0));
-						// $this->db->like($col['name'], $col['search']['value']);
-						// dieFont(dateChange($col['search']['value'],1));
-
 					}else if($col['name']=='D.gender_name'){
-						  continue;
+						  //continue;
 						  // $this->db->where('D.gender_name', 'ชาย');
 						  //$this->db->like('D.gender_code', $col['search']['value'],'after');
-						  // $this->db->where($col['name'],$col['search']['value']);
+						  $this->db->where($col['name'],$col['search']['value']);
 					}else if($col['name']=='B.date_of_birth'){
 						$yearbir   = explode(";", $col['search']['value']);
 						$yearStart = date("Y")-$yearbir[0];

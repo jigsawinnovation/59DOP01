@@ -74,8 +74,13 @@
     },300);
 
     function showChart(){
+      $('#collapseExample').removeClass("in");
       $("#chart_display").slideToggle();
     }
+    function showFilter(){
+      $("#chart_display").hide();
+    }
+
   </script>
 
   <?php
