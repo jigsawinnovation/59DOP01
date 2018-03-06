@@ -41,44 +41,40 @@ class Intelprop_list_model extends CI_Model {
 		$app_id = 44;
 		$usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
 
-		 if($usrpm['perm_view']=='All'){//เห็นข้อมูลทั้งหมด
-			$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
-			(B.delete_user_id IS NULL AND B.delete_datetime IS NULL)");
-         }else if($usrpm['perm_view']=='Organization'){//เห็นข้อมูลเฉพาะองค์กรของตนเองเท่านั้น
+		 	if($usrpm['perm_view']=='All'){//เห็นข้อมูลทั้งหมด
+					$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
+					(B.delete_user_id IS NULL AND B.delete_datetime IS NULL)");
+    	}else if($usrpm['perm_view']=='Organization'){//เห็นข้อมูลเฉพาะองค์กรของตนเองเท่านั้น
          	$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
          		(B.delete_user_id IS NULL AND B.delete_datetime IS NULL) AND A.insert_org_id=".get_session('org_id'));
-
-         }else if($usrpm['perm_view']=='Person'){//เห็นข้อมูลเฉพาะของตนเองเท่านั้น
+      }else if($usrpm['perm_view']=='Person'){//เห็นข้อมูลเฉพาะของตนเองเท่านั้น
          	$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
          		(B.delete_user_id IS NULL AND B.delete_datetime IS NULL) AND A.insert_user_id=".get_session('user_id'));
-         }
+      }
 
-		// $chk = 0;
-         // dieArray($_POST['columns']);
-				foreach ($_POST['columns'] as $colId => $col) {
+		foreach ($_POST['columns'] as $colId => $col) {
 			if($col['search']['value']!='') // if datatable send POST for search
 			{
 
 				$arr = @explode('_', $col['search']['value']);
-					if(count($arr) >= 2){
-					    $this->db->where("(".$col['name']." BETWEEN '".dateChange($arr[0],0)."' AND '".dateChange($arr[1],0)."')");
-					}else if($col['name']=='D.gender_name'){
-						  //continue;
-						  // $this->db->where('D.gender_name', 'ชาย');
-						  //$this->db->like('D.gender_code', $col['search']['value'],'after');
-						  $this->db->where($col['name'],$col['search']['value']);
-					}else if($col['name']=='B.date_of_birth'){
-						$yearbir   = explode(";", $col['search']['value']);
-						$yearStart = date("Y")-$yearbir[0];
-						$yearEnd   = date("Y")-$yearbir[1];
-						$this->db->where("YEAR(".$col['name'].") BETWEEN ".$yearStart." AND ".$yearEnd);
-					}else if($col['name']=='wisd_code'){
-						continue;
-					}else{
-						$this->db->like($col['name'], $col['search']['value']);
+				// if(count($arr)==3) {
+				 // dieArray($arr);
+				 // dieFont(count($arr));
 
-					}
-				// }
+				if(count($arr) >= 2){
+					  	$this->db->where("(".$col['name']." BETWEEN '".dateChange($arr[0],0)."' AND '".dateChange($arr[1],0)."')");
+				}else if($col['name'] == 'D.gender_name'){
+						 	$this->db->where($col['name'],$col['search']['value']);
+				}else if($col['name'] == 'start_age' ){
+							$year_age   = $col['search']['value'];
+							$this->db->where("(IF(TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE()) IS NULL,0,TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE())) >= ".$year_age.")");
+				}else if($col['name'] == 'end_age' ){
+							$year_age   = $col['search']['value'];
+							$this->db->where("(IF(TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE()) IS NULL,0,TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE())) <= ".$year_age.")");
+				}else{
+							$this->db->like($col['name'], $col['search']['value']);
+				}
+
 			}
 		}
 
@@ -120,7 +116,11 @@ class Intelprop_list_model extends CI_Model {
 	{
 		$this->_get_datatables_query();
 		//$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
+
 		$query = $this->db->get();
+
+		set_session('last_sql_filtered',$this->db->last_query()); //
+
 		return $query->num_rows();
 	}
 

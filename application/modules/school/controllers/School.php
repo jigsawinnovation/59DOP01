@@ -47,13 +47,13 @@ class School extends MX_Controller {
     		set_css_asset_head('../plugins/Static_Full_Version/css/plugins/toastr/toastr.min.css');
     		set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/toastr/toastr.min.js');
     		/*-- End Toastr style --*/
-			
+
 			/*-- datepicker custom --*/
 		      set_css_asset_head('../plugins/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css');
 		      set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js');
 		      set_js_asset_head('../plugins/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js');
 		      /*-- End datepicker custom--*/
-      
+
 			set_js_asset_footer('school_list.js','school'); //Set JS Index.js
 
 			set_js_asset_footer('../plugins/Static_Full_Version/js/plugins/ionRangeSlider/ion.rangeSlider.min.js'); //Set JS Index.js
@@ -64,7 +64,10 @@ class School extends MX_Controller {
 			$tmp = $this->admin_model->getOnce_Application($usrpm['app_parent_id']); //Used for find root application
 			$data['head_title'] = $tmp['app_name'];
 			$data['title'] = $usrpm['app_name'];
-
+      $data['csrf'] = array(
+        'name' => $this->security->get_csrf_token_name(),
+        'hash' => $this->security->get_csrf_hash()
+      );
 			$this->template->load('index_page',$data,'school');
 			$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 		}
@@ -89,7 +92,7 @@ class School extends MX_Controller {
 	private function clr_schlInfo_center() {
 		return array(
 
-					'qlc_name' => '',	
+					'qlc_name' => '',
 					'addr_sub_district'	=> '',
 					'addr_district' => '',
 					'addr_province' => '',
@@ -97,7 +100,7 @@ class School extends MX_Controller {
 					'tel_no' => '',
 					'fax_no' => '',
 					'email_addr' => '',
-					'agency_org' => ''	
+					'agency_org' => ''
 		);
 	}
 
@@ -121,7 +124,7 @@ class School extends MX_Controller {
 					'fax_no'            	 => '',
 					'email_addr'        	 => '',
 					'agency_org'        	 => ''
-									
+
 		);
 	}
 
@@ -144,7 +147,7 @@ class School extends MX_Controller {
 			$data['usrpm'] = $usrpm;
 			$data['user_id'] = $user_id;
 
-			
+
 
 			$this->load->library('template',
 				array('name'=>'admin_template1',
@@ -170,8 +173,8 @@ class School extends MX_Controller {
             /*-- End select2 style --*/
 
             set_js_asset_footer('mapmarker.js','webconfig'); //Set JS mapmarker.js --
-            
-			
+
+
 			set_js_asset_footer('school1.js','school'); //Set JS sufferer_form1.js
 
 			$data['process_action'] = $process_action;
@@ -187,12 +190,12 @@ class School extends MX_Controller {
 			);
 
 			if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				$data['schl_info'] = $this->clr_schlInfo_school1();
                 $data['std_model'] = $this->school_model->get_std_model();//แสดงคุณสมบัติต้นแบบ
 				$this->template->load('index_page',$data,'school');
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
-			
+
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
 
 					//dieArray($_POST);
@@ -215,17 +218,17 @@ class School extends MX_Controller {
 
 					if(!empty($tmp_model)){
 						 foreach ($tmp_model as $key_model => $val_model) {
-						 	     
+
 						 	     $insert_model = array('schl_id'     => $id,
                                                        'mdl_code'   => $val_model,
-                                                       'mdl_remark' => $tmp_mdl_remark[$key_model] 
+                                                       'mdl_remark' => $tmp_mdl_remark[$key_model]
 						 	     	                  );
 						 	     $this->common_model->insert('schl_model',$insert_model);
 						 }
 					}
 
 					if(!empty($tmp_cnt_name)){
-						
+
                        foreach ($tmp_cnt_name as $key => $value) {
                             $insert_contacts = array('sch_id'        => $id,
                             	                     'sch_cnt_name'  => $value,
@@ -245,13 +248,13 @@ class School extends MX_Controller {
 
 					redirect('school/photo2/Edit/'.$id,'refresh');
 
-				
+
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				 if($schl_id!=''){
 
 						  $schl_info = $this->school_model->getOnce_schlInfo($schl_id);
-		                    
+
 		                 if(isset($schl_info['schl_id'])) {
 		                    foreach ($schl_info as $key => $value) {
 		                    	$data['schl_info'][$key] = $value;
@@ -274,7 +277,7 @@ class School extends MX_Controller {
 
 			}else if($process_action=='Edited' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes') { //Edit && Submit Form
 				$process_action='Edited';
-                    
+
 				    $data_insert 					= array();
 				    $data_insert 					= @get_inpost_arr('schl_info');
 				    $data_insert['update_user_id'] 	= getUser();
@@ -282,7 +285,7 @@ class School extends MX_Controller {
 					$data_insert['update_datetime'] = getDatetime();
 
 					 $this->common_model->update('schl_info',$data_insert,array('schl_id'=>$schl_id));
-                    
+
                     $update_contacts = @get_inpost_arr('update_contacts');//จำนวนเจ้าหน้าที่ที่มีการเพิ่มอยู่แล้ว
 					$tmp_cnt_name    = @get_inpost_arr('schl_contacts[sch_cnt_name]');//ชื่อ-นามสกุลเจ้าหน้าที่
 					$tmp_cnt_title   = @get_inpost_arr('schl_contacts[sch_cnt_title]');//ตำแหน่งงาน
@@ -290,29 +293,29 @@ class School extends MX_Controller {
 					$tmp_model       = @get_inpost_arr('std_model');//แสดงคุณสมบัติต้นแบบ
 					$tmp_mdl_remark  = @get_inpost_arr('mdl_remark');//ความคิดเห็นเจ้าหน้าที่
 
-					
+
 						$this->common_model->delete_where("schl_model",'schl_id',$schl_id);
                     if(!empty($tmp_model)){
 						foreach ($tmp_model as $key_model => $val_model) {
 
 							    $insert_model = array('schl_id'     => $schl_id,
                                                        'mdl_code'   => $val_model,
-                                                       'mdl_remark' => $tmp_mdl_remark[$key_model] 
+                                                       'mdl_remark' => $tmp_mdl_remark[$key_model]
 						 	     	                  );
 						 	     $this->common_model->insert('schl_model',$insert_model);
 						}
 					}
 
 					if(!empty($tmp_cnt_name)){
-						
+
                        foreach ($tmp_cnt_name as $key => $value) {
-                       	     
+
                        	     if(!empty($update_contacts[$key])){
                        	     	  $data_contacts = array('sch_cnt_name'  => $value,
                              	                     	   'sch_cnt_title' => $tmp_cnt_title[$key],
                              	                     	   'tel_no' => $tmp_mobile[$key]
                              	                           );
-                       	     	                
+
                        	     	  $this->common_model->update('schl_info_contacts',$data_contacts,array('sch_cnt_id'=>$update_contacts[$key]));
                        	     }else{
 		                          $insert_contacts = array('sch_id'        => $schl_id,
@@ -331,7 +334,7 @@ class School extends MX_Controller {
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 
 					redirect('school/school1/Edit/'.$schl_id,'refresh');
-			
+
 
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
 				 //Delete process
@@ -373,7 +376,7 @@ class School extends MX_Controller {
 			$data['usrpm'] = $usrpm;
 			$data['user_id'] = $user_id;
 
-			
+
 
 			$this->load->library('template',
 				array('name'=>'admin_template1',
@@ -407,7 +410,7 @@ class School extends MX_Controller {
 			);
 			// dieArray($usrpm);
 			if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-			    
+
 				$this->template->load('index_page',$data,'school');
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
@@ -468,12 +471,12 @@ class School extends MX_Controller {
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 				}
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				if($schl_id!=''){
 				$data['schl_photo'] = $this->school_model->get_img($schl_id);
 				$data['schl_id'] = $schl_id;
 				// dieArray($row);
-				
+
 					$this->template->load('index_page',$data,'school');
 				}else {
 					page500();
@@ -483,17 +486,17 @@ class School extends MX_Controller {
 			}else if($process_action=='Edited' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes') { //Edit && Submit Form
 				$process_action='Edited';
 
-				   
+
                  if($_FILES['img']['name'][0]!=""){
 
                  	  $photo = $this->files_model->getMultiImg("img",'assets/modules/school/images');
 
-                 	
-                 	 	      $i=0;      		
+
+                 	 	      $i=0;
 					        foreach ($photo as $key_photo => $value_photo) {
 
 					        	if($_FILES['img']['name'][$i]!=""){
-					        	  
+
 		                           	$insert_photo = array('schl_id' 		      =>$schl_id,
 			                           		        	  'schl_photo_file' 	  =>$value_photo['file'],
 			                           		        	  'schl_photo_label' 	  =>$value_photo['name'],
@@ -501,26 +504,26 @@ class School extends MX_Controller {
 			                           		        	  'schl_photo_default'    =>"");
 
 		                           	$this->common_model->insert('schl_info_photo',$insert_photo);
-		                           
+
 		                           }
 	                         $i++;
                            }// close loop foreach ($id_photo as $key_photo => $value_photo)
-                       
+
                  }
-					
+
 					/*$data['msg'] = setMsg('021'); //Set Message code 021
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
                     */
-					
 
-			
-					
-					
+
+
+
+
 					$this->session->set_flashdata('msg',setMsg('011')); //Set Message code 011
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 				    $this->template->load('index_page',$data,'school');
 				    redirect('school/generation3/Edit/'.$schl_id,'refresh');
-          
+
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
 				$data_update = array();
 				$data_update['delete_user_id'] = getUser();
@@ -596,21 +599,21 @@ class School extends MX_Controller {
 
 			// dieArray($usrpm);
 			if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-			    
+
 			  page500();
 			  $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
 				page500();
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 
-               				
+
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				if($schl_id!=''){
 				$data['schl_gen'] = $this->school_model->getAll_generationInfo($schl_id);
 				$data['schl_id'] = $schl_id;
 				// dieArray($row);
-				
+
 					$this->template->load('index_page',$data,'school');
 				}else {
 					page500();
@@ -620,14 +623,14 @@ class School extends MX_Controller {
 			}else if($process_action=='Edited' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes') { //Edit && Submit Form
 				$process_action='Edited';
 
-				         						
+
 					$this->session->set_flashdata('msg',setMsg('011')); //Set Message code 011
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 				    $this->template->load('index_page',$data,'school');
 				    redirect('school/photo2/Edit/'.$schl_id,'refresh');
-          
+
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
-				  
+
 				$this->common_model->delete_where('schl_info_generation','gen_id',$gen_id);
 				$this->session->set_flashdata('msg',setMsg('031')); //Set Message code 031
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
@@ -686,14 +689,14 @@ class School extends MX_Controller {
 
 		    set_css_asset_head('../modules/school/css/swicthon.css');
     		/*-- End Toastr style --*/
-    		set_js_asset_footer('webservice.js','personals'); //Set JS sufferer_form1.js 
+    		set_js_asset_footer('webservice.js','personals'); //Set JS sufferer_form1.js
     		set_js_asset_footer('generation_detail.js','school'); //Set JS sufferer_form1.js
 
 
 			$data['process_action'] = $process_action;
 			$data['content_view'] = 'generation_detail';
 
-			
+
 			$tmp = $this->admin_model->getOnce_Application($usrpm['app_parent_id']); //Used for find root application
 			$data['head_title'] = $tmp['app_name'];
 			$data['title']      = $usrpm['app_name'];
@@ -721,15 +724,15 @@ class School extends MX_Controller {
 			      	 page500();
 					 $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 			      }
-			       
-			   
+
+
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
-				
+
                 if($schl_id!=""){
 
                      if(get_inpost('schl_gen[gen_status]')==''){
                         $status = "ปิด";
-                    
+
                      }else{
                         $status = "เปิด";
                      }
@@ -744,18 +747,18 @@ class School extends MX_Controller {
 
                      // $tmp_edu      = get_inpost_arr('schl_info_edu[crse_code]');//จำนวนหลักสูตร
                      // $tem_identify = get_inpost_arr('schl_info_edu[crse_identify]');//ความคิดเห็นเจ้าหน้าที่
-                     
+
                      // if(!empty($tmp_edu)){
                      // 	foreach ($tmp_edu as $key => $crse_id) {
                      // 	$data_edu = $this->school_model->get_std_schl_course($crse_id);
-                        
+
 
                      // 	   if($tem_identify[$key]!=''){
                      // 	   	  $comment = $tem_identify[$key];
                      // 	   }else{
                      // 	   	  $comment = $data_edu['crse_title'];
                      // 	   }
-                     	  
+
                      // 	   $insert_edu =array('gen_id'         => $id,
                      // 	   	                  'crse_code'      => $data_edu['crse_code'],
                      // 	   	                  'crse_identify'  => $comment,
@@ -774,16 +777,16 @@ class School extends MX_Controller {
 			      	 page500();
 					 $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 			      }
-               				
+
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				if(($schl_id!='')&&($gen_id!='')){
-				    
-                  
+
+
 				    $data['schl_gen'] = $this->school_model->edit_generationID($gen_id);
                     $data['schl']     = $schl_id;
                     $data['gen_id']   = $gen_id;
-				    
+
 					$this->template->load('index_page',$data,'school');
 				}else {
 					page500();
@@ -792,13 +795,13 @@ class School extends MX_Controller {
 
 			}else if($process_action=='Edited' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes') { //Edit && Submit Form
 				$process_action='Edited';
-                           
+
 				    if(($schl_id!='')&&($gen_id!='')){
-				      
+
 				      //dieArray($_POST);
 				    	if(get_inpost('schl_gen[gen_status]')==''){
                           $status = "ปิด";
-                    
+
                         }else{
                           $status = "เปิด";
                         }
@@ -808,19 +811,19 @@ class School extends MX_Controller {
                      	                 'year_of_study' => get_inpost('schl_gen[year_of_study]'),
                      	                 'gen_status'    => $status
                      	                 );
-	   
+
                       $this->common_model->update('schl_info_generation',$update_gen,array('gen_id'=>$gen_id));
-				      
+
 				     // $tmp_edu     = get_inpost_arr('schl_info_edu[crse_code]');//จำนวนหลักสูตร
                      // $tem_identify = get_inpost_arr('schl_info_edu[crse_identify]');//ความคิดเห็นเจ้าหน้าที่
                      // $tem_update_edu = get_inpost_arr('edit_gduID');//จำนวนหลักสูตร ของการอัพเดท
-                      
-                     
+
+
 				      // if(!empty($tmp_edu)){
 
           //            	foreach ($tmp_edu as $key => $crse_id) {
           //            	$data_edu = $this->school_model->get_std_schl_course($crse_id);
-                        
+
 
           //            	   if($tem_identify[$key]!=''){
           //            	   	  $comment = $tem_identify[$key];
@@ -829,7 +832,7 @@ class School extends MX_Controller {
           //            	   }
 
           //            	   if(isset($tem_update_edu[$key])){
-                               
+
           //                      $update_edu =array('gen_id'         => $gen_id,
 	         //             	   	                  'crse_code'      => $data_edu['crse_code'],
 	         //             	   	                  'crse_identify'  => $comment,
@@ -843,7 +846,7 @@ class School extends MX_Controller {
 	         //             	    $this->common_model->update('schl_info_edu',$update_edu,array('edu_id'=>$tem_update_edu[$key]));
 
           //            	   }else{
-                     	  
+
 	         //             	   $insert_edu =array('gen_id'         => $gen_id,
 	         //             	   	                  'crse_code'      => $data_edu['crse_code'],
 	         //             	   	                  'crse_identify'  => $comment,
@@ -859,21 +862,21 @@ class School extends MX_Controller {
           //            	   }
 
           //            }
-				      
+
 				      redirect('school/generation_detail/Edit/'.$schl_id.'/'.$gen_id);
-					
+
 				  }else {
 					page500();
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 				  }
 
-                 
-									
+
+
 					/*$this->session->set_flashdata('msg',setMsg('011')); //Set Message code 011
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 				    $this->template->load('index_page',$data,'school');
 				    redirect('school/photo2/Edit/'.$schl_id,'refresh');*/
-          
+
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
 				/*$data_update = array();
 				$data_update['delete_user_id'] = getUser();
@@ -910,12 +913,12 @@ class School extends MX_Controller {
 		 $app_name = $usrpm['app_name'];
 		 $data['usrpm'] = $usrpm;
 		 $data['user_id'] = $user_id;
-         
+
          $tmp = $this->admin_model->getOnce_Application($usrpm['app_parent_id']); //Used for find root application
 			$data['head_title'] = $tmp['app_name'];
 			$data['title']      = $usrpm['app_name'];
 			$data['schl_id']    = $schl_id;
-		 
+
 
 		 $this->load->library('template',
 			 array('name'=>'admin_template1',
@@ -949,22 +952,22 @@ class School extends MX_Controller {
 
 			// dieArray($usrpm);
 			if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-			    
+
 			    if(($schl_id!='')&&($gen_id!='')){
 
 			    	$schl_stu = $this->school_model->get_student($schl_id,$gen_id);//แสดงข้อมูลนักเรียนที่ลงทะเบียน
                     $data['schl_stu']  = $schl_stu;
                     $data['schl_id']   = $schl_id;
                     $data['gen_id']    = $gen_id;
-                    
-				     
+
+
 				    $this->template->load('index_page',$data,'school');
 			    }else{
 			      page500();
 			      $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 			    }
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
-				  
+
 				  if(($schl_id!='')&&($gen_id!='')){
 
 				  	  if(get_inpost('tel_no_home')==''){
@@ -984,7 +987,7 @@ class School extends MX_Controller {
                       	                        'healthy_congenital_disease' => $healthy_congenital_disease,
                       	                        );
                       $this->common_model->update('pers_info',$update_pers_info,array('pers_id'=>get_inpost('pers_id')));
-			    	  
+
 			    	  $insert_schl_info_student = array('schl_id'       => $schl_id,
 			    	  	                                'gen_id'        => $gen_id,
 			    	  	                                'pers_id'       => get_inpost('pers_id'),
@@ -995,20 +998,20 @@ class School extends MX_Controller {
                      $this->session->set_flashdata('msg',setMsg('011')); //Set Message code 011
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 				     redirect('school/participant/Add/'.$schl_id.'/'.$gen_id,'refresh');
-				    
+
 			    }else{
 			      page500();
 			      $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 			    }
 
-               				
+
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				if(($schl_id!='')&&($gen_id!='')){
-				    
+
 				     echo $schl_id."<br>".$gen_id;
-				
-				
+
+
 					//$this->template->load('index_page',$data,'school');
 				}else {
 					page500();
@@ -1019,8 +1022,8 @@ class School extends MX_Controller {
 				$process_action='Edited';
 
 				   if(($schl_id!='')&&($gen_id!='')){
-				    
-				       			    
+
+
 				     if(get_inpost('tel_no_mobile')==''){
                         $tel_no_mobile = null;
 				  	  }else{
@@ -1038,8 +1041,8 @@ class School extends MX_Controller {
                       	                        'healthy_congenital_disease' => $healthy_congenital_disease,
                       	                        );
                       $this->common_model->update('pers_info',$update_pers_info,array('pers_id'=>get_inpost('pers_id')));
-				
-				
+
+
 					 $this->session->set_flashdata('msg',setMsg('011')); //Set Message code 011
 					 $this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 				     redirect('school/participant/Add/'.$schl_id.'/'.$gen_id,'refresh');
@@ -1047,9 +1050,9 @@ class School extends MX_Controller {
 					page500();
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Fail'); //Save Sign Out Log
 				}
-          
+
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
-				
+
 
 				$this->common_model->delete_where('schl_info_student','stu_id',$stu_id);
 				$this->session->set_flashdata('msg',setMsg('031')); //Set Message code 031
@@ -1187,7 +1190,7 @@ class School extends MX_Controller {
 
                 if($center->tel_no != '')
                 {
-                   $row[] = $center->tel_no; 
+                   $row[] = $center->tel_no;
            		}else{
            		 	$row[] = " - ";
            		}
@@ -1196,10 +1199,10 @@ class School extends MX_Controller {
            		$sum = 0;
            		if (!empty($qlc)){
            			foreach ($qlc as $key => $value) {
-           				           
+
       					$sum_data  = $this->common_model->query("SELECT qlc_kpi_score FROM std_qlc_kpi WHERE qlc_kpi_code = {$value['qlc_kpi_code']}")->row_array();
       					$sum = $sum_data['qlc_kpi_score'] + $sum;
-      					
+
            			}
            		}
 
@@ -1208,7 +1211,7 @@ class School extends MX_Controller {
 			    // $row[] = $progress .' <div class="progress">
        //                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="'.$sum.'"
        //                    aria-valuemin="0" aria-valuemax="100" style="width:'.$sum.'%">
-       //                      สำเร็จ '.$sum.'% 
+       //                      สำเร็จ '.$sum.'%
        //                    </div>
        //                  </div>';
 
@@ -1218,7 +1221,7 @@ class School extends MX_Controller {
 										</div>
 									</div>';
 
-			   
+
 
 
 			    $tmp = $this->admin_model->getOnce_Application(3);
@@ -1373,7 +1376,7 @@ class School extends MX_Controller {
 			$data['usrpm'] = $usrpm;
 			$data['user_id'] = $user_id;
 
-			
+
 
 			$this->load->library('template',
 				array('name'=>'admin_template1',
@@ -1399,8 +1402,8 @@ class School extends MX_Controller {
             /*-- End select2 style --*/
 
             set_js_asset_footer('mapmarker.js','webconfig'); //Set JS mapmarker.js --
-            
-			
+
+
 			set_js_asset_footer('center_info.js','school'); //Set JS sufferer_form1.js
 
 			$data['process_action'] = $process_action;
@@ -1416,20 +1419,20 @@ class School extends MX_Controller {
 			);
 
 			if($process_action=='Add' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				$data['center_info'] = $this->clr_schlInfo_center();
                 $data['std_model'] = $this->school_model->get_std_model();//แสดงคุณสมบัติต้นแบบ
                 $data['std_qlc'] = $this->school_model->getAll_Center_qlc();//show qlc
-              
+
 				$this->template->load('index_page',$data,'school');
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
-			
+
 			}else if($process_action=='Added' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes'){ //Add && Submit Form
 
 
 					$data_insert 					= array();
 				    $data_insert 					= @get_inpost_arr('center_info');
-			
+
 				     // dieArray($qlc_insert);
 				    $data_insert['insert_user_id'] 	= getUser();
 					$data_insert['insert_org_id'] 	= get_session('org_id');
@@ -1458,9 +1461,9 @@ class School extends MX_Controller {
 
 					redirect('school/center_list','refresh');
 
-				
+
 			}else if($process_action=='Edit' && get_inpost('bt_submit')=='' && $usrpm['perm_status']=='Yes') {
-				
+
 				 if($schl_id!=''){
 
 						$data['center_info'] = $this->school_model->getAll_CenterInfo($schl_id);
@@ -1475,7 +1478,7 @@ class School extends MX_Controller {
 			}else if($process_action=='Edited' && get_inpost('bt_submit')!='' && $usrpm['perm_status']=='Yes') { //Edit && Submit Form
 				//dieArray($_POST);
 				$process_action='Edited';
-                    
+
 				    $data_insert 					= array();
 				    $data_insert 					= @get_inpost_arr('center_info');
 				    $data_insert['update_user_id'] 	= getUser();
@@ -1483,9 +1486,9 @@ class School extends MX_Controller {
 					$data_insert['update_datetime'] = getDatetime();
 
 					 $this->common_model->update('schl_qlc_info',$data_insert,array('qlc_id'=>$schl_id));
-                    
+
                     $update_qlc = @get_inpost_arr('qlc');//จำนวนเจ้าหน้าที่ที่มีการเพิ่มอยู่แล้ว
-					
+
 					$this->common_model->delete_where("schl_qlc_kpi",'qlc_id',$schl_id);
                     if(!empty($update_qlc)){
 						 foreach ($update_qlc as $key_model => $val_model) {
@@ -1504,7 +1507,7 @@ class School extends MX_Controller {
 					$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
 
 					redirect('school/center_info/Edit/'.$schl_id,'refresh');
-			
+
 
 			}else if($process_action=='Delete' && $usrpm['perm_status']=='Yes') { //Delete process
 				 //Delete process
@@ -1515,7 +1518,7 @@ class School extends MX_Controller {
 
                 $this->common_model->update('schl_qlc_info',$data_update,array('qlc_id'=>$schl_id));
                 $this->common_model->delete_where("schl_qlc_kpi",'qlc_id',$schl_id);
-				
+
 
 				$this->session->set_flashdata('msg',setMsg('031')); //Set Message code 031
 				$this->webinfo_model->LogSave($app_id,$process_action,'Sign Out','Success'); //Save Sign Out Log
@@ -1529,5 +1532,5 @@ class School extends MX_Controller {
 		}
 
 	}
-	
+
 }

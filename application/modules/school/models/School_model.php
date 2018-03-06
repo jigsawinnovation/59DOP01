@@ -2,13 +2,16 @@
 	class School_model extends CI_Model {
             var $column_search = array(); //set column field database for datatable searchable
 
-    var $order = array('insert_datetime' => 'DESC','update_datetime','DESC'); // default order 
+    var $order = array('insert_datetime' => 'DESC','update_datetime','DESC'); // default order
         function __construct() {
             parent::__construct();
         }
 
         public function getAll_schlInfo() {
-            return $this->common_model->custom_query("SELECT * FROM schl_info WHERE delete_user_id IS NULL AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')");
+            $array_data = $this->common_model->custom_query("SELECT * FROM schl_info WHERE delete_user_id IS NULL AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')");
+						//$query = $this->db->get();
+		        set_session('last_sql_filtered',$this->db->last_query());
+						return $array_data;
         }
 
         public function getAll_generationInfo($schl_id=0) {
@@ -27,7 +30,7 @@
              return $this->common_model->custom_query("SELECT * FROM schl_info_student LEFT JOIN pers_info ON schl_info_student.pers_id = pers_info.pers_id WHERE schl_info_student.schl_id = {$schl_id} AND schl_info_student.gen_id = {$gen_id}");
         }
 
-       
+
         public function getOnce_schlInfo($schl_id=0) {
             return rowArray($this->common_model->custom_query("SELECT * FROM schl_info WHERE schl_id = {$schl_id}"));
         }
@@ -72,7 +75,7 @@
 
         public function getAll_reqChanel() {
             return $this->common_model->getTableOrder('std_req_channel', 'chn_id', 'ASC');
-        }        
+        }
 
         public function getOnce_reqChanel($chn_code='') {
             return rowArray($this->common_model->get_where_custom('std_edu_level', 'chn_code', $chn_code));
@@ -81,18 +84,18 @@
         public function get_std_schl_course($crse_id=''){
             return $this->common_model->query("SELECT * FROM std_schl_course WHERE crse_id ={$crse_id}")->row_array();
 
-        } 
+        }
 
         public function getAll_CenterInfo($id = '') {
             if ($id != ''){
                 $query = $this->common_model->query("SELECT * FROM schl_qlc_info WHERE qlc_id ={$id} AND delete_user_id IS NULL AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')");
-               
+
                 $data = $query->row_array();
                 return $data;
             }else{
                 return $this->common_model->custom_query("SELECT * FROM schl_qlc_info WHERE delete_user_id IS NULL AND (delete_datetime IS NULL || delete_datetime = '0000-00-00 00:00:00')");
             }
-       
+
         }
 
 
@@ -107,7 +110,7 @@
         $user_id = get_session('user_id');
         $app_id = 59;
         $usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
-        
+
          if($usrpm['perm_view']=='All'){//เห็นข้อมูลทั้งหมด
             $this->db->where("(delete_user_id IS NULL AND delete_datetime IS NULL)");
          }else if($usrpm['perm_view']=='Organization'){//เห็นข้อมูลเฉพาะองค์กรของตนเองเท่านั้น
@@ -121,7 +124,7 @@
             if($col['search']['value']) // if datatable send POST for search
             {
                 $arr = @explode('/', $col['search']['value']);
-                if(count($arr) > 2){    
+                if(count($arr) > 2){
                     $this->db->like($col['name'], dateChange($col['search']['value'],0));
                     // $this->db->like($col['name'], $col['search']['value']);
                     // dieFont(dateChange($col['search']['value'],1));
@@ -145,7 +148,7 @@
 /*      if(isset($_POST['order'])) // here order processing
         {
             $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-        } 
+        }
         else if(isset($this->order))
         {
             $order = $this->order;
@@ -165,7 +168,7 @@
             $this->db->limit($_POST['length'], $_POST['start']);
         }
         //$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
-        $query = $this->db->get(); 
+        $query = $this->db->get();
         return $query->result();
     }
 
@@ -173,7 +176,11 @@
     {
         $this->_get_datatables_query();
         //$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
-        $query = $this->db->get(); 
+
+        $query = $this->db->get();
+
+        set_session('last_sql_filtered',$this->db->last_query()); //
+
         return $query->num_rows();
     }
 
@@ -181,7 +188,7 @@
     {
         $this->db->from('schl_qlc_info');
         //$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
-        return $this->db->count_all_results(); 
+        return $this->db->count_all_results();
     }
   //องค์ประกอบ
         public function getAll_Center_qlc() {

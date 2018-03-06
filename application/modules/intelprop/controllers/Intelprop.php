@@ -1421,7 +1421,7 @@ class Intelprop extends MX_Controller
                  $data_photo_head = array();
 
                  $name_photo_head = $this->files_model->getOnceImg_branch("wisd_photo_head", 'assets/modules/intelprop/images');
-               
+
                                 if ($name_photo_head != "") {
                                    $data_photo_head['branch_id']          = $id_branch;
                                    $data_photo_head['wisdom_photo_file']  = $name_photo_head;

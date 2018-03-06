@@ -145,7 +145,11 @@ class Intelprop_list1_model extends CI_Model {
 	{
 		$this->_get_datatables_query();
 		//$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
+		
 		$query = $this->db->get();
+		
+		set_session('last_sql_filtered',$this->db->last_query()); //
+		
 		return $query->num_rows();
 	}
 

@@ -18,7 +18,17 @@ class Report_mock extends CI_Model
     function reportA0($id = '')//for excel
     {
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getDiffInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getDiffInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
 
         if(!$results){
             return null;
@@ -31,7 +41,13 @@ class Report_mock extends CI_Model
             $rows=$results;
         }
         foreach ($rows as $index=>$result){
-            $person = $this->report_model->getPersInfo($result->req_pers_id);
+
+            //
+            $person = [];
+            if($result->req_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->req_pers_id);
+            //
+
             $new=array();
             $new[]=$index+1;
             $new[]=$person->pid;
@@ -65,7 +81,12 @@ class Report_mock extends CI_Model
             }
             $new[]=$visit_channel;
 
-            $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -84,7 +105,13 @@ class Report_mock extends CI_Model
             }
             }
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -142,7 +169,18 @@ class Report_mock extends CI_Model
     function reportB0($id = '')//for excel
     {
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getAdmInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getAdmInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -156,7 +194,13 @@ class Report_mock extends CI_Model
         foreach ($rows as $index=>$result){
             $new=array();
             $new[]=$index+1;
-            $person = $this->report_model->getPersInfo($result->req_pers_id);
+
+            //
+            $person = [];
+            if($result->req_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->req_pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -181,7 +225,13 @@ class Report_mock extends CI_Model
             $new[]=$person->tel_no_mobile;
 
             $new[]=$result->chn_name;
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -199,7 +249,13 @@ class Report_mock extends CI_Model
                 $gender = "ไม่สามารถระบุได้";
             }}
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -255,7 +311,18 @@ class Report_mock extends CI_Model
     function reportC0($id = array())//for excel
     {
         $id=($id)?(!is_array($id))?array($id):$id:"";
-        $results = $this->report_model->getFnrlInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getFnrlInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -268,7 +335,13 @@ class Report_mock extends CI_Model
             $rows=$results;
         }
         foreach ($rows as $index=>$result){
-            $person = $this->report_model->getPersInfo($result->req_pers_id);
+
+            //
+            $person = [];
+            if($result->req_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->req_pers_id);
+            //
+
             $new=array();
             $new[]=$index+1;
             $new[]=$person->pid;
@@ -295,7 +368,13 @@ class Report_mock extends CI_Model
             $new[]=$result->req_relation;
             $new[]=$person->tel_no_mobile;
             $new[]=$result->chn_name;
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -314,7 +393,13 @@ class Report_mock extends CI_Model
             }
             }
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -329,7 +414,13 @@ class Report_mock extends CI_Model
             $new[]=$result->death_certificate_no;
             $new[]=$result->death_certificate_org;
             $new[]=dateTH($result->date_of_death_certificate);
-            $person = $this->report_model->getPersInfo($result->req_pers_aprv_pers_id);
+
+            //
+            $person = [];
+            if($result->req_pers_aprv_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->req_pers_aprv_pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -352,7 +443,13 @@ class Report_mock extends CI_Model
             $new[]=$result->req_pers_aprv_position;
             $new[]=$result->req_pers_aprv_org;
             $new[]=$person->tel_no_mobile;
-            $person = $this->report_model->getPersInfo($result->not_survey_aprv_pers_id);
+
+            //
+            $person = [];
+            if($result->not_survey_aprv_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->not_survey_aprv_pers_id);
+            //
+
             $new[]=@$person->pid;
             $new[]=@$person->prename_th.@$person->pers_firstname_th." ".@$person->pers_lastname_th;
             $new[]=dateTH(@$person->date_of_birth);
@@ -388,7 +485,18 @@ class Report_mock extends CI_Model
     function reportD0($id = '')//for excel
     {
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getImpvHomeInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getImpvHomeInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -404,7 +512,13 @@ class Report_mock extends CI_Model
             $new=array();
             $new[]=$index+1;
             $new[]=dateTH($result->date_of_svy);
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -422,7 +536,13 @@ class Report_mock extends CI_Model
                     $gender = "ไม่สามารถระบุได้";
                 }}
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -446,7 +566,13 @@ class Report_mock extends CI_Model
             $new[]=$result->land_tenure." ".$result->land_tenure_remark;
             $new[]=$result->staff_review;
             $new[]=dateTH($result->date_of_svy);
-            $person = $this->report_model->getPersInfo($result->cns_pers_id);
+
+            //
+            $person = [];
+            if($result->cns_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->cns_pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -483,7 +609,18 @@ class Report_mock extends CI_Model
     function reportD6($id = '')//for excel
     {
        // $id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getImpvPlaceInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getImpvPlaceInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -499,7 +636,13 @@ class Report_mock extends CI_Model
             $new=array();
             $new[]=$index+1;
             $new[]=dateTH($result->date_of_svy);
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -517,7 +660,13 @@ class Report_mock extends CI_Model
                     $gender = "ไม่สามารถระบุได้";
                 }}
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -534,7 +683,12 @@ class Report_mock extends CI_Model
             $new[]=$result->staff_review;
             $new[]=dateTH($result->date_of_svy);
 
-             $person = $this->report_model->getPersInfo($result->cns_pers_id);
+            //
+            $addr = [];
+            if($result->cns_pers_id!='')
+                $person = $this->report_model->getPersInfo($result->cns_pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -568,7 +722,18 @@ class Report_mock extends CI_Model
     function reportE0($id = '')//for excel
     {
        // $id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getWisdInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getWisdInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -585,7 +750,13 @@ class Report_mock extends CI_Model
             $new = array();
             $new[] = $index + 1;
             $new[]=dateTH($result->date_of_reg);
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -604,7 +775,13 @@ class Report_mock extends CI_Model
                 }
             }
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -648,7 +825,18 @@ class Report_mock extends CI_Model
     function reportF0($id = '')//for excel
     {
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getVoltInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getVoltInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -664,7 +852,13 @@ class Report_mock extends CI_Model
             $new = array();
             $new[] = $index + 1;
             $new[]=dateTH($result->date_of_reg);
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -683,7 +877,13 @@ class Report_mock extends CI_Model
                 }
             }
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;
@@ -713,7 +913,17 @@ class Report_mock extends CI_Model
     function reportJ0($id = '')//for excel
     {
        // $id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getPersInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getPersInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
         if(!$results){
             return null;
         }
@@ -725,9 +935,16 @@ class Report_mock extends CI_Model
         }else{
             $rows=$results;
         }
-        foreach ($rows as $index=>$person) {
+
+        foreach ($rows as $index=>$result) {
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new=array();
-            $new[] = $index + 1;
+            $new[] = $index+1;
             $new[]=dateTH(substr($person->insert_datetime,0,10));
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
@@ -751,7 +968,13 @@ class Report_mock extends CI_Model
             $new[]=$person->relg;
             $new[]=$person->father_pid;
             $new[]=$person->mother_pid;
-            $addr = $this->report_model->getAddr($person->reg_addr_id);
+
+            //
+            $addr = [];
+            if($person->reg_addr_id!='')
+                $addr = $this->report_model->getAddr($person->reg_addr_id);
+            //
+
             $new[]=@$addr->addr_code;
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
@@ -761,7 +984,13 @@ class Report_mock extends CI_Model
             $new[]=@$addr->locality;
             $new[]= @$addr->district;
             $new[]=@$addr->province;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_code;
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
@@ -773,7 +1002,13 @@ class Report_mock extends CI_Model
             $new[]=@$addr->province;
 
             $new[]=$person->pre_addr_status;
-            $new[]=$person->pre_addr_estate." ".$person->pre_addr_estate_identify;;
+
+            //
+            //$new = [];
+            if($person->pre_addr_estate_identify!='')
+                $new[]=$person->pre_addr_estate." ".$person->pre_addr_estate_identify;
+            //
+
             $new[]=$person->tel_no;
             $new[]=@$person->tel_no_mobile;
             $new[]=@$person->fax_no;
@@ -805,7 +1040,6 @@ class Report_mock extends CI_Model
                 $new[]="";
             }
 
-
             array_push($data,$new);
         }
 
@@ -813,7 +1047,17 @@ class Report_mock extends CI_Model
     }
     function reportG0($id =''){//for excel
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getSchInfo($id);
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getSchInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -936,7 +1180,17 @@ class Report_mock extends CI_Model
      }
     function reportL0($id =array()){//for excel
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getJobVacancy($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getJobVacancy($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
 
         if(!$results){
             return null;
@@ -974,7 +1228,18 @@ class Report_mock extends CI_Model
     function reportL1($id = array())//for excel
     {
         //$id=(!is_array($id))?array($id):$id;
-        $results = $this->report_model->getJobInfo($id);
+
+        //
+        $results = [];
+        if(get_session('last_sql_filtered')=='') {
+            $results = $this->report_model->getJobInfo($id);
+        }else {
+            $limit=(@$_GET['sheet']-1)*500;
+            $limit = $limit<0?0:$limit;
+            $results = $this->db->query(get_session('last_sql_filtered').' limit '.$limit.',500')->result();
+        }
+        //
+
         if(!$results){
             return null;
         }
@@ -990,7 +1255,13 @@ class Report_mock extends CI_Model
             $new=array();
             $new[] = $index + 1;
             $new[]=dateTH($result->date_of_reg);
-            $person = $this->report_model->getPersInfo($result->pers_id);
+
+            //
+            $person = [];
+            if($result->pers_id!='')
+                $person = $this->report_model->getPersInfo($result->pers_id);
+            //
+
             $new[]=$person->pid;
             $new[]=$person->prename_th.$person->pers_firstname_th." ".$person->pers_lastname_th;
             $new[]=dateTH($person->date_of_birth);
@@ -1009,7 +1280,13 @@ class Report_mock extends CI_Model
                 }
             }
             $new[]= $gender;
-            $addr = $this->report_model->getAddr($person->pre_addr_id);
+
+            //
+            $addr = [];
+            if($person->pre_addr_id!='')
+                $addr = $this->report_model->getAddr($person->pre_addr_id);
+            //
+
             $new[]=@$addr->addr_home_no;
             $new[]= @$addr->addr_moo;
             $new[]= @$addr->alley;

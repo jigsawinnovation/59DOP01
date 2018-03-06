@@ -58,11 +58,11 @@
                  <h3><label>อายุ :</label></h3>
           </div>
             <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
-              <input type="text" data-column="8" class="form-control column_filter" style="width: 80px;" id="col8_filter" name="start_age" value="0" />
+              <input type="text" data-column="4" class="form-control column_filter" style="width: 80px;" id="col4_filter" name="start_age" value="0" />
             </div>
             <div class="col-xs-12 col-sm-1" style="padding-top: 12px;"><h3><label>ถึง</label></h3></div>
             <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
-              <input type="text" data-column="9" class="form-control column_filter" style="width: 80px;" id="col9_filter" name="end_age" value="100" />
+              <input type="text" data-column="5" class="form-control column_filter" style="width: 80px;" id="col5_filter" name="end_age" value="100" />
             </div>
             <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
                    <h3><label>ปี</label></h3>
@@ -225,12 +225,6 @@
           $('#col9_filter').val($(this).val());
     });
 
-    // ช่วงอายุ
-    $('#age_str,#age_end').change(function(){
-        var value_age = $('#age_str').val()+";"+$('#age_end').val();
-        // console.log(value_age);
-        $('#col3_filter').val(value_age);
-    });
 
     //เลือกถึงวันที่ สถานะดำเนินการ
     $('#datepicker').change(function(){

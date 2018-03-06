@@ -98,7 +98,11 @@ class Individual extends MX_Controller
 
 
                 $row[] = '<center><a href="'.base_url('individual/individual_info/'.$manage_transfer->pers_id).'"><i  class="fa fa-user" aria-hidden="true"></i></a><center>';
-
+                $row[] = '';
+                $row[] = '';
+                /*$row[] = '';
+                $row[] = '';
+                $row[] = ''; */
                 $data[] = $row;
             }
 

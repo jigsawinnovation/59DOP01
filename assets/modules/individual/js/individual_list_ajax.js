@@ -9,6 +9,33 @@ $(document).ready(function() {
            "url": dtable_url,
            "type": "POST",
            data:{ 'request':'get_users_invoices', 'csrf_dop': csrf_hash},
+           //
+           complete: function(response) {
+             //export_setting(response.responseJSON.recordsFiltered);
+             rs = response.responseJSON.recordsFiltered/500;
+             if(response.responseJSON.recordsFiltered%500>0) {
+               rs = parseInt(rs)+1;
+             }
+             rs = rs=='Undefined'?0:rs;
+             html = "<h3>รายการส่งออกข้อมูล ทั้งหมด "+Number(response.responseJSON.recordsFiltered.toFixed(1)).toLocaleString()+" รายการ จำนวน "+rs+" ไฟล์ </h3>";
+             //$("#lnkModel .modal-body").html("<h3>รายการส่งออกข้อมูล จำนวน "+response.responseJSON.recordsFiltered+" รายการ</h3>");
+             if(rs>0) {
+               html+= "<h3><ul style='list-style:none'>";
+               tmp = 0;
+               for(i=0;i<rs;i++) {
+                 sort = parseInt(500*((i-1)+1))+1;
+                 if((i+1)>=rs) {
+                   dest = response.responseJSON.recordsFiltered;
+                 }else {
+                   dest = parseInt(500*(i+1));
+                 }
+                 html+="<li><a href='"+base_url+"report/J0/xls?sheet="+(i+1)+"' target='_blank'>ไฟล์ที่ "+(i+1)+" รายการที่ "+Number(sort.toFixed(1)).toLocaleString()+"-"+Number(dest.toFixed(1)).toLocaleString()+"</a></li>";
+               }
+               $("#lnkModel .modal-body").html(html+"</ul></h3>");
+             }else {
+             }
+           }
+           //
       },
       //Set column definition initialisation properties.
       // "columnDefs": [{
@@ -17,13 +44,16 @@ $(document).ready(function() {
       // }],
       "columnDefs": [
         // { "name": "",   "targets": 0 },
-        // { "name": "B.pid",  "targets": 1 },
-        // { "name": "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)", "targets": 2 },
-        // { "name": "D.gender_code",  "targets": 3 ,"visible": false},    
+         { "name": "A.pid",  "targets": 1 },
+         { "name": "CONCAT(A.pers_firstname_th,' ', A.pers_lastname_th)", "targets": 2 },
+        // { "name": "D.gender_code",  "targets": 3 ,"visible": false},
         // { "name": "B.date_of_birth",    "targets": 4 },
         // { "name": "A.date_of_req",    "targets": 5 },
         // { "name": "A.date_of_visit",    "targets": 6 },
-        // { "name": "A.date_of_pay",    "targets": 7 },          
+        // { "name": "A.date_of_pay",    "targets": 7 },
+        { "name": "start_age",    "targets": 4 },
+        { "name": "end_age",    "targets": 5},
+        //{ "name": "A.insert_org_id",    "targets": 10,"visible": false }
       ],
       "order": [[ 0, "desc" ]],
 
@@ -131,7 +161,7 @@ $(document).ready(function() {
         $('#dtable').DataTable().column(i).search(
             $('#col'+i+'_filter').val()
         ).draw();
-        console.log($('#col'+i+'_filter').val());
+        console.log('#col'+i+'_filter: '+$('#col'+i+'_filter').val());
 
     }
 
@@ -141,7 +171,7 @@ $(document).ready(function() {
         if($(this).val() != ''){
           filterColumn($(this).data('column'));
         }
-       
+
       });
       // table.draw();
     });
@@ -177,3 +207,10 @@ var opn = function(node) {
   $("#info").modal('show');
   //$('.m'+($(this).parent().parent().index()+1)).modal("show");
 });*/
+
+//
+$("#exportLnk").click(function(){
+  console.log('Export Dialog Opened');
+  $('#lnkModel').modal();
+});
+//

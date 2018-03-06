@@ -20,8 +20,6 @@ class Assist_list_model extends CI_Model {
 		$user_id = get_session('user_id');
 		$app_id = 2;
 		$usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
-
-
 		//if($count_field == ''){
 				$this->db->select("A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', IF(B.pers_lastname_th IS NOT NULL,B.pers_lastname_th,'')) as name");
 		//}else{
@@ -175,6 +173,9 @@ class Assist_list_model extends CI_Model {
 	{
 		$this->_get_datatables_query("COUNT(A.diff_id) AS count_row");
 		$query = $this->db->get();
+
+		set_session('last_sql_filtered',$this->db->last_query()); //
+
 		return $query->num_rows();
 		//$query = $this->db->get();
 		//$row = rowArray($this->common_model->custom_query($this->db->last_query()));

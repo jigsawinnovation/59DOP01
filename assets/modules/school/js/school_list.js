@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     table = $('#dtable').DataTable({
       // "searching": false,
+      
       "bSort" : false,
       "bLengthChange": false,
       "pageLength": 50,
@@ -26,7 +27,7 @@ $(document).ready(function() {
           "sLast":     '<i class="fa fa-step-forward" style="font-size: 12px;" aria-hidden="true"></i>'
         }
     },
-    
+
 
       });
        /*
@@ -52,7 +53,7 @@ $(document).ready(function() {
        */
 
 
-    
+
 
     function filterColumn (i) {
 
@@ -67,9 +68,9 @@ $(document).ready(function() {
           $('#col'+i+'_filter').val()
       ).draw();
       }
-      
+
     }
-    
+
     $("#filtersearch").on('click', function () {
       $('#dtable').DataTable().search();
       $('.column_filter').each(function() {

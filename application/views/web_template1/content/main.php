@@ -31,7 +31,7 @@
 	</div>
 </div>
 </div>
-	
+
 <div id="executive">
 	<div class="container">
 		<div class="row">
@@ -57,7 +57,7 @@
 		</div>
 	</div>
 </div>
-	
+
 <div id="statistics">
 	<div class="container">
 		<div class="row">
@@ -79,7 +79,7 @@
 						</a>
 					</div>
 					<div class="col-md-4" style="background-image: url('assets/images/building_PNG70.png'); background-size: 100%; background-repeat: no-repeat; padding-top: 100px;">
-						<a href="https://gateway.dop.go.th/admin_access" class="btn btn-default btn-block btn-statistics" target="_blank">
+						<a href="https://gateway.dop.go.th/admin_login" class="btn btn-default btn-block btn-statistics" target="_blank">
 							<span class="font26 fontbold">บูรณาการข้อมูล</span><br><span class="font26">(DATA GATEWAY)</span>
 						</a>
 					</div>
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 </div>
-		
+
 <div id="news">
 	<div class="container">
 		<div class="row">
@@ -111,12 +111,12 @@
 						</div>
 					</div>
 				</div>
-				<?php 
+				<?php
 				if($i%3 == 0){
 					echo '<div class="clearfix"></div>';
 				}
 				$i++;
-				
+
 				} ?>
 				<div class="clearfix"></div>
 			</div>
@@ -134,7 +134,7 @@
 					</div>
 					<div class="col-md-6 col-lg-12">
 						<div id="list_event">
-							<?php foreach($event AS $v) { 
+							<?php foreach($event AS $v) {
 								$day = array('day1','day3', 'day6');
 								$key = array_rand($day, 1);
 							?>
@@ -162,7 +162,7 @@
 		</div>
 	</div>
 </div>
-		
+
 <div id="knowledge">
 	<div class="container">
 		<p class="text-center font36 fontbold">ผู้ สู ง อ า ยุ ที่ มี ภู มิ ปั ญ ญ า</p>
@@ -201,7 +201,7 @@
 		</div>
 	</div>
 </div>
-		
+
 <div id="develop">
 	<div class="container">
 		<p class="text-center font36 fontbold">ศู น ย์ พั ฒ น า ก า ร จั ด ส วั ส ดิ ก า ร สั ง ค ม ผู้ สู ง อ า ยุ</p>
@@ -235,7 +235,7 @@
 		</div>
 	</div>
 </div>
-	
+
 <div id="job">
 	<div class="container">
 		<div class="row">
@@ -251,8 +251,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php 
-							$i=0; foreach ($jobs AS $v) { 
+						<?php
+							$i=0; foreach ($jobs AS $v) {
 						?>
 						<tr class="font20 <?php echo ($i%2 == 1)?'t1':'t2'; ?>">
 							<td><?=formatDateThai($v['date_of_post'])?></td>
@@ -273,7 +273,7 @@
 		</div>
 	</div>
 </div>
-	
+
 <div id="side">
 	<div class="container">
 		<p class="font32 text-center fontbold">ห น่ ว ย ง า น ภ า คี</p>

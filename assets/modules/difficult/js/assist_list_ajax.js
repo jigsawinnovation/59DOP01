@@ -1,4 +1,5 @@
 var table;
+
 $(document).ready(function() {
 
     table = $('#dtable').DataTable({
@@ -8,7 +9,35 @@ $(document).ready(function() {
       "ajax": {
            "url": dtable_url,
            "type": "POST",
-           data:{ 'request':'get_users_invoices', 'csrf_dop': csrf_hash},
+           data:{ 'request':'get_users_invoices',
+          'csrf_dop': csrf_hash},
+          //
+          complete: function(response) {
+            //export_setting(response.responseJSON.recordsFiltered);
+            rs = response.responseJSON.recordsFiltered/500;
+            if(response.responseJSON.recordsFiltered%500>0) {
+              rs = parseInt(rs)+1;
+            }
+            rs = rs=='Undefined'?0:rs;
+            html = "<h3>รายการส่งออกข้อมูล ทั้งหมด "+Number(response.responseJSON.recordsFiltered.toFixed(1)).toLocaleString()+" รายการ จำนวน "+rs+" ไฟล์ </h3>";
+            //$("#lnkModel .modal-body").html("<h3>รายการส่งออกข้อมูล จำนวน "+response.responseJSON.recordsFiltered+" รายการ</h3>");
+            if(rs>0) {
+              html+= "<h3><ul style='list-style:none'>";
+              tmp = 0;
+              for(i=0;i<rs;i++) {
+                sort = parseInt(500*((i-1)+1))+1;
+                if((i+1)>=rs) {
+                  dest = response.responseJSON.recordsFiltered;
+                }else {
+                  dest = parseInt(500*(i+1));
+                }
+                html+="<li><a href='"+base_url+"report/A0/xls?sheet="+(i+1)+"' target='_blank'>ไฟล์ที่ "+(i+1)+" รายการที่ "+Number(sort.toFixed(1)).toLocaleString()+"-"+Number(dest.toFixed(1)).toLocaleString()+"</a></li>";
+              }
+              $("#lnkModel .modal-body").html(html+"</ul></h3>");
+            }else {
+            }
+          }
+          //
       },
       //Set column definition initialisation properties.
       // "columnDefs": [{
@@ -26,7 +55,7 @@ $(document).ready(function() {
         { "name": "A.date_of_pay",    "targets": 7 },
         { "name": "start_age",    "targets": 8 },
         { "name": "end_age",    "targets": 9 },
-        { "name": "A.insert_org_id",    "targets": 10 ,"visible": false}
+        { "name": "A.insert_org_id",    "targets": 10 }
       ],
       "order": [[ 0, "desc" ]],
 
@@ -180,3 +209,10 @@ var opn = function(node) {
   $("#info").modal('show');
   //$('.m'+($(this).parent().parent().index()+1)).modal("show");
 });*/
+
+//
+$("#exportLnk").click(function(){
+  console.log('Export Dialog Opened');
+  $('#lnkModel').modal();
+});
+//

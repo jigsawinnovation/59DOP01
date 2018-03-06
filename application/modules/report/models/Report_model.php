@@ -76,7 +76,9 @@ class Report_model extends CI_Model{
         if($id){
             $query->where_in('pers_id',$id);
         }
-        $query->limit(100);
+        
+        $query->limit(500);
+
             $result=$query->get();
         if($result){
             if($result->num_rows()>1) {
@@ -174,7 +176,7 @@ class Report_model extends CI_Model{
         if($id){
             $query->where_in('diff_id',$id);
         }
-        $query->limit(100);
+        $query->limit(500); //
         $result= $query->get();
         if($result){
            if($result->num_rows()>1) {
@@ -245,7 +247,7 @@ class Report_model extends CI_Model{
 if($id){
     $query->where_in('adm_id',$id);
 }
-        $query->limit(100);
+        $query->limit(500);
        $result=    $query->get();
         if($result){
             if($result->num_rows()>1) {
@@ -278,7 +280,7 @@ if($id){
         if($id){
             $query->where_in('fnrl_id',$id);
         }
-        $query->limit(100);
+        $query->limit(500);
         $result= $query->get();
 
         if($result){
@@ -298,7 +300,11 @@ if($id){
         if($id){
             $query->where_in('imp_home_id',$id);
         }
-        $query->limit(100);
+        
+        //
+        $query->limit(500);
+        //
+
             $result=$query->get();
         if($result){
             if($result->num_rows()>1) {
@@ -328,7 +334,7 @@ if($id){
         if($id){
             $query->where_in('impv_place_id',$id);
         }
-        $query->limit(100);
+        $query->limit(500);
         $result=$query->get();
         if($result){
             if($result->num_rows()>1) {
@@ -387,7 +393,7 @@ if($id){
             if($id){
                $query->where_in('knwl_id',$id);
             }
-        $query->limit(100);
+        $query->limit(500);
             $result=$query->get();
         if($result){
             if($result->num_rows()>1) {
@@ -423,7 +429,7 @@ if($id){
             if($id){
                 $query->where_in('volt_id',$id);
             }
-        $query->limit(100);
+        $query->limit(500);
            $result= $query->get();
         if($result){
             if($result->num_rows()>1) {

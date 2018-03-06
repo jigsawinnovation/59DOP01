@@ -1,6 +1,3 @@
- <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.css")?>" type="text/css"  />
- <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.css")?>" type="text/css"  />
- <link rel="stylesheet" href="<?php echo base_url("assets/plugins/Static_Full_Version/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css")?>" type="text/css"  />
 
 <!-- search-->
   <div class="collapse" id="collapseExample">
@@ -45,12 +42,12 @@
             <h3><label for="col3_filter">เพศ:</label></h3>
           </div>
           <div class="col-xs-12 col-sm-3" style="padding-top: 12px;">
-          
+
                  <select  class="form-control" id="gender">
-                   <?php 
+                   <?php
                         $gender = $this->common_model->custom_query('SELECT * FROM std_gender');
                         foreach ($gender as $key_gen => $value_gen) {
-                        //$name_gen = explode(" ",$value_gen['gender_name']);                                           
+                        //$name_gen = explode(" ",$value_gen['gender_name']);
                    ?>
                         <option value="<?php echo $value_gen['gender_code']; ?>" ><?php echo $value_gen['gender_name']; ?></option>
                   <?php } ?>
@@ -59,13 +56,16 @@
           <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
                  <h3><label>อายุ :</label></h3>
           </div>
-          <div class="col-xs-12 col-sm-3">
-              
-             <input type="text" id="range" value="" name="range" />
-          </div>
-          <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
-                 <h3><label>ปี</label></h3>
-          </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+              <input type="text" data-column="4" class="form-control column_filter" style="width: 80px;" id="col4_filter" name="start_age" value="0" />
+            </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;"><h3><label>ถึง</label></h3></div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+              <input type="text" data-column="5" class="form-control column_filter" style="width: 80px;" id="col5_filter" name="end_age" value="100" />
+            </div>
+            <div class="col-xs-12 col-sm-1" style="padding-top: 12px;">
+                   <h3><label>ปี</label></h3>
+            </div>
         </div>
 
         <div class="form-group row">
@@ -91,7 +91,7 @@
               </div>
             </div>
 
-            <input type="hidden" data-column="3" class="column_filter" id="col3_filter"> 
+            <input type="hidden" data-column="3" class="column_filter" id="col3_filter">
             <input type="hidden" data-column="4" class="column_filter" id="col4_filter">
             <input type="hidden" data-column="5" class="column_filter" id="col5_filter">
             <input type="hidden" data-column="6" class="column_filter" id="col6_filter">
@@ -131,7 +131,7 @@
            <div class="col-xs-12 col-sm-8">&nbsp;</div>
            <div class="col-xs-12 col-sm-4 right" style="padding-right: 3px;">
                <button id="filtersearch" class="btn btn-primary btn-save" type="button"  title="ค้นหา" style=" background-color: #2f4050;border: 1px;"><i class="fa fa-search" aria-hidden="true"></i> ค้นหา</button>
-               <button id="btnclear" class="btn btn-primary  btn-cancel" type="button" title="ค้นหา" style=" background-color: #2f4050;border: 1px;"><i class="fa fa-refresh" aria-hidden="true"></i> ล้างค่า</button>
+               <a href="<?php echo base_url(''.uri_seg(1).'/'.uri_seg(2)); ?>"    class="btn btn-primary  btn-cancel" type="button" title="ค้นหา" style=" background-color: #2f4050;border: 1px;"><i class="fa fa-refresh" aria-hidden="true"></i> ล้างค่า</a>
            </div>
         </div>
 
@@ -145,23 +145,7 @@
 
     $(function () {
 
-    $("#range").ionRangeSlider({
-          type: "double",
-          min: 1,
-          max: 100,
-          from: 60,
-          to: 80,
-          prefix: "",
-          postfix: " ปี",
-          decorate_both: false,
-          values_separator: " to ",
-          grid: true,
 
-          onChange:function(data){
-            $('#col4_filter').val($('#range').val());
-          }
-        });
-    
     //เช็คกรณีไม่ระบุเลขบัตรประจำตัวประชาชน
     $('#disablepid').on('change',function(){
         if($(this).prop('checked')){
@@ -170,7 +154,7 @@
           $('#col1_filter').prop('disabled','');
         }
     });
-    
+
     //กดล้างค่า
     $('#btnclear').click(function(){
 
@@ -195,14 +179,14 @@
 
 
     });
-    
+
     //เลือกเพศ
     $('#gender').change(function(){
-         // gender = $(this).val();       
+         // gender = $(this).val();
          // console.log(gender);
           $(this).prev().val($(this).val());
     });
-    
+
     //เลือกถึงวันที่
     $('#datepicker').change(function(){
         var statusoper  = $('#statusoper').val();
@@ -213,10 +197,10 @@
            $('#col6_filter').val(composedate);
          }else if(statusoper == 'date_of_pay'){
            $('#col7_filter').val(composedate);
-         } 
+         }
     });
 
-   
+
 
     });
 </script>

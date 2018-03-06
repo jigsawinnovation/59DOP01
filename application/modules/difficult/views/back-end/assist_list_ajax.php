@@ -26,10 +26,10 @@
       $tmp = $this->admin_model->getOnce_Application(6);
       $tmp1 = $this->admin_model->chkOnce_usrmPermiss(6,$user_id); //Check User Permission
     ?>
-    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-export"
+    <a id="exportLnk" class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-export"
     <?php if(!isset($tmp1['perm_status'])) {?>
             readonly
-          <?php }else{?> href="<?php echo site_url('report/A0/xls');?>"
+          <?php }else{?> href="#" onclick="$('#lnkModel').modal();"  
     <?php }?> title="<?php if(isset($tmp['app_name'])){echo $tmp['app_name'];}?>"><i style='font-size:14px;' class="fa fa-table" aria-hidden="true"></i> ส่งออกไฟล์</a>
 
     <!--
@@ -105,6 +105,30 @@
         <!--<p>ยืนยันการลบ?</p>-->
       </div>
       <div class="modal-footer">
+        <button id="btnYes" type="button" class="btn btn-danger">ตกลง</button>
+        <button style="margin-bottom: 5px;" type="button" aria-hidden="true" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Delete Model -->
+
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+<!-- Delete Modal -->
+<div id="lnkModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="color: #333; font-size: 20px;">ส่งออกไฟล์</h4>
+      </div>
+      <div class="modal-body">
+        ---
+      </div>
+      <div class="modal-footer" hidden="hidden">
         <button id="btnYes" type="button" class="btn btn-danger">ตกลง</button>
         <button style="margin-bottom: 5px;" type="button" aria-hidden="true" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
       </div>

@@ -16,7 +16,7 @@ class Volunteer_list_model extends CI_Model {
 
 	private function _get_datatables_query()
 	{
-
+		
 
 		//$this->db->select("A.*,B.*,C.*,D.*,E.*,F.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name");
 		$this->db->select("A.*,B.*,C.*,D.*,E.*,G.*,CONCAT(B.pers_firstname_th, ' ', B.pers_lastname_th) as name");
@@ -33,7 +33,7 @@ class Volunteer_list_model extends CI_Model {
 		$user_id = get_session('user_id');
 		$app_id = 50;
 		$usrpm = $this->admin_model->chkOnce_usrmPermiss($app_id,$user_id);
-
+		
 		 if($usrpm['perm_view']=='All'){//เห็นข้อมูลทั้งหมด
 			$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
 			(B.delete_user_id IS NULL AND B.delete_datetime IS NULL)");
@@ -45,7 +45,43 @@ class Volunteer_list_model extends CI_Model {
          	$this->db->where("(A.delete_user_id IS NULL AND A.delete_datetime IS NULL) AND
          		(B.delete_user_id IS NULL AND B.delete_datetime IS NULL) AND A.insert_user_id=".get_session('user_id'));
          }
+		//$this->column_search = array_diff($this->column_search, array('D_DateTimeAdd', 'D_DateTimeUpdate'));
 
+		// $i = 0;
+		// // dieArray($_POST);
+		// foreach ($this->column_search as $item) // loop column
+		// {
+
+		// 	if($_POST['search']['value']) // if datatable send POST for search
+		// 	{
+
+		// 		if($i===0) // first loop
+		// 		{
+		// 			$this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+		// 			$this->db->like($item, $_POST['search']['value']);
+		// 		}
+		// 		else
+		// 		{
+		// 			$this->db->or_like($item, $_POST['search']['value']);
+		// 		}
+
+		// 		if(count($this->column_search) - 1 == $i) //last loop
+		// 			$this->db->group_end(); //close bracket
+
+		// 	}
+		// 	$i++;
+		// }
+
+
+		// dieArray($_POST);
+		// $customSearch = array(
+		// 	1 => 'B.pid',
+		// 	2 => "CONCAT(B.pers_firstname_th,' ', B.pers_lastname_th)",
+		// 	4 => 'A.date_of_req',
+		// 	5 => 'A.date_of_visit',
+		// 	6 => 'A.date_of_pay',
+		// );
+		// $chk = 0;
 		foreach ($_POST['columns'] as $colId => $col) {
 			if($col['search']['value']) // if datatable send POST for search
 			{
@@ -56,18 +92,6 @@ class Volunteer_list_model extends CI_Model {
 						$this->db->like($col['name'], dateChange($col['search']['value'],0));
 						// $this->db->like($col['name'], $col['search']['value']);
 						// dieFont(dateChange($col['search']['value'],1));
-					}else if($col['name'] == 'start_age' ){
-						$year_age   = $col['search']['value'];
-						//$yearStart = date("Y")-$yearbir[0];
-						//$yearEnd   = date("Y")-$yearbir[1];
-						//$this->db->where("YEAR(".$col['name'].") BETWEEN ".$yearStart." AND ".$yearEnd);
-						$this->db->where("(IF(TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE()) IS NULL,0,TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE())) >= ".$year_age.")");
-					}else if($col['name'] == 'end_age' ){
-						$year_age   = $col['search']['value'];
-						//$yearStart = date("Y")-$yearbir[0];
-						//$yearEnd   = date("Y")-$yearbir[1];
-						//$this->db->where("YEAR(".$col['name'].") BETWEEN ".$yearStart." AND ".$yearEnd);
-						$this->db->where("(IF(TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE()) IS NULL,0,TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE())) <= ".$year_age.")");
 					}else{
 						$this->db->like($col['name'], $col['search']['value']);
 					}
@@ -112,7 +136,11 @@ class Volunteer_list_model extends CI_Model {
 	{
 		$this->_get_datatables_query();
 		//$this->db->where("log_type =",'Import');// เพิ่ม where log_type = Import
+		
 		$query = $this->db->get();
+
+		set_session('last_sql_filtered',$this->db->last_query()); //
+		
 		return $query->num_rows();
 	}
 
