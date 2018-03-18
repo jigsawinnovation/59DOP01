@@ -249,8 +249,9 @@ class Intelprop extends MX_Controller
                 $wisdom = $this->wisd_model->get_wisd_branch_by_knwlid($intelprop_transfer->knwl_id);
                             //dieArray($wisdom);
                             if (!empty($wisdom)) {
+                                $intWisdom = 0;
                                 foreach ($wisdom as $key1 => $value1) {
-                                    $wisd_branch =  $wisd_branch.$value1['wis_name']."<br>"; # code...
+                                    $wisd_branch .=  '- '.$value1['wis_name']."<br>"; # code...
                                 }
                             } else {
                                 $wisd_branch = "-";
@@ -267,7 +268,7 @@ class Intelprop extends MX_Controller
 
                   <ul class="dropdown-menu" style="position: absolute;left: -190px;">';
 
-                  $btn = $btn.' <li><a style="font-size:16px;" data-toggle="modal" data-target="#prt'.$manage_transfer->pid.'" title="พิมพ์แบบฟอร์ม" >
+                  $btn = $btn.' <li><a style="font-size:16px;" data-toggle="modal" data-target="#prt'.$intelprop_transfer->knwl_id.'" title="พิมพ์แบบฟอร์ม" >
                        <i class="fa fa-file-pdf-o" aria-hidden="true" style="color: #000"></i> พิมพ์แบบฟอร์ม (.PDF)
                    </a></li>';
 
@@ -293,7 +294,7 @@ class Intelprop extends MX_Controller
                               </div>';
 
                 $btn =$btn.'<!-- Print Modal -->
-                   <div class="modal fade" id="prt'.$manage_transfer->pid.'" role="dialog">
+                   <div class="modal fade" id="prt'.$intelprop_transfer->knwl_id.'" role="dialog">
                      <div class="modal-dialog">
 
                         <!-- Modal content-->
@@ -1228,14 +1229,14 @@ class Intelprop extends MX_Controller
     }
 
     public function edit_wisd(){
-        $knwl_id = get_inpost('knwl_id');
+        $branch_id = get_inpost('branch_id');
         $row = array();
         $result = $this->common_model->custom_query("SELECT
                                                         *
                                                         FROM
                                                         wisd_branch
                                                         WHERE
-                                                        knwl_id = {$knwl_id}
+                                                        branch_id = {$branch_id}
                                                         AND delete_user_id IS NULL
                                                         AND (
                                                         delete_org_id IS NULL || delete_datetime IS NULL
@@ -1487,6 +1488,15 @@ class Intelprop extends MX_Controller
         echo "remove";
 
     }
+
+    public function del_wisd_branch_data($adm_id='', $branch_id=''){
+        $column    = array('branch_id');
+        $column_id = array($branch_id);
+        $this->wisd_model->del_expert('wisd_branch',$column,$column_id);
+        redirect('intelprop/olderp_info2/Edit/'.$adm_id,'refresh');
+
+    }
+
 
     public function check_pid_persinfo(){
        ini_set('max_execution_time', 300);

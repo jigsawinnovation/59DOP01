@@ -71,6 +71,10 @@ class Intelprop_list_model extends CI_Model {
 				}else if($col['name'] == 'end_age' ){
 							$year_age   = $col['search']['value'];
 							$this->db->where("(IF(TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE()) IS NULL,0,TIMESTAMPDIFF(YEAR, B.date_of_birth, CURDATE())) <= ".$year_age.")");
+				}else if($col['name'] == 'wisd_code' ){
+							$wisd_code   = $col['search']['value'];
+							$this->db->where("A.knwl_id IN(SELECT wisd_branch.knwl_id FROM `wisd_branch` WHERE wisd_branch.wisd_code IN(0".$wisd_code.")) ");
+
 				}else{
 							$this->db->like($col['name'], $col['search']['value']);
 				}

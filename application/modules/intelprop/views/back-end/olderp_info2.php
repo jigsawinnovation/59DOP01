@@ -21,14 +21,73 @@
           $tmp = $this->admin_model->getOnce_Application(161);
           $tmp1 = $this->admin_model->chkOnce_usrmPermiss(161,$user_id); //Check User Permission
           ?>
+
+          <a  href="<?php echo site_url('intelprop/olderp_info2/Edit/'.uri_seg(4));?>" > ภูมิปัญญา  </a>
+
+        </li>
+
+      </ul>
+
+      <div class="tab-content">
+        <div id="tab-1" <?php if($usrpm['app_id']==161){?>class="tab-pane active" <?php }else{?> class="tab-pane"<?php }?>>
+          <div class="panel-body">
+
+            <div class="from-group row">
+             <div class="col-xs-12 col-sm-12">
+               <a class="navbar-minimalize minimalize-styl-2 btn btn-primary btn-add" style=" margin-left: 0px; background-color: #2f4250; border: 0;font-size: 17px; padding: 2px 20px 2px 20px; float: right;"  title="เพิ่มรายการ" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่มรายการ
+              </a>
+            </div>
+          </div>
+
+              <div class="table-responsive">
+                <table id="dtable" class="table table-striped table-bordered table-hover dataTables-example" style="margin-top: 0px !important; width:100% !important;">
+                  <thead style="font-size: 15px;">
+                    <tr>
+                      <th style="width:3% !important; border-left-color: #072b42;">#</th>
+                      <th style="width:20% !important;">ภาพถ่าย</th>
+                      <th style="width:37% !important;">สาขาภูมิปัญญา</th>
+                      <th style="width:37% !important;">เชี่ยวชาญเรื่อง/วันที่ขึ้นทะเบียน</th>
+                      <th style="width:3% !important;">&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                       if(!empty($wisd_branch)){
+                           // dieArray($wisd_branch);
+                         $i=1;
+                         foreach ($wisd_branch as $key => $value) {
+                      ?>
+                     <tr>
+                       <td style="border-left-color: #072b42;" class="text-center"><?php echo $i++; ?></td>
+                       <td>
+                           <?php
+
+                           $img_head = $this->wisd_model->get_photo_head($value['branch_id']);
+                               //dieArray($img_head);
+
+                            if($img_head[0]['wisdom_photo_file'] == ''){
+                            ?>
+                           <div style="background-color: #607D8B;padding: 30px;text-align: center;color: aliceblue;">ภาพถ่าย<br>(หน้าปก)</div>
+                           <?php }else{ ?>
+                           <img src="<?php echo base_url('assets/modules/intelprop/images/'.$img_head[0]['wisdom_photo_file']);?>" style="width: 200px;">
+                           <?php } ?>
+                       </td>
+                       <td><?php echo $value['wis_name']; ?></td>
+                       <td><?php echo $value['wisd_sp_title']; ?><br>(วันที่ขึ้นทะเบียน <?php echo $this->wisd_model->convert_date($value['insert_datetime'],'NoAge');?>)</td>
+                           <?php
+                                $download_file = $this->wisd_model->download_file_branch($value['knwl_id']);
+                                // dieArray($download_file);
+                            ?>
+                       <td class="text-center">
                         <!-- Single button -->
                         <div class="btn-group" style="cursor: pointer;">
                           <i data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle fa fa-gear" aria-hidden="true" style="color: #000"></i>
                           <ul class="dropdown-menu" style="position: absolute;left: -150px;">
                             <li><a style="font-size:16px;"  title="เอกสารแนบ" href="<?php echo base_url('assets/modules/intelprop/uploads/'.$download_file['wisd_sp_file']); ?>" download><i class="fa fa-file-pdf-o" aria-hidden="true" style="color: #000"></i> เอกสารแนบ</a></li>
                             <li><a style="font-size:16px;" href="<?php echo $value['wisd_sp_url']; ?>" target="_blank" title="ลิงค์ภูมิปัญญา" ><i class="fa fa-chain" style="color: #000"></i> ลิงค์ภูมิปัญญา</a></li>
-                            <li><a style="font-size:16px;" onclick="edit_modal(<?php echo $value['knwl_id']; ?>);" title="แก้ไขรายการ"><i class="fa fa-pencil" aria-hidden="true" style="color: #000"></i> แก้ไขรายการ</a></li>
-                            <li><a style="font-size:16px;"  title="ลบ" href="<?php echo base_url('intelprop/olderp_info2/Delete/'.$value['branch_id']);?>"><i class="fa fa-trash" style="color: #000"></i> ลบรายการ</a></li>
+                            <li><a style="font-size:16px;" onclick="edit_modal(<?php echo $value['branch_id']; ?>);" title="แก้ไขรายการ"><i class="fa fa-pencil" aria-hidden="true" style="color: #000"></i> แก้ไขรายการ</a></li>
+                            <li><a style="font-size:16px;"  title="ลบ" href="<?php echo base_url('intelprop/del_wisd_branch_data/'.$value['knwl_id'].'/'.$value['branch_id']);?>"><i class="fa fa-trash" style="color: #000"></i> ลบรายการ</a></li>
                           </ul>
                         </div>
                       </td>
@@ -39,7 +98,6 @@
                      ?>
                      <tr>
                        <td colspan="5" class="text-center">ไม่พบข้อมูล</td>
-
                      </tr>
                      <?php } ?>
                   </tbody>
@@ -58,10 +116,11 @@
 
 <!-- Modal -->
 <div class="modal fade bs-example-modal-lg " tabindex="-1" role="dialog" id="myModal" >
-  <div class="modal-dialog modal-lg" role="document" style="width: 80%;">
+
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h5 class="modal-title">สาขาภูมิปัญญาและความเชี่ยวชาญ</h5>
       </div>
       <div class="modal-body" style="font-size: 15px;">
@@ -100,6 +159,7 @@
             </div>
             <div class="col-xs-12 col-sm-9 has-error">
               <textarea rows="2" cols="50" class="form-control" placeholder="ระบุชื่อเรื่องความเชี่ยวชาญ"  name="wisd_branch[wisd_sp_title]" id="wisd_branch_wisd_sp_title"></textarea>
+
             </div>
           </div>
 
@@ -140,10 +200,7 @@
                     <span class="input-group-addon btn btn-default btn-file">
                       <span class="fileinput-new">เลือกไฟล์</span>
                       <span class="fileinput-exists">แก้ไข</span>
-                      <input type="file" accept="" name="wisd_photo_head"  onchange="imgchange(this); "/>
-                    </span>
-                    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">ลบ</a>
-                  </div> -->
+ -->
             </div>
 
             <div class="col-xs-12 col-sm-2" style="width: 12%;padding-right: 5px;">
@@ -162,6 +219,7 @@
             <div class="col-xs-12 col-sm-2 col-sm-offset-3"><button type="button"  class="btn btn-primary " onclick="add_img(this);" style="font-size: 15px !important; width: 100%;"><i class="fa fa-plus"></i> เพิ่มไฟล์</button></div>
           </div>
 
+
       </div>
       <div class="modal-footer">
         <div class="row">
@@ -171,6 +229,7 @@
           </div>
           <div class="col-xs-12 col-sm-2">
             <button  style="height: 40px;width: 100% !important;" type="button" class="btn btn-primary btn-cancel" data-dismiss="modal"><i class="fa fa-undo" aria-hidden="true"></i> ย้อนกลับ</button>
+
           </div>
         </div>
       </div>
@@ -193,18 +252,6 @@
            <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="triger_file(this);" style="padding-bottom: 4px;">เลือกไฟล์</button></span>
        </div>
 
-       <!-- <div class="fileinput fileinput-new input-group" data-provides="fileinput" >
-        <div class="form-control" data-trigger="fileinput">
-          <i class="glyphicon glyphicon-file fileinput-exists"></i>
-          <span class="fileinput-filename" style="color: #99999c;" >ไฟล์ชนิด .PDF และจำกัดขนาดไม่เกิน 25MB</span>
-        </div>
-        <span class="input-group-addon btn btn-default btn-file" >
-          <span class="fileinput-new">เลือกไฟล์</span>
-          <span class="fileinput-exists">แก้ไข</span>
-          <input type="file"  name="wisd_file[]"  />
-        </span>
-        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">ลบ</a>
-      </div> -->
     </div>
     <div class="col-xs-12 col-sm-2" style="width: 12%;padding-right: 5px;">
       <a class="btn btn-info " href="" style="font-size: 15px !important; width: 100%;" title="ดาวน์โหลด" download><i class="fa fa-download"></i> ดาวน์โหลด</a>&nbsp;
@@ -213,12 +260,14 @@
      <button class="btn btn-danger fileinput-exists " type="button"   onclick="del_file(this,'file');" style="font-size: 15px !important; width: 100%;" title="ลบไฟล์"><i class="fa fa-trash"></i> ลบไฟล์</button>
     </div>
 
+
   </div>
 </div>
 
 <div id="view_formupload" style="display: none;">
   <div class="form-group row add_img">
     <div class="col-xs-12 col-sm-3">
+
       <font>ภาพถ่าย(ประกอบภูมิปัญญา):</font>
     </div>
     <div class="col-xs-12 col-sm-5" style="width: 51%;padding-right: 5px;">
@@ -227,18 +276,7 @@
            <input type="file"  name="wisd_wisd_photo[]" onchange="imgchange(this);"  style="display: none;" />
            <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="triger_file(this);" style="padding-bottom: 4px;">เลือกไฟล์</button></span>
        </div>
-    <!--  <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-      <div class="form-control" data-trigger="fileinput">
-        <i class="glyphicon glyphicon-file fileinput-exists"></i>
-        <span class="fileinput-filename" style="color: #99999c;" >ไฟล์ชนิด .jpg,.jpeg,.png และจำกัดขนาดไม่เกิน 5MB</span>
-      </div>
-      <span class="input-group-addon btn btn-default btn-file">
-        <span class="fileinput-new" >เลือกไฟล์</span>
-        <span class="fileinput-exists" >แก้ไข</span>
-        <input type="file" accept="" name="wisd_wisd_photo[]"  onchange="imgchange(this);" />
-      </span>
-      <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">ลบ</a>
-    </div> -->
+
   </div>
 
   <div class="col-xs-12 col-sm-2" style="width: 12%;padding-right: 5px;">
@@ -279,11 +317,11 @@
    content_file.before(copy_file_upload());
    content_img.before(copy_form());
 
-
    function add_img(node){
       if($('.add_img').length>5){
         alert('จำนวนรูปภาพ ครบตามที่กำหนด 5 รูปภาพ');
       }else{
+
        $(node).parent().parent().before(copy_form());
      }
    }
@@ -359,6 +397,7 @@
      if(mode!=''){
          del_ajax(id,mode);
      }
+
    }
 
    $(function(){
@@ -368,14 +407,14 @@
     });
    });
 
-   function edit_modal(knwl_id){
-
+   function edit_modal(branch_id){
+    console.log("knwl_id:"+branch_id);
      $.ajax({
       url: base_url+'intelprop/edit_wisd',
       type: 'POST',
       dataType: 'json',
       data: {
-        'knwl_id': knwl_id,
+        'branch_id': branch_id,
         'csrf_dop': csrf_hash
       },
       success: function (value) { //Result True
@@ -451,6 +490,7 @@
     });
       $('#myModal').modal('show');
    }
+
 </script>
 
 <!-- upload profile -->
@@ -464,12 +504,14 @@
   function imgchange(node,myID){
       //var countFiles = $(this)[0].files.length;
 
+
       var path_img       = $(node).parent().parent().next().next();
       var imgPath        = $(node)[0].value;
       var extn           = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
       var size_img       = $(node)[0].files[0].size;
       var set_namefile   = $(node).prev();
       var Name_file      = $(node)[0].files[0].name;
+
       //Get count of selected files
       //var image_holder = $("#image-holder");
       //image_holder.empty();

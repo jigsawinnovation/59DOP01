@@ -173,7 +173,7 @@ class Wisd_model extends CI_Model {
 			WHERE A.knwl_id = {$knwl_id}
 			AND A.delete_user_id IS NULL
 			AND (A.delete_org_id IS NULL || A.delete_datetime IS NULL)
-			GROUP BY A.branch_id LIMIT 1
+			GROUP BY A.branch_id
 
 		");
 

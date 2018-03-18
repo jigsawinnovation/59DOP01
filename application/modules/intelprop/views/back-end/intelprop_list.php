@@ -280,7 +280,7 @@ foreach ($wisd_info as $key => $value) {
 						    //dieArray($wisdom);
 						    if (!empty($wisdom)) {
 						        foreach ($wisdom as $key1 => $value1) {
-						            echo $value1['wis_name'] . "<br>"; # code...
+						            echo '- '.$value1['wis_name'] . "<br>"; # code...
 						        }
 						    } else {
 						        echo "-";
